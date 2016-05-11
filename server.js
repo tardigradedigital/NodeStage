@@ -13,7 +13,7 @@ app.use(bodyParser.urlencoded({'extended':'true'}));
 app.use(bodyParser.json());
 app.use(bodyParser.json({ type: 'application/vnd.api+json'}));
 app.use(methodOverride());
-app.use('node_modules', express.static('./node_modules'));
+app.use('/node_modules', express.static('./node_modules'));
 
 app.get('/', function(req, res) { res.sendFile('./public/index.html'); });
 
