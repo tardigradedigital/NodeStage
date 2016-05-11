@@ -298,7 +298,7 @@ body {
 }
 
 #bg {
-    background-image: url('/img/background.jpg');
+    background-image: url('/img/preauth-background.jpg');
     background-color: #121212;
     background-size: cover;
     height: calc(100% + 12px);
