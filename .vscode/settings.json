@@ -1,0 +1,18 @@
+// Place your settings in this file to overwrite default and user settings.
+{
+    "editor.tabSize": 2,
+    
+    "files.exclude": {
+        "**/$tf": true,
+        "**/BuildProcessTemplates": true,
+        "**/android-chrome*.png": true,
+        "**/apple-touch-icon.png": true,
+        "**/apple-touch-icon-*.png": true,
+        "**/browserconfig.xml": true,
+        "**/favicon.ico": true,
+        "**/favicon-*.png": true,
+        "**/manifest.json": true,
+        "**/mstile*.png": true,
+        "**/safari-pinned-tab.svg": true
+    }
+}
