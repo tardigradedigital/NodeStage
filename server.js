@@ -15,9 +15,7 @@ app.use(bodyParser.json({ type: 'application/vnd.api+json'}));
 app.use(methodOverride());
 app.use(express.static('./node_modules'));
 
-app.get('*', function(req, res) {
-    res.sendfile('./public/index.html');
-})
+app.get('/', function(req, res) { res.sendFile('./public/index.html'); });
 
 app.listen(process.env.PORT);
 console.log("Stage started on port 80");
