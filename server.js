@@ -18,5 +18,5 @@ app.get('*', function(req, res) {
     res.sendfile('./public/index.html');
 })
 
-app.listen(80);
+app.listen(process.env.PORT);
 console.log("Stage started on port 80");
