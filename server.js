@@ -4,7 +4,7 @@ var mongoose = require('mongoose');
 var morgan = require('morgan');
 var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
-var port = process.env.PORT || 80;
+var port = process.env.PORT || 8080;
 
 // mongoose.connect('mongodb://node:nodeuser@mongo.onmodulus.net:27017/uw03mypu');
 
