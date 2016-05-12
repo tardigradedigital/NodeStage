@@ -1,3 +1,5 @@
 <h2>Tardigrade Node Stage</h2>
-<button *ngIf="!loggedIn()" (click)="login()">Login</button>
+<div *ngIf="!loggedIn()" id="login">
+  <script>login()</script>
+</div>
 <button *ngIf="loggedIn()" (click)="logout()">Logout</button>

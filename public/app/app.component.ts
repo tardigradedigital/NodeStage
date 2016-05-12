@@ -15,7 +15,13 @@ export class AppComponent {
   constructor() {}
   
   login() {
-    this.lock.show();
+    this.lock.show({
+      closeable: false,
+      disableResetAction: true,
+      disableSignupAction: true,
+      container: 'login',
+      icon: '/img/login.png'
+    });
     var hash = this.lock.parseHash();
     if(hash) {
       if(hash.error) console.log('There was an error logging in', hash.error);

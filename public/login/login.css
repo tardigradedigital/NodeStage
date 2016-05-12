@@ -10,13 +10,16 @@ body .a0-overlay.a0-active {
 }
 
 body .a0-panel {
+  box-shadow: 0;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
   left: 10px;
-  top: 36px;
+  top: 56px;
   width: 420px !important;
 }
 
 body .a0-db-actions, body .a0-top-header, body .a0-forgot-pass {
-  display: none;
+  display: none !important;
 }
 
 #content {
