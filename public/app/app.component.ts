@@ -13,7 +13,7 @@ import { LoginService } from '../login/login';
 
 /*
   TODO:
-    * See if we can hide the validation error for Auth0Lock not being found
+    D See if we can hide the validation error for Auth0Lock not being found
     * Running this.login() in the constructor stops page processing and does
       not output anything to td-nodestage. Instead of running directly in the
       constructor, set the state as a flag and have an event call at the end
