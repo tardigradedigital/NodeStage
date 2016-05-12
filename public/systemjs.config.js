@@ -14,7 +14,7 @@
     'app':                        { main: 'main.js',  defaultExtension: 'js' },
     'rxjs':                       { defaultExtension: 'js' },
     'angular2-in-memory-web-api': { defaultExtension: 'js' },
-    'angular2-jwt':               { defaultExtension: 'js'} 
+    'angular2-jwt':               { defaultExtension: 'js' } 
   };
 
   var packageNames = [

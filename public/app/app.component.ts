@@ -2,7 +2,7 @@ import { bootstrap } from '@angular/platform-browser';
 import { Component, View, provide } from '@angular/core';
 import { RouteConfig, Router, APP_BASE_HREF, ROUTER_PROVIDERS, ROUTER_DIRECTIVES, CanActivate } from '@angular/router';
 import { HTTP_PROVIDERS, Http } from '@angular/http';
-import { AuthHttp, tokenNotExpired } from 'angular2-jwt/angular2-jwt';
+import { AuthHttp, tokenNotExpired } from 'angular2-jwt';
 
 @Component({
   selector: 'td-nodestage',
