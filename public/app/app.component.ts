@@ -7,7 +7,8 @@ import { LoginService } from '../login/login';
 
 @Component({
   selector: 'td-nodestage',
-  templateUrl: '/login/login.html'
+  templateUrl: '/login/login.html',
+  providers: [LoginService]
 })
 
 /*

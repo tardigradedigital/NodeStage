@@ -19,7 +19,8 @@ var AppComponent = (function () {
     AppComponent = __decorate([
         core_1.Component({
             selector: 'td-nodestage',
-            templateUrl: '/login/login.html'
+            templateUrl: '/login/login.html',
+            providers: [login_1.LoginService]
         }), 
         __metadata('design:paramtypes', [login_1.LoginService])
     ], AppComponent);
