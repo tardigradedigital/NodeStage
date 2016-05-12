@@ -1,13 +1,13 @@
-import { Injectable, AfterViewInit } from '@angular/core';
+import { Injectable, AfterContentInit } from '@angular/core';
 
 declare var Auth0Lock: any;
 declare var $: any;
 
 @Injectable()
-export class LoginService implements AfterViewInit {
+export class LoginService implements AfterContentInit {
   
   lock = new Auth0Lock('jRop2sapEBB46vgXAuTWkYZGIvoGCQVp', 'tardigrade.auth0.com');
-  ngAfterViewInit() { console.log('Checkpoint'); this.login(); }
+  ngAfterContentInit() { console.log('Checkpoint'); this.login(); }
     
   login() {
     if($('#login').attr('data-lgld') == '0') {
