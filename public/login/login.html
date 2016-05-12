@@ -1,4 +1,3 @@
 <h2>Tardigrade Node Stage</h2>
 <div *ngIf="!loggedIn()" (click)="login()" id="login"></div>
-<script *ngIf="!loggedIn()">$('#login').click(); console.log('Requested login UI')</script>
 <button *ngIf="loggedIn()" (click)="logout()">Logout</button>

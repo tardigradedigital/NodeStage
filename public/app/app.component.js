@@ -13,6 +13,8 @@ var angular2_jwt_1 = require('angular2-jwt');
 var AppComponent = (function () {
     function AppComponent() {
         this.lock = new Auth0Lock('jRop2sapEBB46vgXAuTWkYZGIvoGCQVp', 'tardigrade.auth0.com');
+        if (!this.loggedIn())
+            this.login();
     }
     AppComponent.prototype.login = function () {
         this.lock.show({

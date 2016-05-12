@@ -12,7 +12,9 @@ import { AuthHttp, tokenNotExpired } from 'angular2-jwt';
 export class AppComponent {
   lock = new Auth0Lock('jRop2sapEBB46vgXAuTWkYZGIvoGCQVp', 'tardigrade.auth0.com');
   
-  constructor() {}
+  constructor() {
+    if(!this.loggedIn()) this.login();
+  }
   
   login() {
     this.lock.show({
