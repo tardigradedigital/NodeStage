@@ -15,7 +15,7 @@
     'rxjs':                       { defaultExtension: 'js' },
     'angular2-in-memory-web-api': { defaultExtension: 'js' },
     'angular2-jwt':               { defaultExtension: 'js' },
-    'login/login':                { main: 'login.js', defaultExtension: 'js' }
+    'login':                      { main: 'login.js', defaultExtension: 'js' }
   };
 
   var packageNames = [
