@@ -5,6 +5,10 @@ body #a0-lock * {
   transition: none !important;
 }
 
+body .a0-overlay.a0-active {
+  background: none !important;
+}
+
 body .a0-panel {
-  width: 380px;
+  width: 380px !important;
 }
