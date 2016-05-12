@@ -15,7 +15,13 @@ var AppComponent = (function () {
         this.lock = new Auth0Lock('jRop2sapEBB46vgXAuTWkYZGIvoGCQVp', 'tardigrade.auth0.com');
     }
     AppComponent.prototype.login = function () {
-        this.lock.show();
+        this.lock.show({
+            closeable: false,
+            disableResetAction: true,
+            disableSignupAction: true,
+            container: 'login',
+            icon: '/img/login.png'
+        });
         var hash = this.lock.parseHash();
         if (hash) {
             if (hash.error)
