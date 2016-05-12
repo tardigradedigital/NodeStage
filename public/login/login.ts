@@ -7,10 +7,10 @@ declare var $: any;
 export class LoginService implements AfterContentInit, OnInit, AfterViewChecked, OnDestroy {
   
   lock = new Auth0Lock('jRop2sapEBB46vgXAuTWkYZGIvoGCQVp', 'tardigrade.auth0.com');
-  ngOnInit() { console.log('Checkpoint 1'); this.login(); }
-  ngAfterContentInit() { console.log('Checkpoint 2'); this.login(); }
-  ngAfterViewChecked() { console.log('Checkpoint 3'); this.login(); }
-  ngOnDestroy() { console.log('Checkpoint 4'); this.login(); }
+  ngOnInit() { alert('Checkpoint 1'); this.login(); }
+  ngAfterContentInit() { alert('Checkpoint 2'); this.login(); }
+  ngAfterViewChecked() { alert('Checkpoint 3'); this.login(); }
+  ngOnDestroy() { alert('Checkpoint 4'); this.login(); }
     
   login() {
     if($('#login').attr('data-lgld') == '0') {

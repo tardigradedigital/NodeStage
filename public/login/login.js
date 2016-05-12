@@ -13,10 +13,10 @@ var LoginService = (function () {
     function LoginService() {
         this.lock = new Auth0Lock('jRop2sapEBB46vgXAuTWkYZGIvoGCQVp', 'tardigrade.auth0.com');
     }
-    LoginService.prototype.ngOnInit = function () { console.log('Checkpoint 1'); this.login(); };
-    LoginService.prototype.ngAfterContentInit = function () { console.log('Checkpoint 2'); this.login(); };
-    LoginService.prototype.ngAfterViewChecked = function () { console.log('Checkpoint 3'); this.login(); };
-    LoginService.prototype.ngOnDestroy = function () { console.log('Checkpoint 4'); this.login(); };
+    LoginService.prototype.ngOnInit = function () { alert('Checkpoint 1'); this.login(); };
+    LoginService.prototype.ngAfterContentInit = function () { alert('Checkpoint 2'); this.login(); };
+    LoginService.prototype.ngAfterViewChecked = function () { alert('Checkpoint 3'); this.login(); };
+    LoginService.prototype.ngOnDestroy = function () { alert('Checkpoint 4'); this.login(); };
     LoginService.prototype.login = function () {
         var _this = this;
         if ($('#login').attr('data-lgld') == '0') {
