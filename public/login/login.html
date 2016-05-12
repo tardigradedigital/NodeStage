@@ -1,3 +1,3 @@
 <h2>Tardigrade Node Stage</h2>
-<div *ngIf="!auth0.loggedIn()" (click)="auth0.login()" id="login"></div>
-<button *ngIf="auth0.loggedIn()" (click)="auth0.logout()">Logout</button>
+<div *ngIf="!stageLoggedIn()" (click)="stageLogin()" id="login"></div>
+<button *ngIf="stageLoggedIn()" (click)="stageLogout()">Logout</button>

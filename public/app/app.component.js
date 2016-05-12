@@ -15,9 +15,9 @@ var AppComponent = (function () {
     function AppComponent(auth0) {
         this.auth0 = auth0;
     }
-    AppComponent.prototype.loggedIn = function () { return angular2_jwt_1.tokenNotExpired(); };
-    AppComponent.prototype.login = function () { this.auth0.login(); };
-    AppComponent.prototype.logout = function () { this.auth0.logout(); };
+    AppComponent.prototype.stageLoggedIn = function () { return angular2_jwt_1.tokenNotExpired(); };
+    AppComponent.prototype.stageLogin = function () { this.auth0.login(); };
+    AppComponent.prototype.stageLogout = function () { this.auth0.logout(); };
     AppComponent = __decorate([
         core_1.Component({
             selector: 'td-nodestage',
