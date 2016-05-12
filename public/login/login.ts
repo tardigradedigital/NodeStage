@@ -4,10 +4,8 @@ declare var Auth0Lock: any;
 
 @Injectable()
 export class LoginService {
-    lock = new Auth0Lock('jRop2sapEBB46vgXAuTWkYZGIvoGCQVp', 'tardigrade.auth0.com');
-  
-  constructor() {}
-  
+  lock = new Auth0Lock('jRop2sapEBB46vgXAuTWkYZGIvoGCQVp', 'tardigrade.auth0.com');
+    
   login() {
     this.lock.show({
       closeable: false,
