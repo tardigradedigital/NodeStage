@@ -10,5 +10,15 @@ body .a0-overlay.a0-active {
 }
 
 body .a0-panel {
-  width: 380px !important;
+  left: 10px;
+  top: 36px;
+  width: 420px !important;
+}
+
+body .ao-db-actions, body .ao-top-header, body .ao-forgot-pass {
+  display: none;
+}
+
+#content {
+  height: 257px;
 }
