@@ -6,9 +6,9 @@ body #a0-lock * {
 }
 
 body .a0-panel {
-  box-shadow: 0 !important;
+  box-shadow: none !important;
   border-radius: 0 !important;
-  left: 10px;
+  left: -10px;
   /*top: 56px;*/
   width: 420px !important;
 }

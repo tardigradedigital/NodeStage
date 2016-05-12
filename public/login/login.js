@@ -15,28 +15,31 @@ var LoginService = (function () {
     }
     LoginService.prototype.login = function () {
         var _this = this;
-        this.lock.show({
-            closeable: false,
-            disableResetAction: true,
-            disableSignupAction: true,
-            container: 'login',
-            icon: '/img/login.png'
-        }, function (error, profile, id_token) {
-            var hash = _this.lock.parseHash();
-            if (hash) {
-                if (hash.error)
-                    console.log('There was an error logging in', hash.error);
-                else
-                    _this.lock.getProfile(hash.id_token, function (err, profile) {
-                        if (err) {
-                            console.log(err);
-                            return;
-                        }
-                        localStorage.setItem('profile', JSON.stringify(profile));
-                        localStorage.setItem('id_token', hash.id_token);
-                    });
-            }
-        });
+        if (document.getElementById('login').getAttribute('data-lgld') == '0') {
+            this.lock.show({
+                closeable: false,
+                disableResetAction: true,
+                disableSignupAction: true,
+                container: 'login',
+                icon: '/img/login.png'
+            }, function (error, profile, id_token) {
+                var hash = _this.lock.parseHash();
+                if (hash) {
+                    if (hash.error)
+                        console.log('There was an error logging in', hash.error);
+                    else
+                        _this.lock.getProfile(hash.id_token, function (err, profile) {
+                            if (err) {
+                                console.log(err);
+                                return;
+                            }
+                            localStorage.setItem('profile', JSON.stringify(profile));
+                            localStorage.setItem('id_token', hash.id_token);
+                        });
+                }
+            });
+            document.getElementById('login').setAttribute('data-lgld', '1');
+        }
     };
     LoginService.prototype.logout = function () {
         localStorage.removeItem('profile');
