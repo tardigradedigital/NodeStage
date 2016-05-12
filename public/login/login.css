@@ -15,7 +15,7 @@ body .a0-panel {
   width: 420px !important;
 }
 
-body .ao-db-actions, body .ao-top-header, body .ao-forgot-pass {
+body .a0-db-actions, body .a0-top-header, body .a0-forgot-pass {
   display: none;
 }
 
