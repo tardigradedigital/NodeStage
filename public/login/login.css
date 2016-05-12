@@ -5,20 +5,23 @@ body #a0-lock * {
   transition: none !important;
 }
 
-body .a0-overlay.a0-active {
-  background: none !important;
-}
-
 body .a0-panel {
-  box-shadow: 0;
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
+  box-shadow: 0 !important;
+  border-radius: 0 !important;
   left: 10px;
-  top: 56px;
+  /*top: 56px;*/
   width: 420px !important;
 }
 
+body, .a0-mode-container {
+  border-radius: 0 !important;
+}
+
 body .a0-db-actions, body .a0-top-header, body .a0-forgot-pass {
+  display: none !important;
+}
+
+body .a0-footer {
   display: none !important;
 }
 

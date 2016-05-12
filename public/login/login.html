@@ -1,3 +1,3 @@
 <h2>Tardigrade Node Stage</h2>
-<div *ngIf="!stageLoggedIn()" (click)="stageLogin()" id="login"></div>
+<div *ngIf="!stageLoggedIn()" (click)="if($(this).attr('data-lgld') == '0') stageLogin(); $(this).attr('data-lgld', '1')" id="login" data-lgld="0"></div>
 <button *ngIf="stageLoggedIn()" (click)="stageLogout()">Logout</button>
