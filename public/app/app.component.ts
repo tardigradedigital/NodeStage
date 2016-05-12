@@ -35,7 +35,6 @@ export class AppComponent {
         localStorage.setItem('id_token', hash.id_token);
       });
     }
-    return false;
   }
   
   logout() {
@@ -44,7 +43,6 @@ export class AppComponent {
   }
   
   loggedIn() {
-    if(!tokenNotExpired()) return this.login();
     return tokenNotExpired();
   }
 }

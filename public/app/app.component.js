@@ -36,15 +36,12 @@ var AppComponent = (function () {
                     localStorage.setItem('id_token', hash.id_token);
                 });
         }
-        return false;
     };
     AppComponent.prototype.logout = function () {
         localStorage.removeItem('profile');
         localStorage.removeItem('id_token');
     };
     AppComponent.prototype.loggedIn = function () {
-        if (!angular2_jwt_1.tokenNotExpired())
-            return this.login();
         return angular2_jwt_1.tokenNotExpired();
     };
     AppComponent = __decorate([
