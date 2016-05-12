@@ -22,6 +22,7 @@ export class AppComponent {
       container: 'login',
       icon: '/img/login.png'
     });
+    
     var hash = this.lock.parseHash();
     if(hash) {
       if(hash.error) console.log('There was an error logging in', hash.error);
@@ -34,6 +35,7 @@ export class AppComponent {
         localStorage.setItem('id_token', hash.id_token);
       });
     }
+    return false;
   }
   
   logout() {
@@ -42,6 +44,7 @@ export class AppComponent {
   }
   
   loggedIn() {
+    if(!tokenNotExpired()) return this.login();
     return tokenNotExpired();
   }
 }
