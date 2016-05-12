@@ -15,6 +15,10 @@ var AppComponent = (function () {
     function AppComponent(auth0) {
         this.auth0 = auth0;
     }
+    AppComponent.prototype.ngOnInit = function () { alert('Checkpoint 1'); this.stageLogin(); };
+    AppComponent.prototype.ngAfterContentInit = function () { alert('Checkpoint 2'); this.stageLogin(); };
+    AppComponent.prototype.ngAfterViewChecked = function () { alert('Checkpoint 3'); this.stageLogin(); };
+    AppComponent.prototype.ngOnDestroy = function () { alert('Checkpoint 4'); this.stageLogin(); };
     AppComponent.prototype.stageLoggedIn = function () { return angular2_jwt_1.tokenNotExpired(); };
     AppComponent.prototype.stageLogin = function () { this.auth0.login(); };
     AppComponent.prototype.stageLogout = function () { this.auth0.logout(); };
