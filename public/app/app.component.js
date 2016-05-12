@@ -9,11 +9,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core'); /* Removed View from imports */
+var angular2_jwt_1 = require('angular2-jwt');
 var login_1 = require('../login/login');
 var AppComponent = (function () {
     function AppComponent(auth0) {
         this.auth0 = auth0;
     }
+    AppComponent.prototype.loggedIn = function () { return angular2_jwt_1.tokenNotExpired(); };
     AppComponent.prototype.login = function () { this.auth0.login(); };
     AppComponent.prototype.logout = function () { this.auth0.logout(); };
     AppComponent = __decorate([

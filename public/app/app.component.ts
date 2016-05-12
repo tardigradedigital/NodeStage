@@ -21,6 +21,7 @@ import { LoginService } from '../login/login';
 */
 export class AppComponent {
   constructor(private auth0: LoginService) {}
+  loggedIn() { return tokenNotExpired(); }
   login() { this.auth0.login(); }
   logout() { this.auth0.logout(); }
 }
