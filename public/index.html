@@ -5,6 +5,10 @@
 <meta name="application-name" content="Developer Panel" />
 <meta name="msapplication-tooltip" content="Located at {{baseUrl}}" />
 <meta name="msapplication-starturl" content="{{baseUrl}}/?reset=1" />
+<meta name="msapplication-TileColor" content="#2d89ef">
+<meta name="msapplication-TileImage" content="/mstile-144x144.png">
+<meta name="theme-color" content="#ffffff">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 <title>Developer Panel</title>
 <link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png">
 <link rel="apple-touch-icon" sizes="60x60" href="/apple-touch-icon-60x60.png">
@@ -22,19 +26,15 @@
 <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
 <link rel="manifest" href="/manifest.json">
 <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
-<meta name="msapplication-TileColor" content="#2d89ef">
-<meta name="msapplication-TileImage" content="/mstile-144x144.png">
-<meta name="theme-color" content="#ffffff">
-<link href="/css/app.css" type="text/css" rel="stylesheet">
+<link rel="stylesheet" href="/css/app.css" type="text/css">
 <script src="/node_modules/systemjs/dist/system.src.js"></script>
 <script src="systemjs.config.js"></script>
 <script src="/lib/prefixfree.min.js"></script>
 <script src="//use.edgefonts.net/source-sans-pro.js"></script>
-<script src="//cdn.auth0.com/js/lock-9.1.min.js"></script>
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 <script src="/node_modules/es6-shim/es6-shim.min.js"></script>
 <script src="/node_modules/zone.js/dist/zone.js"></script>
 <script src="/node_modules/reflect-metadata/Reflect.js"></script>
+<script src="//cdn.auth0.com/js/lock-9.1.min.js"></script>
 <script>System.import('app').catch(function(err) {console.log(err);});</script>
 </head>
 <body>

@@ -6,18 +6,16 @@ import { AuthHttp, tokenNotExpired } from 'angular2-jwt';
 
 @Component({
   selector: 'td-nodestage',
-  template: `
-    <h2>Tardigrade Node Stage</h2>
-    <button *ngIf="!loggedIn()" (click)="login()">Login</button>
-    <button *ngIf="loggedIn()" (click)="logout()">Logout</button>
-  `
+  templateUrl: '/login/login.html'
 })
+
 export class AppComponent {
   lock = new Auth0Lock('jRop2sapEBB46vgXAuTWkYZGIvoGCQVp', 'tardigrade.auth0.com');
   
   constructor() {}
   
   login() {
+    this.lock.show();
     var hash = this.lock.parseHash();
     if(hash) {
       if(hash.error) console.log('There was an error logging in', hash.error);

@@ -15,6 +15,7 @@ var AppComponent = (function () {
         this.lock = new Auth0Lock('jRop2sapEBB46vgXAuTWkYZGIvoGCQVp', 'tardigrade.auth0.com');
     }
     AppComponent.prototype.login = function () {
+        this.lock.show();
         var hash = this.lock.parseHash();
         if (hash) {
             if (hash.error)
@@ -40,7 +41,7 @@ var AppComponent = (function () {
     AppComponent = __decorate([
         core_1.Component({
             selector: 'td-nodestage',
-            template: "\n    <h2>Tardigrade Node Stage</h2>\n    <button *ngIf=\"!loggedIn()\" (click)=\"login()\">Login</button>\n    <button *ngIf=\"loggedIn()\" (click)=\"logout()\">Logout</button>\n  "
+            templateUrl: '/login/login.html'
         }), 
         __metadata('design:paramtypes', [])
     ], AppComponent);
