@@ -3,6 +3,7 @@ import { Component, provide } from '@angular/core'; /* Removed View from imports
 import { RouteConfig, Router, ROUTER_PROVIDERS, ROUTER_DIRECTIVES, CanActivate } from '@angular/router-deprecated'; /* Removed APP_BASE_HREF from imports */
 import { HTTP_PROVIDERS, Http } from '@angular/http';
 import { AuthHttp, tokenNotExpired } from 'angular2-jwt';
+import { LoginService } from '../login/login';
 
 @Component({
   selector: 'td-nodestage',
@@ -17,43 +18,8 @@ import { AuthHttp, tokenNotExpired } from 'angular2-jwt';
       constructor, set the state as a flag and have an event call at the end
       of page processing to trigger the login method.
 */
-
 export class AppComponent {
-  lock = new Auth0Lock('jRop2sapEBB46vgXAuTWkYZGIvoGCQVp', 'tardigrade.auth0.com');
-  
-  constructor() {
-    if(!this.loggedIn()) this.login();
-  }
-  
-  login() {
-    this.lock.show({
-      closeable: false,
-      disableResetAction: true,
-      disableSignupAction: true,
-      container: 'login',
-      icon: '/img/login.png'
-    });
-    
-    var hash = this.lock.parseHash();
-    if(hash) {
-      if(hash.error) console.log('There was an error logging in', hash.error);
-      else this.lock.getProfile(hash.id_token, function(err, profile) {
-        if(err) {
-          console.log(err);
-          return;
-        }
-        localStorage.setItem('profile', JSON.stringify(profile));
-        localStorage.setItem('id_token', hash.id_token);
-      });
-    }
-  }
-  
-  logout() {
-    localStorage.removeItem('profile');
-    localStorage.removeItem('id_token');
-  }
-  
-  loggedIn() {
-    return tokenNotExpired();
-  }
+  constructor(private auth0: LoginService) {}
+  login() { this.auth0.login(); }
+  logout() { this.auth0.logout(); }
 }

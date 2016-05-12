@@ -9,49 +9,19 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core'); /* Removed View from imports */
-var angular2_jwt_1 = require('angular2-jwt');
+var login_1 = require('../login/login');
 var AppComponent = (function () {
-    function AppComponent() {
-        this.lock = new Auth0Lock('jRop2sapEBB46vgXAuTWkYZGIvoGCQVp', 'tardigrade.auth0.com');
-        if (!this.loggedIn())
-            this.login();
+    function AppComponent(auth0) {
+        this.auth0 = auth0;
     }
-    AppComponent.prototype.login = function () {
-        this.lock.show({
-            closeable: false,
-            disableResetAction: true,
-            disableSignupAction: true,
-            container: 'login',
-            icon: '/img/login.png'
-        });
-        var hash = this.lock.parseHash();
-        if (hash) {
-            if (hash.error)
-                console.log('There was an error logging in', hash.error);
-            else
-                this.lock.getProfile(hash.id_token, function (err, profile) {
-                    if (err) {
-                        console.log(err);
-                        return;
-                    }
-                    localStorage.setItem('profile', JSON.stringify(profile));
-                    localStorage.setItem('id_token', hash.id_token);
-                });
-        }
-    };
-    AppComponent.prototype.logout = function () {
-        localStorage.removeItem('profile');
-        localStorage.removeItem('id_token');
-    };
-    AppComponent.prototype.loggedIn = function () {
-        return angular2_jwt_1.tokenNotExpired();
-    };
+    AppComponent.prototype.login = function () { this.auth0.login(); };
+    AppComponent.prototype.logout = function () { this.auth0.logout(); };
     AppComponent = __decorate([
         core_1.Component({
             selector: 'td-nodestage',
             templateUrl: '/login/login.html'
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [login_1.LoginService])
     ], AppComponent);
     return AppComponent;
 }());
