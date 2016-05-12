@@ -13,7 +13,7 @@ var LoginService = (function () {
     function LoginService() {
         this.lock = new Auth0Lock('jRop2sapEBB46vgXAuTWkYZGIvoGCQVp', 'tardigrade.auth0.com');
     }
-    LoginService.prototype.ngAfterViewInit = function () { this.login(); };
+    LoginService.prototype.ngAfterViewInit = function () { console.log('Checkpoint'); this.login(); };
     LoginService.prototype.login = function () {
         var _this = this;
         if ($('#login').attr('data-lgld') == '0') {

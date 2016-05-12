@@ -7,7 +7,7 @@ declare var $: any;
 export class LoginService implements AfterViewInit {
   
   lock = new Auth0Lock('jRop2sapEBB46vgXAuTWkYZGIvoGCQVp', 'tardigrade.auth0.com');
-  ngAfterViewInit() { this.login(); }
+  ngAfterViewInit() { console.log('Checkpoint'); this.login(); }
     
   login() {
     if($('#login').attr('data-lgld') == '0') {
