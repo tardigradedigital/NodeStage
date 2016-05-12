@@ -15,7 +15,7 @@ var LoginService = (function () {
     }
     LoginService.prototype.login = function () {
         var _this = this;
-        if (document.getElementById('login').getAttribute('data-lgld') == '0') {
+        if ($('#login').attr('data-lgld') == '0') {
             this.lock.show({
                 closeable: false,
                 disableResetAction: true,
@@ -38,7 +38,7 @@ var LoginService = (function () {
                         });
                 }
             });
-            document.getElementById('login').setAttribute('data-lgld', '1');
+            $('#login').removeAttr('data-lgld');
         }
     };
     LoginService.prototype.logout = function () {

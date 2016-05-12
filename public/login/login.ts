@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 
 declare var Auth0Lock: any;
+declare var $: any;
 
 @Injectable()
 export class LoginService {
   lock = new Auth0Lock('jRop2sapEBB46vgXAuTWkYZGIvoGCQVp', 'tardigrade.auth0.com');
     
   login() {
-    if(document.getElementById('login').getAttribute('data-lgld') == '0') {
+    if($('#login').attr('data-lgld') == '0') {
       this.lock.show({
         closeable: false,
         disableResetAction: true,
@@ -28,7 +29,7 @@ export class LoginService {
           });
         }
       });
-      document.getElementById('login').setAttribute('data-lgld', '1');
+      $('#login').removeAttr('data-lgld');
     }
   }
   
