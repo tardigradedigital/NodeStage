@@ -1,4 +1,3 @@
-import { bootstrap } from '@angular/platform-browser-dynamic';
 import { Component, provide } from '@angular/core'; /* Removed View from imports */
 import { RouteConfig, Router, ROUTER_PROVIDERS, ROUTER_DIRECTIVES, CanActivate } from '@angular/router-deprecated'; /* Removed APP_BASE_HREF from imports */
 import { HTTP_PROVIDERS, Http } from '@angular/http';
