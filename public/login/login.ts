@@ -1,17 +1,13 @@
-import { Injectable, AfterContentInit, OnInit, AfterViewChecked, OnDestroy } from '@angular/core';
+import { Injectable } from '@angular/core';
 
 declare var Auth0Lock: any;
 declare var $: any;
 
 @Injectable()
-export class LoginService implements AfterContentInit, OnInit, AfterViewChecked, OnDestroy {
+export class LoginService {
   
   lock = new Auth0Lock('jRop2sapEBB46vgXAuTWkYZGIvoGCQVp', 'tardigrade.auth0.com');
-  ngOnInit() { alert('Checkpoint 1'); this.login(); }
-  ngAfterContentInit() { alert('Checkpoint 2'); this.login(); }
-  ngAfterViewChecked() { alert('Checkpoint 3'); this.login(); }
-  ngOnDestroy() { alert('Checkpoint 4'); this.login(); }
-    
+
   login() {
     if($('#login').attr('data-lgld') == '0') {
       this.lock.show({
