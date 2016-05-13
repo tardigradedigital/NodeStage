@@ -4,6 +4,7 @@
     
     "files.exclude": {
         "**/$tf": true,
+        "**/archive": true,
         "**/BuildProcessTemplates": true,
         "**/android-chrome*.png": true,
         "**/apple-touch-icon.png": true,
