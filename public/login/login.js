@@ -12,6 +12,7 @@ var core_1 = require('@angular/core');
 var LoginService = (function () {
     function LoginService() {
         this.lock = new Auth0Lock('jRop2sapEBB46vgXAuTWkYZGIvoGCQVp', 'tardigrade.auth0.com');
+        this.login();
     }
     LoginService.prototype.login = function () {
         var _this = this;
