@@ -1,6 +1,18 @@
 extends ../includes/layout
 
 block main-content
+  .navbar.navbar-inverse.navbar-fixed-top
+    .container
+      .navbar-header
+        img(src="/img/brand.png", alt="Tardigrade", class="brand")
+        a.navbar-brand(href="/") Node Stage
+      .navbar-collapse.collapse
+        ul.nav.navbar-nav
+          li
+            a(href="/") Home
   section.content
     div(ng-view)
-  h2= mongoMessage
+  
+  footer.container.text-center
+    p &copy; 2016 Tardigrade Digital
+    small This application is logged and monitored
