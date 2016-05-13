@@ -39,3 +39,4 @@ Thumbs.db
 # Node installables
 /node_modules/
 /typings/
+/archive/
