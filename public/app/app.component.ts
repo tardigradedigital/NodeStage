@@ -1,4 +1,3 @@
-import { bootstrap } from '@angular/platform-browser-dynamic';
 import { Component, provide } from '@angular/core'; /* Removed View from imports */
 import { RouteConfig, Router, ROUTER_PROVIDERS, ROUTER_DIRECTIVES, CanActivate } from '@angular/router-deprecated'; /* Removed APP_BASE_HREF from imports */
 import { HTTP_PROVIDERS, Http } from '@angular/http';
@@ -20,7 +19,7 @@ import { LoginService } from '../login/login';
       of page processing to trigger the login method.
 */
 export class AppComponent {
-  constructor(private auth0: LoginService) {}
+  constructor(private auth0: LoginService) { console.log('App is loading...'); }
   stageLoggedIn() { return tokenNotExpired(); }
   stageLogin() { this.auth0.login(); }
   stageLogout() { this.auth0.logout(); }

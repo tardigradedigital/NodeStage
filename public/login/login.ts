@@ -6,7 +6,7 @@ declare var $: any;
 @Injectable()
 export class LoginService {
   lock = new Auth0Lock('jRop2sapEBB46vgXAuTWkYZGIvoGCQVp', 'tardigrade.auth0.com');
-    
+
   login() {
     if($('#login').attr('data-lgld') == '0') {
       this.lock.show({
