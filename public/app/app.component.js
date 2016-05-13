@@ -14,6 +14,7 @@ var login_1 = require('../login/login');
 var AppComponent = (function () {
     function AppComponent(auth0) {
         this.auth0 = auth0;
+        console.log('App is loading...');
     }
     AppComponent.prototype.stageLoggedIn = function () { return angular2_jwt_1.tokenNotExpired(); };
     AppComponent.prototype.stageLogin = function () { this.auth0.login(); };

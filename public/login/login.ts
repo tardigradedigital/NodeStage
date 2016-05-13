@@ -5,7 +5,7 @@ declare var $: any;
 
 @Injectable()
 export class LoginService {
-  constructor() { this.login(); }
+  constructor() { console.log('LoginService started'); this.login(); }
   lock = new Auth0Lock('jRop2sapEBB46vgXAuTWkYZGIvoGCQVp', 'tardigrade.auth0.com');
 
   login() {
