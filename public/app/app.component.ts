@@ -19,7 +19,7 @@ import { LoginService } from '../login/login';
       of page processing to trigger the login method.
 */
 export class AppComponent {
-  constructor(private auth0: LoginService) {}
+  constructor(private auth0: LoginService) { this.stageLogin() }
   stageLoggedIn() { return tokenNotExpired(); }
   stageLogin() { this.auth0.login(); }
   stageLogout() { this.auth0.logout(); }
