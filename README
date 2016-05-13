@@ -1,0 +1,11 @@
+Software required for use
+MongoDB Community Server (add bin to PATH)
+npm install bower -g
+bower init
+
+Bower packages
+jquery
+toastr
+angular
+angular-resource
+angular-route
