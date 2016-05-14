@@ -1,7 +1,8 @@
 Software required for use
 MongoDB Community Server (add bin to PATH)
-npm install bower -g
+npm install bower nodemon -g
 bower init
+stylus extension (if in VS Code)
 
 Bower packages
 jquery

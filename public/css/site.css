@@ -6,7 +6,11 @@ body {
 }
 .navbar .navbar-header img.brand {
   float: left;
-  height: 50px;
+  height: 40px;
+  margin-top: 5px;
+}
+.navbar .navbar-header .navbar-brand {
+  margin-left: 0;
 }
 footer {
   padding-left: 15px;
