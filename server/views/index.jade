@@ -22,8 +22,9 @@ block main-content
             a(href="/") Home
               span.iconic.iconic-home.iconic-lg.iconic-size-sm
         div(ng-include="'/partials/account/navbar-login'")
-  section.content
-    div(ng-view)
+  div#stage
+    section.content
+      div(ng-view)
   
   .navbar.navbar-inverse.navbar-fixed-bottom
     .container
