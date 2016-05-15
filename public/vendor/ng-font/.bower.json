@@ -1,0 +1,14 @@
+{
+  "name": "ng-font",
+  "homepage": "https://github.com/mdtanrikulu/ngFont",
+  "_release": "2554dd27eb",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "2554dd27eb382df9bdcc1805725afb8f10a92633"
+  },
+  "_source": "https://github.com/mdtanrikulu/ngFont.git",
+  "_target": "*",
+  "_originalSource": "ng-font",
+  "_direct": true
+}

@@ -4,16 +4,23 @@ block main-content
   .navbar.navbar-inverse.navbar-fixed-top
     .container
       .navbar-header
-        img(src="/img/brand.png", alt="Tardigrade", class="brand")
-        a.navbar-brand(href="/") Node Stage
+        .brand-container
+          a
+            img(src="/img/brand.png", alt="Tardigrade", class="brand")
+          a(href="http://tardigradedigital.com", target="_blank")
+            img(src="/img/brand-over.png", alt="Tardigrade", class="brand")
+        a.navbar-brand(href="/")
+          span(ng-font, font="Titillium Web") //tardigrade/node
       .navbar-collapse.collapse
         ul.nav.navbar-nav
           li
             a(href="/") Home
+              span.iconic.iconic-home.iconic-lg.iconic-size-sm
         div(ng-include="'/partials/account/navbar-login'")
   section.content
     div(ng-view)
   
-  footer.container.text-center
-    p &copy; 2016 Tardigrade Digital
-    small This application is logged and monitored
+  .navbar.navbar-inverse.navbar-fixed-bottom
+    .container
+      .navbar-header
+        p.navbar-text(ng-font, font="Titillium Web") //tardigrade/node by Tardigrade Digital (2016)
