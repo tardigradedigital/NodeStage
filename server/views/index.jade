@@ -7,6 +7,8 @@ block main-content
         button.navbar-toggle.collapsed(type="button", data-toggle="collapse", data-target="#nav" aria-expanded="false")
           span.sr-only Toggle navigation
           span.icon-bar
+          span.icon-bar
+          span.icon-bar
         .brand-container
           a
             img(src="/img/brand.png", alt="Tardigrade", class="brand")
@@ -14,7 +16,7 @@ block main-content
             img(src="/img/brand-over.png", alt="Tardigrade", class="brand")
         a.navbar-brand(href="/")
           span(ng-font, font="Titillium Web") //tardigrade/node
-      .navbar-collapse.collapse#nav
+      .navbar-collapse.collapse.navbar-inverse#nav
         ul.nav.navbar-nav
           li
             a(href="/") Home
