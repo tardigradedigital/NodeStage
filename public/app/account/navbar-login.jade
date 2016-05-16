@@ -1,6 +1,6 @@
 .navbar-right(ng-controller="mvNavBarLoginCtrl")
 
-  ul.nav.navbar-nav.navbar-right.signin-offset(ng-hide="identity.isAuthenticated()")
+  ul.nav.navbar-nav.navbar-right(ng-hide="identity.isAuthenticated()")
     li.dropdown
       a.dropdown-toggle(href="", data-toggle="dropdown")
         | Sign In&nbsp;
@@ -16,12 +16,14 @@
           a.btn.btn-primary.navbar-right(href="/signup") Register
     
     
-  ul.nav.navbar-nav.navbar-right(ng-show="identity.isAuthenticated()")
+  ul.nav.navbar-nav.navbar-right.usermenu(ng-show="identity.isAuthenticated()")
     li.dropdown
       a.dropdown-toggle(href="", data-toggle="dropdown")
         img(gravatar-src="identity.currentUser.userName", gravatar-size="36" gravatar-secure="true")
         | {{identity.currentUser.firstName + " " + identity.currentUser.lastName}}&nbsp;
         b.caret
+        br
+        small.pull-right {{identity.currentUser.userName}}
       ul.dropdown-menu
         li(ng-show="identity.currentUser.isAdmin()")
           a(href="/admin/users") User Admin

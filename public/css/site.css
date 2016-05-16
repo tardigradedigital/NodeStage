@@ -67,6 +67,24 @@ section.content {
   overflow-y: auto;
   padding-top: 21px;
 }
+.usermenu width 200px li.dropdown > a {
+  margin-top: -6px;
+  height: 57px;
+}
+.usermenu small {
+  font-size: 65%;
+  margin-top: -6px;
+}
+.usermenu img[gravatar-src] {
+  height: 36px;
+  margin-bottom: -30px;
+  margin-right: 25px;
+  margin-top: -18px;
+  border: 1px solid #343434;
+  border-radius: 50%;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+}
 #stage {
   background: rgba(35,35,35,0.5);
   position: fixed;
@@ -88,16 +106,6 @@ footer p {
 }
 .margin-left-med {
   margin-left: 10px;
-}
-img[gravatar-src] {
-  height: 36px;
-  margin-bottom: -16px;
-  margin-right: 10px;
-  margin-top: -18px;
-  border: 1px solid #343434;
-  border-radius: 50%;
-  -moz-border-radius: 50%;
-  -webkit-border-radius: 50%;
 }
 .toast-top-right {
   top: 70px;
