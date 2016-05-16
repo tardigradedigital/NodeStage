@@ -1,3 +1,7 @@
+@import url("https://fonts.googleapis.com/css?family=Titillium+Web:300");
+.tdf {
+  font-family: 'Titillium Web', sans-serif;
+}
 html {
   background-image: url("/img/background-1.jpg");
   background-position: center center;
@@ -72,11 +76,11 @@ footer {
 footer p {
   border-top: 1px solid #d7e0e2;
 }
-.navbar-form .form-group {
-  margin-left: 10px;
+#signin .navbar-form .form-group {
+  margin-bottom: 5px;
 }
-.navbar-form button {
-  margin-left: 10px;
+#signin .navbar-form a.btn {
+  margin-right: 0;
 }
 img[gravatar-src] {
   height: 35px;
