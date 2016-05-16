@@ -18,11 +18,13 @@
   ul.nav.navbar-nav.navbar-right(ng-show="identity.isAuthenticated()")
     li.dropdown
       a.dropdown-toggle(href="", data-toggle="dropdown")
-        img(gravatar-src="identity.currentUser.userName", gravatar-size="35" gravatar-secure="true")
+        img(gravatar-src="identity.currentUser.userName", gravatar-size="36" gravatar-secure="true")
         | {{identity.currentUser.firstName + " " + identity.currentUser.lastName}}&nbsp;
         b.caret
       ul.dropdown-menu
         li(ng-show="identity.currentUser.isAdmin()")
           a(href="/admin/users") User Admin
+        li
+          a(href="/profile") Profile
         li
           a(href="", ng-click="signout()") Sign Out
