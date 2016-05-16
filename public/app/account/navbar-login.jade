@@ -1,13 +1,17 @@
 .navbar-right(ng-controller="mvNavBarLoginCtrl")
   form.navbar-form(ng-hide="identity.isAuthenticated()")
+    ul.nav.navbar-nav(style="margin-top: -8px")
+      li
+        a(href="/signup") Sign Up
     .form-group
       input.form-control(placeholder="Email", ng-model="username")
     .form-group
       input.form-control(type="password", placeholder="Password", ng-model="password")
-    button.btn.btn-primary(ng-click="signin(username, password)") Login
+    button.btn.btn-primary(ng-click="signin(username, password)") Sign In
   ul.nav.navbar-nav.navbar-right(ng-show="identity.isAuthenticated()")
     li.dropdown
       a.dropdown-toggle(href="", data-toggle="dropdown")
+        img(gravatar-src="identity.currentUser.userName", gravatar-size="35" gravatar-secure="true")
         | {{identity.currentUser.firstName + " " + identity.currentUser.lastName}}
         b.caret
       ul.dropdown-menu
