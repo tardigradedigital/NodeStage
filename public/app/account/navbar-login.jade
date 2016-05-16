@@ -1,9 +1,10 @@
 .navbar-right(ng-controller="mvNavBarLoginCtrl")
 
-  ul.nav.navbar-nav.navbar-right(ng-hide="identity.isAuthenticated()")
+  ul.nav.navbar-nav.navbar-right.signin-offset(ng-hide="identity.isAuthenticated()")
     li.dropdown
       a.dropdown-toggle(href="", data-toggle="dropdown")
         | Sign In&nbsp;
+        span.iconic.iconic-key.iconic-lg.iconic-size-sm
         b.caret
       ul.dropdown-menu#signin
         form.navbar-form

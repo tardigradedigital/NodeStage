@@ -1,8 +1,7 @@
-@import url('https://fonts.googleapis.com/css?family=Titillium+Web:300');
+@import url('https://fonts.googleapis.com/css?family=Titillium+Web:300')
 
-.tdf {
-  font-family: 'Titillium Web', sans-serif;
-}
+.tdf
+  font-family 'Titillium Web', sans-serif
 
 html
   background-image url(/img/background-1.jpg)
@@ -61,10 +60,15 @@ body
           float left
           margin-right 4px
           
+.navbar a
+  -webkit-transition all 200ms ease-out
+  transition all 200ms ease-out
+          
 section.content
   height calc(100% - 102px)
   overflow-y auto
   padding-top 21px
+  
   
 #stage
   background rgba(35,35,35,0.5)
@@ -83,6 +87,9 @@ footer
     margin-bottom 5px
   a.btn
     margin-right 0
+    
+.margin-left-med
+  margin-left 10px
 
 img[gravatar-src]
   height 36px
@@ -96,3 +103,19 @@ img[gravatar-src]
 
 .toast-top-right
   top 70px
+  
+.dropdown-menu
+  -webkit-transition all 200ms ease-out
+  transition all 200ms ease-out
+  opacity 0
+
+.open .dropdown-menu
+  opacity 1
+
+.ng-enter
+  -webkit-transition 400ms linear all
+  transition 400ms linear all
+  opacity 0.2
+
+.ng-enter.ng-enter-active
+  opacity 1

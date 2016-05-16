@@ -1,4 +1,4 @@
-angular.module('app', ['ngResource', 'ngRoute', 'ngFont', 'angularLoad', 'ui.gravatar']);
+angular.module('app', ['ngResource', 'ngRoute', 'ngFont', 'angularLoad', 'ui.gravatar', 'ngAnimate']);
 
 angular.module('app').config(function($routeProvider, $locationProvider) {
   var routeRoleChecks = {
@@ -29,6 +29,14 @@ angular.module('app').config(function($routeProvider, $locationProvider) {
       templateUrl: '/partials/account/profile', 
       controller: 'mvProfileCtrl',
       resolve: routeRoleChecks.user
+    })
+    .when('/courses', {
+      templateUrl: '/partials/courses/course-list', 
+      controller: 'mvCourseListCtrl'
+    })
+    .when('/courses/:id', {
+      templateUrl: '/partials/courses/course-details', 
+      controller: 'mvCourseDetailCtrl'
     });
 });
 
