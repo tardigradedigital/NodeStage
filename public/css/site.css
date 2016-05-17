@@ -67,9 +67,15 @@ section.content {
   overflow-y: auto;
   padding-top: 21px;
 }
-.usermenu width 200px li.dropdown > a {
+.usermenu {
+  width: 200px;
+}
+.usermenu li.dropdown > a {
   margin-top: -6px;
   height: 57px;
+}
+.usermenu li.dropdown ul.dropdown-menu {
+  margin-top: -1px;
 }
 .usermenu small {
   font-size: 65%;
