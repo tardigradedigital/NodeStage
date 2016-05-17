@@ -13,6 +13,10 @@ module.exports = function(app) {
   app.get('/api/courses', courses.getCourses);
   app.get('/api/courses/:id', courses.getCourseById);
 
+  app.get('/admin/*', auth.requiresRole('admin'), function(req, res) {
+    res.render('../../public/app/admin/' + req.params[0]);
+  });
+
   app.get('/partials/*', function(req, res) {
     res.render('../../public/app/' + req.params[0]);
   });

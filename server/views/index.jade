@@ -16,14 +16,12 @@ block main-content
             img(src="/img/brand-over.png", alt="Tardigrade", class="brand")
         a.navbar-brand(href="/")
           span.tdf //tardigrade/node
-      .navbar-collapse.collapse.navbar-inverse#nav
+      .navbar-collapse.collapse.navbar-inverse#nav(ng-controller="mvNavBarLoginCtrl")
         ul.nav.navbar-nav
           li
             a(href="/") Home
               span.iconic.iconic-home.iconic-lg.iconic-size-sm
-          li
-            a(href="/courses") Courses
-              span.iconic.iconic-easel.iconic-lg.iconic-size-sm
+        ng-include(src="'/partials/admin/admin-toolbar'", ng-if="identity.isAuthenticated()")
         div(ng-include="'/partials/account/navbar-login'")
   div#stage
     section.content
@@ -31,5 +29,5 @@ block main-content
   
   .navbar.navbar-inverse.navbar-fixed-bottom
     .container
-      p.navbar-text.tdf //tardigrade/node [Last update: 5-15-2016]
-      p.navbar-text.navbar-right.tdf Tardigrade 2016
+      p.navbar-text.tdf //tardigrade/node
+      p.navbar-text.navbar-right.tdf &copy; Tardigrade 2016

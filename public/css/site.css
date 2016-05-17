@@ -67,9 +67,6 @@ section.content {
   overflow-y: auto;
   padding-top: 21px;
 }
-.usermenu {
-  width: 200px;
-}
 .usermenu li.dropdown > a {
   margin-top: -6px;
   height: 57px;
@@ -131,4 +128,26 @@ footer p {
 }
 .ng-enter.ng-enter-active {
   opacity: 1;
+}
+.fliph {
+  -moz-transform: scaleX(-1);
+  -o-transform: scaleX(-1);
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+  filter: FlipH;
+  -ms-filter: "FlipH";
+}
+.h3-icon {
+  float: left;
+  margin-top: -5px;
+  padding-right: 5px;
+}
+.h4-icon {
+  float: left;
+  margin-top: -9px;
+  padding-right: 5px;
+}
+.lgr-icon {
+  float: left;
+  padding-right: 5px;
 }

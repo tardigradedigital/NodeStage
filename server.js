@@ -9,4 +9,4 @@ require('./server/config/passport')();
 require('./server/config/routes')(app);
 
 app.listen(config.port);
-console.log('Started Node Stage on port ' + config.port);
+console.log('Running //tardigrade/node on port ' + config.port);
