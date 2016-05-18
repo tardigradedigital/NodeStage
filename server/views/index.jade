@@ -21,7 +21,7 @@ block main-content
           li
             a(href="/") Home
               span.iconic.iconic-home.iconic-lg.iconic-size-sm
-        ng-include(src="'/partials/admin/admin-toolbar'", ng-if="identity.isAuthenticated()")
+        ng-include(src="'/partials/admin/admin-toolbar'", ng-if="identity.isAuthorized('admin')")
         div(ng-include="'/partials/account/navbar-login'")
   div#stage
     section.content
