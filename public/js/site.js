@@ -1,4 +1,5 @@
 $(document).ready(function () {
+  // Fix for closing menu on mobile when clicked or touched elsewhere on the page
   var checkMhd = function(event) {
     var clickover = $(event.target);
     var $navbar = $(".navbar-collapse");               
