@@ -6,7 +6,7 @@ $(document).ready(function () {
     if (_opened === true && !clickover.hasClass("navbar-toggle")) { $navbar.collapse('hide'); }
   }
   
-  $(document).on('click touchend', checkMhd(event));
+  $('body').click(function(event) { checkMhd(event); });
 });
 
 // (function() {
