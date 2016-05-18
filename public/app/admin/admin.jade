@@ -6,17 +6,18 @@
       .col-md-9
         h4
           b Loaded Stage users
-        table.table.table-bordered.table-condensed.table-striped
-          tr
-            th Username
-            th First name
-            th Last name
-            th Roles
-          tr(ng-repeat="user in users")
-            td {{user.userName}}
-            td {{user.firstName}}
-            td {{user.lastName}}
-            td {{user.roles}}
+        .table-responsive
+          table.table.table-bordered.table-condensed.table-striped
+            tr
+              th Username
+              th First name
+              th Last name
+              th Roles
+            tr(ng-repeat="user in users")
+              td {{user.userName}}
+              td {{user.firstName}}
+              td {{user.lastName}}
+              td {{user.roles}}
       .col-md-3
         h4
           b User actions
