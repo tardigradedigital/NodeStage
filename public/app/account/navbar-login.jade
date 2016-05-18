@@ -13,11 +13,14 @@
             input.form-control(type="password", placeholder="Password", ng-model="password")
           button.btn.btn-primary(ng-click="signin(username, password)") Sign In
           a.btn.btn-primary.navbar-right(href="/signup") Register
-    
+  ul.nav.navbar-nav.navbar-right(ng-hide="identity.isAuthenticated()")
+    li
+      a(href="/login") Sign In
+        span.iconic.iconic-key.iconic-sm.iconic-size-sm.fliph
     
   ul.nav.navbar-nav.navbar-right.usermenu(ng-show="identity.isAuthenticated()")
     li.dropdown
-      a.dropdown-toggle(href="", data-toggle="dropdown")
+      a.dropdown-toggle.center(href="", data-toggle="dropdown")
         img(gravatar-src="identity.currentUser.userName", gravatar-size="36" gravatar-secure="true")
         | {{identity.currentUser.firstName + " " + identity.currentUser.lastName}}&nbsp;
         b.caret
