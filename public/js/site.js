@@ -1,9 +1,12 @@
 $(document).ready(function () {
-  $(document).click(function (event) {
+  var checkMhd = function(event) {
     var clickover = $(event.target);
-    var _opened = $(".navbar-collapse").hasClass("navbar-collapse in");
-    if (_opened === true && !clickover.hasClass("navbar-toggle")) { $("button.navbar-toggle").click(); }
-  });
+    var $navbar = $(".navbar-collapse");               
+    var _opened = $navbar.hasClass("in");
+    if (_opened === true && !clickover.hasClass("navbar-toggle")) { $navbar.collapse('hide'); }
+  }
+  
+  $(document).on('click touchend', checkMhd(event));
 });
 
 // (function() {
