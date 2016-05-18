@@ -17,7 +17,7 @@
   ul.nav.navbar-nav.navbar-right.mobile-only(ng-hide="identity.isAuthenticated()")
     li
       a(href="/login") Sign In
-        span.iconic.iconic-account-logout.iconic-sm.iconic-size-sm.fliph
+        span.iconic.iconic-account-login.iconic-sm.iconic-size-sm
     
   ul.nav.navbar-nav.navbar-right.usermenu.desktop-only(ng-show="identity.isAuthenticated()")
     li.dropdown.userbox
@@ -40,5 +40,5 @@
         | {{identity.currentUser.firstName + " " + identity.currentUser.lastName}}&nbsp;
         br
         small.pull-right {{identity.currentUser.userName}}
-      a.pull-right(href="", ng-click="signout()")
-        span.iconic.iconic-key.iconic-sm.iconic-size-sm
+      a.pull-right(href="", ng-click="signout()", style="margin-top: 3px") Sign Out
+        span.iconic.iconic-account-logout.iconic-sm.iconic-size-sm
