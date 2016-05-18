@@ -15,6 +15,7 @@ var userSchema = mongoose.Schema({
 });
 userSchema.methods = {
   authenticate: function(pwdToMatch) {
+      console.log('ALERT: ' + this)
     return encrypt.hashPwd(this.salt, pwdToMatch) === this.hashed_pwd;
   },
   hasRole: function(role) {
@@ -29,7 +30,7 @@ function createDefaultUsers() {
     if(collection.length === 0) {
       var salt, hash;
       salt = encrypt.createSalt();
-      hash = encrypt.hashPwd(salt1, 'nodestagesadmin');
+      hash = encrypt.hashPwd(salt, 'nodestagesadmin');
       User.create({firstName: 'Tardigrade', lastName: 'Ops', userName: 'stageadmin', salt: salt, hashed_pwd: hash, roles: ['admin']})
     }
   });
