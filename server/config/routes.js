@@ -1,4 +1,5 @@
 var auth = require('./auth'),
+    fs = require('fs'),
     users = require('../controllers/users'),
     mongoose = require('mongoose'),
     User = mongoose.model('User');
@@ -10,7 +11,14 @@ module.exports = function(app) {
   app.put('/api/users', users.updateUser);
 
   app.get('/admin/*', auth.requiresRole('admin'), function(req, res) {
-    res.render('../../public/app/admin/' + req.params[0]);
+    var path = '../../public/app/admin/' + req.params[0];
+    try {
+      fs.statSync(path + '.js');
+      res.render(path); 
+    }
+    catch(e) {
+      res.sendStatus(404);
+    }
   });
 
   app.get('/partials/*', function(req, res) {
@@ -24,7 +32,7 @@ module.exports = function(app) {
   });
 
   app.all('/api/*', function(req, res) {
-    res.send(404);
+    res.sendStatus(404);
   });
 
   app.get('*', function(req, res) {

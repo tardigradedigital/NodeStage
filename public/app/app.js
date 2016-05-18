@@ -1,4 +1,4 @@
-angular.module('app', ['ngResource', 'ngRoute', 'ngFont', 'angularLoad', 'ui.gravatar', 'ngAnimate']);
+angular.module('app', ['ngResource', 'ngRoute', 'ui.gravatar', 'ngAnimate']);
 
 angular.module('app').config(function($routeProvider, $locationProvider) {
   var routeRoleChecks = {
@@ -7,7 +7,10 @@ angular.module('app').config(function($routeProvider, $locationProvider) {
     },
     user: {
       auth: function(mvAuth) { return mvAuth.authorizeAuthenticatedUserForRoute(); }
-    }  
+    },
+    guest: {
+      auth: function(mvAuth) { return mvAuth.unauthenticatedUser(); }
+    }
   }
   
   $locationProvider.html5Mode(true);
@@ -16,19 +19,20 @@ angular.module('app').config(function($routeProvider, $locationProvider) {
       templateUrl: '/partials/main/main', 
       controller: 'mvMainCtrl'
     })
-    .when('/admin/users', {
-      templateUrl: '/partials/admin/user-list', 
-      controller: 'mvUserListCtrl', 
-      resolve: routeRoleChecks.admin
-    })
     .when('/admin', {
       templateUrl: '/partials/admin/admin', 
       controller: 'mvStageAdminCtrl', 
       resolve: routeRoleChecks.admin
     })
+    .when('/login', {
+      templateUrl: '/partials/account/login', 
+      controller: 'mvNavBarLoginCtrl',
+      resolve: routeRoleChecks.guest
+    })
     .when('/signup', {
       templateUrl: '/partials/account/signup', 
-      controller: 'mvSignupCtrl'
+      controller: 'mvSignupCtrl',
+      resolve: routeRoleChecks.guest
     })
     .when('/profile', {
       templateUrl: '/partials/account/profile', 

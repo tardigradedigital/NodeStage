@@ -1,5 +1,9 @@
 @import url("https://fonts.googleapis.com/css?family=Titillium+Web:300");
-.tdf {
+.tdf,
+h1,
+h2,
+h3,
+h4 {
   font-family: 'Titillium Web', sans-serif;
 }
 html {
@@ -156,6 +160,9 @@ footer p {
 }
 .desktop-only {
   display: block;
+}
+.login-mobile-spacer {
+  margin-bottom: 8px !important;
 }
 @media (max-width: 767px) {
   .center {

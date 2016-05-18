@@ -28,15 +28,9 @@ function createDefaultUsers() {
   User.find({}).exec(function(err, collection) {
     if(collection.length === 0) {
       var salt, hash;
-      salt1 = encrypt.createSalt();
-      hash1 = encrypt.hashPwd(salt1, 'nodestagesadmin');
-      salt2 = encrypt.createSalt();
-      hash2 = encrypt.hashPwd(salt2, 'nodestage');
-      salt3 = encrypt.createSalt();
-      hash3 = encrypt.hashPwd(salt3, 'guest');
-      User.create({firstName: 'Stage', lastName: 'Admin', userName: 'stageadmin', salt: salt1, hashed_pwd: hash1, roles: ['sadmin']})
-      User.create({firstName: 'Justin', lastName: 'Lindsey', userName: 'jlindsey', salt: salt2, hashed_pwd: hash2, roles: ['admin']})
-      User.create({firstName: 'Stage', lastName: 'Guest', userName: 'guest', salt: salt3, hashed_pwd: hash3, roles: []})
+      salt = encrypt.createSalt();
+      hash = encrypt.hashPwd(salt1, 'nodestagesadmin');
+      User.create({firstName: 'Tardigrade', lastName: 'Ops', userName: 'stageadmin', salt: salt, hashed_pwd: hash, roles: ['admin']})
     }
   });
 }
