@@ -1,96 +1,130 @@
 .container
-  .well
-    h3.tdf //tardigrade/node
-      span.iconic.iconic-globe.iconic-lg.iconic-size-md.h3-icon
-    br
-    p Welcome to the Tardigrade Node Stage.
-      | This application is ran in a sandbox environment so we can test our latest features and tricks.
-      | If you have any questions or comments, please feel free to contact 
-      | 
-      a(href="mailto:jlindsey@tardigradedigital.com") Justin Lindsey
-      | .
-    br
+  .col-md-12
+    .panel.panel-default
+      .panel-heading
+        h3.tdf //tardigrade/node
+          span.iconic.iconic-globe.iconic-lg.iconic-size-md.h3-icon
+      .panel-body
+        p Welcome to the Tardigrade Node Stage.
+          | This application is ran in a sandbox environment so we can test our latest features and tricks.
+          | If you have any questions or comments, please feel free to contact 
+          | 
+          a(href="mailto:jlindsey@tardigradedigital.com") Justin Lindsey
+          | .
+
+.container
+  .col-md-6
     .panel.panel-default
       .panel-heading
         .panel-title
-          h3 Technologies
-        .panel-body
-          | We utilize the below technolgies to offer a seamless interactive experience for this preview.
-        .table-responsive
-          table.table
-            tr
-              th(style="width: 200px") Technology
-              th Use in application
-            tr
-              td
-                a(href="https://nodejs.org/en/", target="_blank") Node.JS
-              td Provides backend services such as database connectivity and routing
+          h3 Server Technology
+      .panel-body
+        | The following technologies make up the server-side infrastructure for this preview.
+      .table-responsive
+        table.table
+          tr
+            th(style="width: 175px") Technology
+            th Use in application
+          tr
+            td
+              a(href="https://nodejs.org/en/", target="_blank") Node.JS
+            td Provides backend services such as database connectivity and routing
+              br
+              br
+              small Modules included: 
                 br
-                small Modules included: 
-                  a(href="https://github.com/expressjs/body-parser", target="_blank") body-parser
-                  | ,&nbsp;
-                  a(href="https://github.com/expressjs/cookie-parser", target="_blank") cookie-parser
-                  | ,&nbsp;
-                  a(href="https://github.com/expressjs/express", target="_blank") express
-                  | ,&nbsp;
-                  a(href="https://github.com/expressjs/session", target="_blank") express-session
-                  | ,&nbsp;
-                  a(href="http://jade-lang.com/", target="_blank") jade
-                  | ,&nbsp;
-                  a(href="http://mongoosejs.com/", target="_blank") mongoose
-                  | ,&nbsp;
-                  a(href="https://github.com/expressjs/morgan", target="_blank") morgan
-                  | ,&nbsp;
-                  a(href="http://passportjs.org/", target="_blank") passport
-                  | ,&nbsp;
-                  a(href="https://github.com/jaredhanson/passport-local", target="_blank") passport-local
-                  | ,&nbsp;
-                  a(href="http://stylus-lang.com/", target="_blank") stylus
+                a(href="https://github.com/expressjs/body-parser", target="_blank") body-parser
+                | ,&nbsp;
+                a(href="https://github.com/expressjs/cookie-parser", target="_blank") cookie-parser
+                | ,&nbsp;
+                a(href="https://github.com/expressjs/express", target="_blank") express
+                | ,&nbsp;
+                a(href="https://github.com/expressjs/session", target="_blank") express-session
+                | ,&nbsp;
+                a(href="http://jade-lang.com/", target="_blank") jade
+                | ,&nbsp;
+                a(href="http://mongoosejs.com/", target="_blank") mongoose
+                | ,&nbsp;
+                a(href="https://github.com/expressjs/morgan", target="_blank") morgan
+                | ,&nbsp;
+                a(href="http://passportjs.org/", target="_blank") passport
+                | ,&nbsp;
+                a(href="https://github.com/jaredhanson/passport-local", target="_blank") passport-local
+                | ,&nbsp;
+                a(href="http://stylus-lang.com/", target="_blank") stylus
+                | ,&nbsp;
+                a(href="http://karma-runner.github.io/0.13/index.html", target="_blank") karma
+                | ,&nbsp;
+                a(href="https://github.com/princed/karma-chai-plugins", target="_blank") karma-chai-plugins
+                | ,&nbsp;
+                a(href="https://github.com/HuzuTech/jasmine-node-karma", target="_blank") karma-jasmine
+                | ,&nbsp;
+                a(href="https://github.com/karma-runner/karma-mocha", target="_blank") karma-mocha
+                | ,&nbsp;
+                a(href="http://mochajs.org/", target="_blank") mocha              
+          tr
+            td 
+              a(href="https://www.mongodb.com/", target="_blank") MongoDB
+            td Provides lightweight and powerful data services
+          tr
+            td
+              a(href="", target="_blank") NPM
+            td Package manager for Node for module management 
+          tr
+            td
+              a(href="", target="_blank") Bower
+            td Package manager for client-side module management 
+                  
+  .col-md-6
+    .panel.panel-default
+      .panel-heading
+        .panel-title
+          h3 Client Technology
+      .panel-body
+        | The following technologies make up the client-side infrastructure for this preview.
+      .table-responsive
+        table.table
+          tr
+            th(style="width: 175px") Technology
+            th Use in application
+          tr
+            td
+              a(href="https://angularjs.org/", target="_blank") AngularJS 1.5.5
+            td Provides frontend services for single page application functionality
+              br
+              br
+              small Modules included: 
                 br
-                small Dev modules included: 
-                  a(href="http://karma-runner.github.io/0.13/index.html", target="_blank") karma
-                  | ,&nbsp;
-                  a(href="https://github.com/princed/karma-chai-plugins", target="_blank") karma-chai-plugins
-                  | ,&nbsp;
-                  a(href="https://github.com/HuzuTech/jasmine-node-karma", target="_blank") karma-jasmine
-                  | ,&nbsp;
-                  a(href="https://github.com/karma-runner/karma-mocha", target="_blank") karma-mocha
-                  | ,&nbsp;
-                  a(href="http://mochajs.org/", target="_blank") mocha
-            tr
-              td
-                a(href="https://angularjs.org/", target="_blank") AngularJS 1.5.5
-              td Provides frontend services for single page application functionality
-                br
-                small Modules included: 
-                  a(href="https://github.com/angular/bower-angular-animate", target="_blank") angular-animate
-                  | ,&nbsp;
-                  a(href="https://github.com/wallin/angular-gravatar", target="_blank") angular-gravatar
-                  | ,&nbsp;
-                  a(href="https://github.com/urish/angular-load", target="_blank") angular-load
-                  | ,&nbsp;
-                  a(href="https://github.com/angular/bower-angular-mocks", target="_blank") angular-mocks
-                  | ,&nbsp;
-                  a(href="https://github.com/angular/bower-angular-resource", target="_blank") angular-resource
-                  | ,&nbsp;
-                  a(href="https://github.com/angular/bower-angular-route", target="_blank") angular-route
-            tr
-              td 
-                a(href="https://www.mongodb.com/", target="_blank") MongoDB
-              td Provides lightweight and powerful data services
-            tr
-              td 
-                a(href="http://getbootstrap.com/", target="_blank")  Bootstrap by Twitter
-              td Provides page layout and design components
-            tr
-              td 
-                a(href="https://useiconic.com/", target="_blank")  Iconic
-              td Provides icons used throughout application as navbar or header visuals
-            tr
-              td 
-                a(href="http://jquery.com/", target="_blank")  jQuery
-              td Provides ability for streamlined JavaScript for components not part of Angular
-            tr
-              td 
-                a(href="http://codeseven.github.io/toastr/", target="_blank")  toastr
-              td Provides notifications for events raised by Angular
+                a(href="https://github.com/angular/bower-angular-animate", target="_blank") angular-animate
+                | ,&nbsp;
+                a(href="https://github.com/wallin/angular-gravatar", target="_blank") angular-gravatar
+                | ,&nbsp;
+                a(href="https://github.com/urish/angular-load", target="_blank") angular-load
+                | ,&nbsp;
+                a(href="https://github.com/angular/bower-angular-mocks", target="_blank") angular-mocks
+                | ,&nbsp;
+                a(href="https://github.com/angular/bower-angular-resource", target="_blank") angular-resource
+                | ,&nbsp;
+                a(href="https://github.com/angular/bower-angular-route", target="_blank") angular-route
+          tr
+            td 
+              a(href="http://getbootstrap.com/", target="_blank")  Bootstrap
+            td Provides page layout and design components
+          tr
+            td 
+              a(href="https://useiconic.com/", target="_blank")  Iconic
+            td Provides a vast collection of icons
+          tr
+            td 
+              a(href="http://jquery.com/", target="_blank")  jQuery
+            td Provides jQuery support for non-Angular components
+          tr
+            td 
+              a(href="http://codeseven.github.io/toastr/", target="_blank")  toastr
+            td Provides notifications for events raised by Angular
+            
+  .col-md-12
+    .panel.panel-default
+      .panel-heading
+        .panel-title
+          h3 Test container
