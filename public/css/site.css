@@ -151,3 +151,8 @@ footer p {
   float: left;
   padding-right: 5px;
 }
+@media (max-width: 767px) {
+  .dropdown-toggle {
+    text-align: right;
+  }
+}
