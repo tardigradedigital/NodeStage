@@ -1,6 +1,5 @@
 var auth = require('./auth'),
     users = require('../controllers/users'),
-    courses = require('../controllers/courses'),
     mongoose = require('mongoose'),
     User = mongoose.model('User');
 
