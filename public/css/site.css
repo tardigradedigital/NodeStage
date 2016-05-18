@@ -71,11 +71,11 @@ section.content {
   overflow-y: auto;
   padding-top: 21px;
 }
-.usermenu li.dropdown > a {
+.usermenu li.userbox > a {
   margin-top: -6px;
   height: 57px;
 }
-.usermenu li.dropdown ul.dropdown-menu {
+.usermenu li.userbox ul.dropdown-menu {
   margin-top: -1px;
 }
 .usermenu small {

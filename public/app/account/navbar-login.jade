@@ -20,7 +20,7 @@
         span.iconic.iconic-key.iconic-sm.iconic-size-sm.fliph
     
   ul.nav.navbar-nav.navbar-right.usermenu.desktop-only(ng-show="identity.isAuthenticated()")
-    li.dropdown
+    li.dropdown.userbox
       a.dropdown-toggle.center(href="", data-toggle="dropdown")
         img(gravatar-src="identity.currentUser.userName", gravatar-size="36" gravatar-secure="true")
         | {{identity.currentUser.firstName + " " + identity.currentUser.lastName}}&nbsp;
@@ -34,7 +34,7 @@
           a(href="", ng-click="signout()") Sign Out
 
   ul.nav.navbar-nav.navbar-right.usermenu.mobile-only(ng-show="identity.isAuthenticated()")
-    li
+    li.userbox
       a.center(href="/profile", data-toggle="dropdown")
         img(gravatar-src="identity.currentUser.userName", gravatar-size="36" gravatar-secure="true")
         | {{identity.currentUser.firstName + " " + identity.currentUser.lastName}}&nbsp;
