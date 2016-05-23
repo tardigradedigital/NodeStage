@@ -36,7 +36,7 @@
           span.iconic.iconic-account-logout.iconic-sm.iconic-size-sm.menu-icon
   ul.nav.navbar-nav.navbar-right.usermenu.mobile-only(ng-show="identity.isAuthenticated()")
     li.userbox
-      a.pull-left(href="/profile", style="width: 200px")
+      a.pull-left(href="/settings", style="width: 200px")
         img(gravatar-src="identity.currentUser.userName", gravatar-size="36" gravatar-secure="true")
         | {{identity.currentUser.firstName + " " + identity.currentUser.lastName}}&nbsp;
         br
