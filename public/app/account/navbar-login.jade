@@ -26,19 +26,20 @@
         | {{identity.currentUser.firstName + " " + identity.currentUser.lastName}}&nbsp;
         b.caret
         br
-        small.pull-right {{identity.currentUser.userName}}
+        small.pull-left.username-pull {{identity.currentUser.userName}}
       ul.dropdown-menu
         li
-          a(href="/profile") Profile
+          a(href="/settings") Settings
+          span.iconic.iconic-settings.iconic-sm.iconic-size-sm.menu-icon      
         li
           a(href="", ng-click="signout()") Sign Out
-
+          span.iconic.iconic-account-logout.iconic-sm.iconic-size-sm.menu-icon
   ul.nav.navbar-nav.navbar-right.usermenu.mobile-only(ng-show="identity.isAuthenticated()")
     li.userbox
       a.pull-left(href="/profile", style="width: 200px")
         img(gravatar-src="identity.currentUser.userName", gravatar-size="36" gravatar-secure="true")
         | {{identity.currentUser.firstName + " " + identity.currentUser.lastName}}&nbsp;
         br
-        small.pull-right {{identity.currentUser.userName}}
+        small.pull-left.username-pull {{identity.currentUser.userName}}
       a.pull-right(href="", ng-click="signout()", style="margin-top: 0") Sign Out
         span.iconic.iconic-account-logout.iconic-sm.iconic-size-sm
