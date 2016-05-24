@@ -1,15 +1,26 @@
-angular.module('app').value('mvToastr', toastr);
-
-angular.module('app').factory('mvNotifier', function(mvToastr) {
+angular.module('app').factory('mvNotifier', function() {
+  var icon = IconicJS();
+  
   return {
     notify: function(msg) {
-      mvToastr.success(msg);
-      console.log(msg);
+      var msgel = $('<span></span>').html(' ' + msg).prepend($('<span></span>').addClass('iconic iconic-sm iconic-check-thin')).addClass('success');
+      icon.inject('#ticker');
+      $('#ticker').addClass('on').prepend(msgel);
+      setTimeout(function() {$('#ticker').removeClass('on');}, 300);
     },
     
     error: function(msg) {
-      mvToastr.error(msg);
-      console.log(msg);
+      var msgel = $('<span></span>').html(' ' + msg).prepend($('<span></span>').addClass('iconic iconic-sm iconic-x-thin')).addClass('error');
+      icon.inject('#ticker');
+      $('#ticker').addClass('on').prepend(msgel);
+      setTimeout(function() {$('#ticker').removeClass('on');}, 300);
+    },
+    
+    info: function(msg) {
+      var msgel = $('<span></span>').html(' ' + msg).prepend($('<span></span>').addClass('iconic iconic-sm iconic-info'));
+      icon.inject('#ticker');
+      $('#ticker').addClass('on').prepend(msgel);
+      setTimeout(function() {$('#ticker').removeClass('on');}, 300);
     }
   }
 });

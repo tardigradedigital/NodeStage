@@ -171,6 +171,39 @@ footer
 .login-mobile-spacer
   margin-bottom 8px !important
   
+.navbar-center
+  text-align center
+  
+.ticker-container
+  overflow hidden
+  p.navbar-text
+    float none !important
+    text-align center
+
+#ticker
+  height 51px
+  overflow hidden
+  margin-top 0
+  padding-top 15px
+  -webkit-transition opacity, margin-top 200ms ease
+  transition opacity, margin-top 200ms ease
+  span
+    display none
+    .iconic
+      display inline !important
+  span.success
+    color green
+  span.error
+    color red
+  > span:first-child
+    display block
+  
+#ticker.on
+    opacity 0.2
+    margin-top -40px
+    -webkit-transition all 0ms
+    transition all 0ms
+  
 @media (max-width: 767px)
   .center
     margin-left auto
@@ -180,8 +213,8 @@ footer
     display block
   .desktop-only
     display none
-  
         
 @media all and (min-width: 768px)
   #user
     margin-right 0
+
