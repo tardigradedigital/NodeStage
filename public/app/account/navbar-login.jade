@@ -6,13 +6,20 @@
         span.iconic.iconic-key.iconic-sm.iconic-size-sm.iconic-flip-horizontal
         b.caret
       ul.dropdown-menu#signin
-        form.navbar-form
+        form.navbar-form(name="navLogin")
           .form-group
-            input.form-control(placeholder="Email", ng-model="username")
+            .input-group
+              .input-group-addon
+                span.iconic.iconic-envelope-closed.iconic-sm
+              input.form-control(type="email", placeholder="Email", ng-model="username", name="username", minlength="4")
           .form-group
-            input.form-control(type="password", placeholder="Password", ng-model="password")
-          button.btn.btn-primary(ng-click="signin(username, password)") Sign In
-          a.btn.btn-primary.navbar-right(href="/signup") Register
+            .input-group
+              .input-group-addon
+                span.iconic.iconic-key.iconic-sm
+              input.form-control(type="password", placeholder="Password", ng-model="password", name="password", minlength="4")
+          button.btn.btn-primary(ng-click="signin(username, password)", type="submit")
+            span.iconic.iconic-account-login.iconic-sm.iconic-size-sm
+            | Sign In
           
   ul.nav.navbar-nav.navbar-right.mobile-only(ng-hide="identity.isAuthenticated()")
     li

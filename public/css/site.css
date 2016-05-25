@@ -121,17 +121,32 @@ footer {
 footer p {
   border-top: 1px solid #d7e0e2;
 }
+#signin {
+  padding-bottom: 0;
+  margin-bottom: 0;
+  min-width: 220px;
+}
+#signin .navbar-form {
+  margin-bottom: 0;
+}
 #signin .navbar-form .form-group {
   margin-bottom: 5px;
 }
-#signin .navbar-form a.btn {
-  margin-right: 0;
+#signin .navbar-form .invalid {
+  border: 1px solid #f00;
+}
+#signin .navbar-form button.btn {
+  width: calc(100% + 31px);
+  border-radius: 0;
+  margin-left: -15px;
+  margin-top: 2px;
+}
+#signin .navbar-form button.btn span.iconic {
+  right: 5px;
+  top: 3px;
 }
 .margin-left-med {
   margin-left: 10px;
-}
-.toast-top-right {
-  top: 70px;
 }
 .dropdown-menu {
   -webkit-transition: all 200ms ease-out;
@@ -178,17 +193,46 @@ footer p {
 .ticker-container {
   cursor: pointer;
   overflow: hidden;
-  -webkit-transition: all 200ms ease-out;
-  transition: all 200ms ease-out;
+  height: 300px;
+  -webkit-transition: all 300ms ease-out;
+  transition: all 300ms ease-out;
 }
 .ticker-container p.navbar-text {
   float: none !important;
   text-align: center;
 }
 .ticker-container:hover {
-  background: rgba(24,24,24,0.5);
+  background: rgba(24,24,24,0.9);
   -webkit-transition: all 200ms ease-out;
   transition: all 200ms ease-out;
+}
+.ticker-container.expanded {
+  background: rgba(32,32,32,0.9);
+  margin-top: -250px;
+  -webkit-transition: all 150ms ease-out;
+  transition: all 150ms ease-out;
+  padding-left: 0;
+  padding-right: 0;
+  position: relative;
+}
+.ticker-container.expanded #ticker {
+  height: 249px;
+  margin-left: 0;
+  margin-right: 0;
+  padding-top: 10px;
+}
+.ticker-container.expanded #ticker #ftrmsg {
+  position: absolute;
+  bottom: 16px;
+  left: 10px;
+  height: auto;
+  margin-bottom: 0;
+}
+.ticker-container.expanded #ticker span {
+  display: block;
+  height: 22px;
+  margin-bottom: 2px;
+  position: relative;
 }
 #ticker {
   height: 51px;
@@ -204,6 +248,8 @@ footer p {
   display: none;
 }
 #ticker span .iconic {
+  left: -4px;
+  top: 3px;
   display: inline !important;
 }
 #ticker span.success {

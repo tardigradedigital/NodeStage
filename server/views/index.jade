@@ -28,5 +28,5 @@ block main-content
       div(ng-view)
   
   .navbar.navbar-inverse.navbar-fixed-bottom
-    .container.ticker-container.tdf
-      div.navbar-text#ticker(ng-controller="mvTickerCtrl", onLoad="reset()" ng-click="showAll()")
+    .container.ticker-container.tdf(ng-controller="mvTickerCtrl", onLoad="reset()" ng-click="showAll()")
+      div.navbar-text#ticker

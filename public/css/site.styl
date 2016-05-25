@@ -112,18 +112,28 @@ footer
   p
     border-top 1px solid #d7e0e2
     
-#signin .navbar-form
-  .form-group
-    margin-bottom 5px
-  a.btn
-    margin-right 0
+#signin
+  padding-bottom 0
+  margin-bottom 0
+  min-width 220px
+  .navbar-form
+    margin-bottom 0
+    .form-group
+      margin-bottom 5px
+    .invalid
+      border 1px solid #FF0000
+    button.btn
+      width calc(100% + 31px)
+      border-radius 0
+      margin-left -15px
+      margin-top 2px
+      span.iconic
+        right 5px
+        top 3px
     
 .margin-left-med
   margin-left 10px
 
-.toast-top-right
-  top 70px
-  
 .dropdown-menu
   -webkit-transition all 200ms ease-out
   transition all 200ms ease-out
@@ -169,16 +179,42 @@ footer
 .ticker-container
   cursor pointer
   overflow hidden
+  height 300px
   p.navbar-text
     float none !important
     text-align center
-  -webkit-transition all 200ms ease-out
-  transition all 200ms ease-out
+  -webkit-transition all 300ms ease-out
+  transition all 300ms ease-out
     
 .ticker-container:hover
-  background rgba(24,24,24,0.5)
+  background rgba(24,24,24,0.9)
   -webkit-transition all 200ms ease-out
   transition all 200ms ease-out
+  
+.ticker-container.expanded
+  background rgba(32,32,32,0.9)
+  margin-top -250px
+  -webkit-transition all 150ms ease-out
+  transition all 150ms ease-out
+  padding-left 0
+  padding-right 0
+  position relative
+  #ticker
+    height 249px
+    margin-left 0
+    margin-right 0
+    padding-top 10px
+    #ftrmsg
+      position absolute
+      bottom 16px
+      left 10px
+      height auto
+      margin-bottom 0
+    span
+      display block
+      height 22px
+      margin-bottom 2px
+      position relative
 
 #ticker
   height 51px
@@ -192,6 +228,8 @@ footer
   span
     display none
     .iconic
+      left -4px
+      top 3px
       display inline !important
   span.success
     color green
