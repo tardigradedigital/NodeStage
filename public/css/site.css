@@ -22,7 +22,7 @@ body {
   background-attachment: fixed;
   padding-top: 50px;
   padding-bottom: 50px;
-  position: absolute;
+  position: fixed;
   height: 100%;
   left: 0;
   right: 0;
@@ -149,9 +149,6 @@ footer p {
 .ng-enter.ng-enter-active {
   opacity: 1;
 }
-.panel-infoview {
-  min-height: 455px;
-}
 .h3-icon {
   float: left;
   margin-top: -5px;
@@ -240,5 +237,8 @@ footer p {
 @media all and (min-width: 768px) {
   #user {
     margin-right: 0;
+  }
+  .panel-infoview {
+    min-height: 455px;
   }
 }
