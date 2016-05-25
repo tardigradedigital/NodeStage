@@ -29,5 +29,4 @@ block main-content
   
   .navbar.navbar-inverse.navbar-fixed-bottom
     .container.ticker-container.tdf
-      p.navbar-text#ticker
-        span Application maintained by //tardigrade
+      div.navbar-text#ticker(ng-controller="mvTickerCtrl", onLoad="reset()" ng-click="showAll()")

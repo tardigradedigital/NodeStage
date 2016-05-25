@@ -2,10 +2,12 @@ angular.module('app').controller('mvNavBarLoginCtrl', function($scope, $http, mv
   $scope.identity = mvIdentity;
   $scope.signin = function(username, password) {
     mvAuth.authenticateUser(username, password).then(function(success) {
-      if(success) { mvNotifier.notify('You have been successfully authenticated.') }
+      if(success) { 
+        mvNotifier.notify('You have been successfully authenticated.');
+        if($location.path('login')) { $location.path('/'); }
+      }
       else { mvNotifier.error('Invalid credentials were specified.') }
     });
-    if($location.path('login')) { $location.path('/'); }
   }
   
   $scope.signout = function() {

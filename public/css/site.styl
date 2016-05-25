@@ -139,14 +139,9 @@ footer
 
 .ng-enter.ng-enter-active
   opacity 1
-  
- .fliph
-  -moz-transform scaleX(-1)
-  -o-transform scaleX(-1)
-  -webkit-transform scaleX(-1)
-  transform scaleX(-1)
-  filter FlipH
-  -ms-filter "FlipH"
+    
+.panel-infoview
+  min-height 455px
   
 .h3-icon
   float left
@@ -175,10 +170,18 @@ footer
   text-align center
   
 .ticker-container
+  cursor pointer
   overflow hidden
   p.navbar-text
     float none !important
     text-align center
+  -webkit-transition all 200ms ease-out
+  transition all 200ms ease-out
+    
+.ticker-container:hover
+  background rgba(24,24,24,0.5)
+  -webkit-transition all 200ms ease-out
+  transition all 200ms ease-out
 
 #ticker
   height 51px
@@ -187,6 +190,8 @@ footer
   padding-top 15px
   -webkit-transition opacity, margin-top 200ms ease
   transition opacity, margin-top 200ms ease
+  text-align center
+  width 100%
   span
     display none
     .iconic
@@ -197,7 +202,7 @@ footer
     color red
   > span:first-child
     display block
-  
+
 #ticker.on
     opacity 0.2
     margin-top -40px
