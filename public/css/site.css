@@ -318,6 +318,15 @@ footer p {
   .desktop-only {
     display: none;
   }
+  .ticker-container.expanded #ticker .ticker-msg {
+    width: 100%;
+  }
+  .ticker-container.expanded .expanded-footer {
+    display: none;
+  }
+  #ticker .ticker-msg {
+    width: 100%;
+  }
 }
 @media all and (min-width: 768px) {
   #user {

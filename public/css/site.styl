@@ -288,12 +288,23 @@ footer
     display block
   .desktop-only
     display none
+  .expanded-footer
+    display none
   .ticker-container.expanded
     #ticker
       .ticker-msg
         width 100%
+        text-align center
+        margin-left auto
+        margin-right auto
+        padding-left 0
     .expanded-footer
-      display none
+      display none !important
+  #ticker
+    .ticker-msg
+      width 100%
+      margin-left 0
+      margin-right 0
         
 @media all and (min-width: 768px)
   #user
