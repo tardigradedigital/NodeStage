@@ -270,7 +270,7 @@ footer p {
   color: #efefef;
   display: block;
   width: 49%;
-  border-left: 2px solid rgba(201,204,204,0.55);
+  border-left: 2px solid rgba(201,204,204,0.4);
   position: absolute;
   right: 0;
   top: 15px;
