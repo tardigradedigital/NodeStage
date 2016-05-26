@@ -124,13 +124,23 @@ footer p {
 #signin {
   padding-bottom: 0;
   margin-bottom: 0;
-  min-width: 220px;
+  min-width: 300px;
 }
 #signin .navbar-form {
   margin-bottom: 0;
 }
 #signin .navbar-form .form-group {
   margin-bottom: 5px;
+  width: 100%;
+}
+#signin .navbar-form .form-group .input-group {
+  width: 100%;
+}
+#signin .navbar-form .form-group .input-group .input-group-addon {
+  width: 40px;
+}
+#signin .navbar-form .form-group .input-group input {
+  width: 100%;
 }
 #signin .navbar-form .invalid {
   border: 1px solid #f00;
@@ -140,10 +150,16 @@ footer p {
   border-radius: 0;
   margin-left: -15px;
   margin-top: 2px;
+  -webkit-transition: all 200ms ease-out;
+  transition: all 200ms ease-out;
 }
 #signin .navbar-form button.btn span.iconic {
   right: 5px;
   top: 3px;
+}
+#signin .navbar-form button.btn:hover {
+  -webkit-transition: all 200ms ease-out;
+  transition: all 200ms ease-out;
 }
 .margin-left-med {
   margin-left: 10px;
@@ -210,7 +226,7 @@ footer p {
   transition: all 200ms ease-out;
 }
 .ticker-container.expanded {
-  background: rgba(32,32,32,0.9);
+  background: rgba(24,24,24,0.9);
   margin-top: -250px;
   -webkit-transition: all 150ms ease-out;
   transition: all 150ms ease-out;
@@ -254,7 +270,7 @@ footer p {
   color: #efefef;
   display: block;
   width: 49%;
-  border-left: 1px solid #343434;
+  border-left: 2px solid rgba(201,204,204,0.55);
   position: absolute;
   right: 0;
   top: 15px;
@@ -263,7 +279,7 @@ footer p {
   background-image: url("/img/brand.png");
   background-size: 300px;
   background-repeat: no-repeat;
-  opacity: 0.6;
+  opacity: 0.55;
   text-align: right;
   padding-right: 15px;
 }
@@ -318,14 +334,23 @@ footer p {
   .desktop-only {
     display: none;
   }
+  .expanded-footer {
+    display: none;
+  }
   .ticker-container.expanded #ticker .ticker-msg {
     width: 100%;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 0;
   }
   .ticker-container.expanded .expanded-footer {
-    display: none;
+    display: none !important;
   }
   #ticker .ticker-msg {
     width: 100%;
+    margin-left: 0;
+    margin-right: 0;
   }
 }
 @media all and (min-width: 768px) {

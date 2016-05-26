@@ -31,7 +31,7 @@ function createDefaultUsers() {
       var salt, hash;
       salt = encrypt.createSalt();
       hash = encrypt.hashPwd(salt, 'nodestagesadmin');
-      User.create({firstName: 'Tardigrade', lastName: 'Ops', userName: 'stageadmin', salt: salt, hashed_pwd: hash, roles: ['admin']})
+      User.create({firstName: 'Tardigrade', lastName: 'Ops', userName: 'stageadmin@tardigra.de', salt: salt, hashed_pwd: hash, roles: ['admin']})
     }
   });
 }
