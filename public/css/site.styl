@@ -4,7 +4,7 @@
   font-family 'Titillium Web', sans-serif
 
 html
-  background-image url(/img/background-1.jpg)
+  background-image url(/img/background-3.jpg)
   background-position center center
   background-repeat no-repeat
   background-attachment fixed  
@@ -185,6 +185,8 @@ footer
     text-align center
   -webkit-transition all 300ms ease-out
   transition all 300ms ease-out
+  .expanded-footer
+    display none
     
 .ticker-container:hover
   background rgba(24,24,24,0.9)
@@ -200,21 +202,49 @@ footer
   padding-right 0
   position relative
   #ticker
+    background rgba(24,24,24,0.8)
     height 249px
     margin-left 0
     margin-right 0
     padding-top 10px
+    -webkit-transition none
+    transition none
     #ftrmsg
+      display block
       position absolute
       bottom 16px
       left 10px
       height auto
       margin-bottom 0
-    span
+    .ticker-msg
       display block
       height 22px
       margin-bottom 2px
       position relative
+      width 50%
+      text-align left
+      padding-left 15px
+      margin-left 0
+      margin-right 0
+  #ticker.on
+    -webkit-transition none
+    transition none
+  .expanded-footer
+    color #EFEFEF
+    display block
+    width 49%
+    border-left 1px solid #343434
+    position absolute
+    right 0
+    top 15px
+    height 220px
+    padding-left 15px
+    background-image url(/img/brand.png)
+    background-size 300px
+    background-repeat no-repeat
+    opacity 0.6
+    text-align right
+    padding-right 15px
 
 #ticker
   height 51px
@@ -225,18 +255,23 @@ footer
   transition opacity, margin-top 200ms ease
   text-align center
   width 100%
-  span
+  span#ftrmsg
     display none
+  .ticker-msg
+    display none
+    width 50%
+    margin-left auto
+    margin-right auto
     .iconic
       left -4px
       top 3px
       display inline !important
-  span.success
+  .ticker-msg.success
     color green
-  span.error
+  .ticker-msg.error
     color red
   > span:first-child
-    display block
+    display block !important
 
 #ticker.on
     opacity 0.2
@@ -253,6 +288,12 @@ footer
     display block
   .desktop-only
     display none
+  .ticker-container.expanded
+    #ticker
+      .ticker-msg
+        width 100%
+    .expanded-footer
+      display none
         
 @media all and (min-width: 768px)
   #user

@@ -7,7 +7,7 @@ h4 {
   font-family: 'Titillium Web', sans-serif;
 }
 html {
-  background-image: url("/img/background-1.jpg");
+  background-image: url("/img/background-3.jpg");
   background-position: center center;
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -201,6 +201,9 @@ footer p {
   float: none !important;
   text-align: center;
 }
+.ticker-container .expanded-footer {
+  display: none;
+}
 .ticker-container:hover {
   background: rgba(24,24,24,0.9);
   -webkit-transition: all 200ms ease-out;
@@ -216,23 +219,53 @@ footer p {
   position: relative;
 }
 .ticker-container.expanded #ticker {
+  background: rgba(24,24,24,0.8);
   height: 249px;
   margin-left: 0;
   margin-right: 0;
   padding-top: 10px;
+  -webkit-transition: none;
+  transition: none;
 }
 .ticker-container.expanded #ticker #ftrmsg {
+  display: block;
   position: absolute;
   bottom: 16px;
   left: 10px;
   height: auto;
   margin-bottom: 0;
 }
-.ticker-container.expanded #ticker span {
+.ticker-container.expanded #ticker .ticker-msg {
   display: block;
   height: 22px;
   margin-bottom: 2px;
   position: relative;
+  width: 50%;
+  text-align: left;
+  padding-left: 15px;
+  margin-left: 0;
+  margin-right: 0;
+}
+.ticker-container.expanded #ticker.on {
+  -webkit-transition: none;
+  transition: none;
+}
+.ticker-container.expanded .expanded-footer {
+  color: #efefef;
+  display: block;
+  width: 49%;
+  border-left: 1px solid #343434;
+  position: absolute;
+  right: 0;
+  top: 15px;
+  height: 220px;
+  padding-left: 15px;
+  background-image: url("/img/brand.png");
+  background-size: 300px;
+  background-repeat: no-repeat;
+  opacity: 0.6;
+  text-align: right;
+  padding-right: 15px;
 }
 #ticker {
   height: 51px;
@@ -244,22 +277,28 @@ footer p {
   text-align: center;
   width: 100%;
 }
-#ticker span {
+#ticker span#ftrmsg {
   display: none;
 }
-#ticker span .iconic {
+#ticker .ticker-msg {
+  display: none;
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+}
+#ticker .ticker-msg .iconic {
   left: -4px;
   top: 3px;
   display: inline !important;
 }
-#ticker span.success {
+#ticker .ticker-msg.success {
   color: #008000;
 }
-#ticker span.error {
+#ticker .ticker-msg.error {
   color: #f00;
 }
 #ticker > span:first-child {
-  display: block;
+  display: block !important;
 }
 #ticker.on {
   opacity: 0.2;

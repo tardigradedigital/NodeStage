@@ -1,11 +1,11 @@
 angular.module('app').factory('mvNotifier', function() {
-  var ftr = 'Application maintained by //tardigrade';
+  var ftr = '//tardigrade/node | Developed by Justin Lindsey &copy; 2016';
   var toset = false;
   var to = null;
   
   function addTicker(msg, lvl, ic) {
     msg = lvl ? (' ' + msg) : msg;
-    var msgobj = $('<span></span>').html(msg);
+    var msgobj = $('<span></span>').addClass('ticker-msg').html(msg);
     if(ic) { 
       ic = $('<span></span>').addClass('iconic iconic-sm ' + ic); 
       msgobj.prepend(ic); 

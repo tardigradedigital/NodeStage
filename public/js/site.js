@@ -1,15 +1,13 @@
 $(document).ready(function () {
-  // Fix for closing menu and ticker on mobile when clicked or touched elsewhere on the page
+  // Fix for closing menu on mobile and ticker on destop and mobile when clicked or touched elsewhere on the page
   var checkMhd = function(event) {
     var clickover = $(event.target);
-    var $navbar = $(".navbar-collapse");
-    var $ticker = $(".ticker-container")               
-    var _nopened = $navbar.hasClass("in");
-    var _topened = $ticker.hasClass("expanded");
-    if (_nopened === true && !clickover.hasClass("navbar-toggle")) { $navbar.collapse('hide'); }
-    if (_topened === true && !clickover.hasClass("ticker-container")) { $ticker.collapse('hide'); }
-    console.log(_topened);
-    console.log(clickover);
+    var $navbar = $('.navbar-collapse');
+    var $ticker = $('.ticker-container')               
+    var _nopened = $navbar.hasClass('in');
+    var _topened = $ticker.hasClass('expanded');
+    if (_nopened === true && !clickover.hasClass('navbar-toggle')) { $navbar.collapse('hide'); }
+    if (_topened === true && !clickover.hasClass('navbar-text') && !clickover.hasClass('ticker-container') && !clickover.hasClass('ticker-msg') && !(clickover.attr('id') === 'ftrmsg')) { $ticker.removeClass('expanded'); }
   }
   
   $('body').click(function(event) { checkMhd(event); });
