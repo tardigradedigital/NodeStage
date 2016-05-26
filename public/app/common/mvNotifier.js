@@ -1,5 +1,5 @@
 angular.module('app').factory('mvNotifier', function() {
-  var ftr = '//tardigrade/node | Developed by Justin Lindsey &copy; 2016';
+  var ftr = '//tardigrade/node | Tardigrade Digital &copy; 2016';
   var toset = false;
   var to = null;
   

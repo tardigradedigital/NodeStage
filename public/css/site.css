@@ -263,6 +263,8 @@ footer p {
   margin-right: 0;
 }
 .ticker-container.expanded #ticker.on {
+  margin-top: 0;
+  opacity: 1;
   -webkit-transition: none;
   transition: none;
 }
@@ -339,10 +341,10 @@ footer p {
   }
   .ticker-container.expanded #ticker .ticker-msg {
     width: 100%;
-    text-align: center;
+    text-align: left;
     margin-left: auto;
     margin-right: auto;
-    padding-left: 0;
+    padding-left: 15px;
   }
   .ticker-container.expanded .expanded-footer {
     display: none !important;
