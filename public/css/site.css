@@ -271,7 +271,7 @@ footer p {
 .ticker-container.expanded .expanded-footer {
   color: #efefef;
   display: block;
-  width: 49%;
+  width: 50%;
   border-left: 2px solid rgba(201,204,204,0.4);
   position: absolute;
   right: 0;

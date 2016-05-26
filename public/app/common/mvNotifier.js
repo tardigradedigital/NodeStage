@@ -29,8 +29,8 @@ angular.module('app').factory('mvNotifier', function() {
   
   return {
     custom: function(msg, lvl, ic) { if(!msg) { return false; }; addTicker(msg, lvl, ('iconic-' + ic)); },
-    notify: function(msg) { if(!msg) { return false; }; addTicker(msg, 'success', 'iconic-check-thin'); },
-    error: function(msg) { if(!msg) { return false; }; addTicker(msg, 'error', 'iconic-x-thin'); },
+    notify: function(msg) { if(!msg) { return false; }; addTicker(msg, 'success', 'iconic-circle-check'); },
+    error: function(msg) { if(!msg) { return false; }; addTicker(msg, 'error', 'iconic-circle-x'); },
     info: function(msg) { if(!msg) { return false; }; addTicker(msg, null, 'iconic-info'); },
     reset: function() { resetTicker(); }
   }

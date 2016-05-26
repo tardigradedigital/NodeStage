@@ -24,6 +24,21 @@ angular.module('app').config(function($routeProvider, $locationProvider) {
       controller: 'mvStageAdminCtrl', 
       resolve: routeRoleChecks.admin
     })
+    .when('/admin/users/add', {
+      templateUrl: '/partials/admin/users/add', 
+      controller: 'mvStageAdminCtrl', 
+      resolve: routeRoleChecks.admin
+    })
+    .when('/admin/users/delete', {
+      templateUrl: '/partials/admin/users/delete', 
+      controller: 'mvStageAdminCtrl', 
+      resolve: routeRoleChecks.admin
+    })
+    .when('/admin/users/purge', {
+      templateUrl: '/partials/admin/users/purge', 
+      controller: 'mvStageAdminCtrl', 
+      resolve: routeRoleChecks.admin
+    })
     .when('/login', {
       templateUrl: '/partials/account/login', 
       controller: 'mvNavBarLoginCtrl',

@@ -26,8 +26,10 @@
             h4
               b User actions
             div.list-group
-              button.list-group-item.disabled Create new user
-                span.iconic.iconic-plus-thin.iconic-sm.iconic-size-sm.lgr-icon
-              button.list-group-item.disabled Purge user database
+              a.list-group-item(href="/admin/users/add") Create new user
+                span.iconic.iconic-plus.iconic-sm.iconic-size-sm.lgr-icon
+              a.list-group-item(href="/admin/users/delete") Delete user
+                span.iconic.iconic-trash.iconic-sm.iconic-size-sm.lgr-icon
+              a.list-group-item(href="/admin/users/purge") Purge user database
                 span.iconic.iconic-radiation.iconic-sm.iconic-size-sm.lgr-icon
             

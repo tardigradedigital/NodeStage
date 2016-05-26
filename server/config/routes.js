@@ -9,18 +9,18 @@ module.exports = function(app) {
   app.get('/api/users', auth.requiresRole('admin'), users.getUsers);
   app.post('/api/users', users.createUser);
   app.put('/api/users', users.updateUser);
-
+  
   app.get('/admin/*', auth.requiresRole('admin'), function(req, res) {
     var path = '../../public/app/admin/' + req.params[0];
-    try {
-      fs.statSync(path + '.js');
+    // try {
+    //   fs.statSync(path + '.js');
       res.render(path); 
-    }
-    catch(e) {
-      res.sendStatus(404);
-    }
+    // }
+    // catch(e) {
+      // res.sendStatus(404);
+  //   }
   });
-
+  
   app.get('/partials/*', function(req, res) {
     res.render('../../public/app/' + req.params[0]);
   });
