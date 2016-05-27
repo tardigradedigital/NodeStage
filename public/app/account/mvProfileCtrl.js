@@ -10,14 +10,11 @@ angular.module('app').controller('mvProfileCtrl', function($scope, mvAuth, mvIde
       lastName: $scope.lname
     }
     
-    if($scope.password && $scope.password.length > 0) {
-      newUserData.password = $scope.password;
-    }
+    if($scope.password && $scope.password.length > 0) { newUserData.password = $scope.password; }
     
-    mvAuth.updateCurrentUser(newUserData).then(function() {
-      mvNotifier.notify('Your profile has been updated.')
-    }, function(reason) {
-      mvNotifier.error(reason);
-    })
+    mvAuth.updateCurrentUser(newUserData).then(
+      function() { mvNotifier.notify('Your profile has been updated.') }, 
+      function(reason) { mvNotifier.error(reason); }
+    );
   }
 })

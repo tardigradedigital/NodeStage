@@ -5,6 +5,8 @@ angular.module('app').factory('mvAuth', function($http, mvIdentity, $q, mvUser) 
       $http.post('/login', {username:username, password:password}).then(function(response) {
         if(response.data.success) {
           var user = new mvUser();
+          delete response.data.user['hashed_pwd'];
+          delete response.data.user['salt'];
           angular.extend(user, response.data.user);
           mvIdentity.currentUser = user;
           dfd.resolve(true);
