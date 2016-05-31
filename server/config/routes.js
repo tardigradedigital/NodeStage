@@ -15,7 +15,18 @@ module.exports = function(app) {
       var path = '../../public/app/admin/' + req.params[0];
       res.render(path); 
     }
-    else { res.sendStatus(404); }
+    else {
+      try {
+        fs.statSync()
+        var path = '../../public/app/admin/' + req.params[0];
+        res.render(path); 
+      }
+      catch(e) {
+        res.render('index', {
+          bootstrappedUser: req.user
+        });
+      }
+    }
   });
   
   app.get('/partials/*', function(req, res) {

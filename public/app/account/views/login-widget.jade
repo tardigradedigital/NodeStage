@@ -1,0 +1,14 @@
+form.navbar-form(name="loginWidget")
+  .form-group.login-mobile-spacer
+    .input-group
+      .input-group-addon
+        span.iconic.iconic-envelope-closed.iconic-sm
+      input.form-control(type="email", placeholder="Email", data-ng-model="username", name="username", minlength="4")
+  .form-group.login-mobile-spacer
+    .input-group
+      .input-group-addon
+        span.iconic.iconic-key.iconic-sm
+      input.form-control(type="password", placeholder="Password", data-ng-model="password", name="password", minlength="4")
+  button.btn.btn-primary(data-ng-click="signin(username, password)", type="submit")
+    span.iconic.iconic-account-login.iconic-sm.iconic-size-sm
+    | Sign In

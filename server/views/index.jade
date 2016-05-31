@@ -10,25 +10,23 @@ block main-content
           span.icon-bar
           span.icon-bar
         .brand-container
-          a
-            img(src="/img/brand.png", alt="Tardigrade", class="brand")
           a(href="http://tardigradedigital.com", target="_blank")
             img(src="/img/brand-over.png", alt="Tardigrade", class="brand")
         a.navbar-brand(href="/")
           span.tdf //tardigrade/node
-      .navbar-collapse.collapse.navbar-inverse#nav(ng-controller="mvNavBarLoginCtrl")
+      .navbar-collapse.collapse.navbar-inverse#nav(data-ng-controller="stLoginCtrl")
         ul.nav.navbar-nav
           li
             a(href="/") Home
               span.iconic.iconic-home.iconic-lg.iconic-size-sm
-        ng-include(src="'/partials/admin/admin-toolbar'", ng-if="identity.isAuthorized('admin')")
-        div(ng-include="'/partials/account/navbar-login'")
+        ng-include(src="'/partials/admin/views/admin-toolbar'", data-ng-if="identity.isAuthorized('admin')")
+        div(data-ng-include="'/partials/account/views/navbar-login'")
   div#stage
     section.content
       div(ng-view)
   
   .navbar.navbar-inverse.navbar-fixed-bottom
-    .container.ticker-container.tdf(ng-controller="mvTickerCtrl", onLoad="reset()" ng-click="showAll()")
+    .container.ticker-container.tdf(data-ng-controller="stTickerCtrl", data-onLoad="reset()" data-ng-click="showAll()")
       div.navbar-text#ticker
       div.expanded-footer
         h3 //tardigrade

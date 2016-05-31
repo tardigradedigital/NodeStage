@@ -1,4 +1,4 @@
-angular.module('app').factory('mvNotifier', function() {
+angular.module('stage').factory('stTickerSvc', function() {
   var ftr = '//tardigrade/node | Tardigrade Digital &copy; 2016';
   var toset = false;
   var to = null;

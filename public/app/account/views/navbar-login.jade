@@ -1,0 +1,39 @@
+.navbar-right#user(data-ng-controller="stLoginCtrl")
+  ul.nav.navbar-nav.navbar-right.desktop-only(data-ng-hide="identity.isAuthenticated()")
+    li.dropdown
+      a.dropdown-toggle(href="", data-toggle="dropdown")
+        | Sign In&nbsp;
+        span.iconic.iconic-key.iconic-sm.iconic-size-sm.iconic-flip-horizontal
+        b.caret
+      ul.dropdown-menu#navsignin
+        st-login-widget
+          
+  ul.nav.navbar-nav.navbar-right.mobile-only(data-ng-hide="identity.isAuthenticated()")
+    li
+      a(href="/login") Sign In
+        span.iconic.iconic-account-login.iconic-sm.iconic-size-sm
+    
+  ul.nav.navbar-nav.navbar-right.usermenu.desktop-only(data-ng-show="identity.isAuthenticated()")
+    li.dropdown.userbox
+      a.dropdown-toggle.center(href="", data-toggle="dropdown")
+        img(data-gravatar-src="identity.currentUser.userName", data-gravatar-size="36" data-gravatar-secure="true")
+        | {{identity.currentUser.firstName + " " + identity.currentUser.lastName}}&nbsp;
+        b.caret
+        br
+        small.pull-left.username-pull {{identity.currentUser.userName}}
+      ul.dropdown-menu
+        li
+          a(href="/settings") Settings
+          span.iconic.iconic-settings.iconic-sm.iconic-size-sm.menu-icon      
+        li
+          a(href="", data-ng-click="signout()") Sign Out
+          span.iconic.iconic-account-logout.iconic-sm.iconic-size-sm.menu-icon
+  ul.nav.navbar-nav.navbar-right.usermenu.mobile-only(data-ng-show="identity.isAuthenticated()")
+    li.userbox
+      a.pull-left(href="/settings", style="width: 200px")
+        img(data-gravatar-src="identity.currentUser.userName", data-gravatar-size="36" data-gravatar-secure="true")
+        | {{identity.currentUser.firstName + " " + identity.currentUser.lastName}}&nbsp;
+        br
+        small.pull-left.username-pull {{identity.currentUser.userName}}
+      a.pull-right(href="", data-ng-click="signout()", style="margin-top: 0") Sign Out
+        span.iconic.iconic-account-logout.iconic-sm.iconic-size-sm

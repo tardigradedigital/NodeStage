@@ -1,7 +1,7 @@
-angular.module('app').factory('mvIdentity', function($window, mvUser) {
+angular.module('stage').factory('stIdentity', function($window, stUser) {
   var currentUser;
   if($window.stageUser) { 
-    currentUser = new mvUser();
+    currentUser = new stUser();
     delete $window.stageUser['hashed_pwd'];
     delete $window.stageUser['salt'];
     angular.extend(currentUser, $window.stageUser);
