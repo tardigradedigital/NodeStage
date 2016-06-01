@@ -19,11 +19,11 @@ block main-content
           li
             a(href="/") Home
               span.iconic.iconic-home.iconic-lg.iconic-size-sm
-        ng-include(src="'/partials/admin/views/admin-toolbar'", data-ng-if="identity.isAuthorized('admin')")
+        div(data-ng-include="'/partials/admin/views/admin-toolbar'", data-ng-if="identity.isAuthorized('admin')")
         div(data-ng-include="'/partials/account/views/navbar-login'")
   div#stage
     section.content
-      div(ng-view)
+      div(data-ng-view)
   
   .navbar.navbar-inverse.navbar-fixed-bottom
     .container.ticker-container.tdf(data-ng-controller="stTickerCtrl", data-onLoad="reset()" data-ng-click="showAll()")
