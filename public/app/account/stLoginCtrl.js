@@ -10,6 +10,8 @@ angular.module('stage').controller('stLoginCtrl', ['$scope', 'stIdentity', 'stTi
     else {
       stAuth.authenticateUser(username, password).then(function(success) {
         if(success) {
+          username = '';
+          password = '';
           var path = stIdentity.isAuthorized('admin') ? '/admin' : '/';
           stTickerSvc.notify('You have been successfully authenticated.');
           if($location.path('login')) { $location.path(path); }

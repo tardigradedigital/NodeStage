@@ -32,12 +32,12 @@
                     span Roles
                     span.iconic.iconic-caret-top.iconic-sm(ng-show="field == 'roles' && !reverse")
                     span.iconic.iconic-caret-bottom.iconic-sm(ng-show="field == 'roles' && reverse")
-                tr(data-ng-repeat="user in users | filter:userSearch | orderBy:field:reverse as res")
+                tr(data-ng-repeat="user in users | filter:userSearch | orderBy:field:reverse")
                   td {{user.userName}}
                   td.desktop-only {{user.firstName}}
                   td.desktop-only {{user.lastName}}
                   td {{user.roles}}
-                tr(ng-show="res.length == 0")
+                tr(ng-show="(users | filter:userSearch).length == 0")
                   td(colspan="4") No users were found
           .col-md-3
             h4
