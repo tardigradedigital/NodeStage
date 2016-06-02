@@ -1,7 +1,10 @@
-@import url('https://fonts.googleapis.com/css?family=Titillium+Web:300')
-
 .tdf, h1, h2, h3, h4
   font-family 'Titillium Web', sans-serif
+  font-weight 300
+  
+.tdfl
+  font-family 'Titillium Web', sans-serif
+  font-weight 200
 
 html
   background-image url(/img/background-3.jpg)
@@ -51,9 +54,9 @@ body
       img.brand:hover
         opacity 0.85
         filter gray
-        filter grayscale(1)
+        filter grayscale(.5)
         // filter url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnPjxmaWx0ZXIgaWQ9J2dyYXlzY2FsZSc+PGZlQ29sb3JNYXRyaXggdHlwZT0nbWF0cml4JyB2YWx1ZXM9JzAuMzMzMyAwLjMzMzMgMC4zMzMzIDAgMCAwLjMzMzMgMC4zMzMzIDAuMzMzMyAwIDAgMC4zMzMzIDAuMzMzMyAwLjMzMzMgMCAwIDAgMCAwIDEgMCcvPjwvZmlsdGVyPjwvc3ZnPiNncmF5c2NhbGU=")
-        -webkit-filter grayscale(100%) 
+        -webkit-filter grayscale(50%) 
         -webkit-transition all .2s ease
         -moz-transition all .2s ease
         -o-transition all .2s eas
@@ -217,6 +220,7 @@ footer
   
 .ticker-container.expanded
   background rgba(24,24,24,0.9)
+  cursor default
   margin-top -250px
   -webkit-transition all 150ms ease-out
   transition all 150ms ease-out

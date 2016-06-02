@@ -1,10 +1,14 @@
-@import url("https://fonts.googleapis.com/css?family=Titillium+Web:300");
 .tdf,
 h1,
 h2,
 h3,
 h4 {
   font-family: 'Titillium Web', sans-serif;
+  font-weight: 300;
+}
+.tdfl {
+  font-family: 'Titillium Web', sans-serif;
+  font-weight: 200;
 }
 html {
   background-image: url("/img/background-3.jpg");
@@ -55,8 +59,8 @@ body {
 .navbar .navbar-header .brand-container img.brand:hover {
   opacity: 0.85;
   filter: #808080;
-  filter: grayscale(1);
-  -webkit-filter: grayscale(100%);
+  filter: grayscale(0.5);
+  -webkit-filter: grayscale(50%);
   -webkit-transition: all 0.2s ease;
   -moz-transition: all 0.2s ease;
   -o-transition: all 0.2s eas;
@@ -240,6 +244,7 @@ footer p {
 }
 .ticker-container.expanded {
   background: rgba(24,24,24,0.9);
+  cursor: default;
   margin-top: -250px;
   -webkit-transition: all 150ms ease-out;
   transition: all 150ms ease-out;
