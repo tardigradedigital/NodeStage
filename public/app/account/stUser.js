@@ -1,6 +1,7 @@
 angular.module('stage').factory('stUser', function($resource) {
   var UserResource = $resource('/api/users/:id', {_id: "@id"}, {
-    update: {method: 'PUT', isArray: false}
+    update: {method: 'PUT', isArray: false},
+    purge: {method: 'PURGE', isArray: false}
   });
   
   UserResource.prototype.isAdmin = function() {

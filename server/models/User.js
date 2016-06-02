@@ -18,7 +18,7 @@ userSchema.methods = {
     return encrypt.hashPwd(this.salt, pwdToMatch) === this.hashed_pwd;
   },
   hasRole: function(role) {
-    return this.roles.inedxOf(role) > -1;
+    return this.roles.indexOf(role) > -1;
   }
 }
   

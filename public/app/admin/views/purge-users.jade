@@ -5,4 +5,17 @@
         h3.tdf Purge Stage users
           span.iconic.iconic-radiation.iconic-lg.iconic-size-md.h3-icon
       .panel-body
-        p Remove all users
+        p This feature will remove ALL users from the user database and reload default users. This action is permanent and cannot be undone.
+        button.btn(type="button", data-toggle="modal", data-target="#purgeAlert", data-backdrop="false") Purge Users
+        
+        .modal.fade#purgeAlert(tabindex="-1", role="dialog", aria-labelledby="purgeAlertTitle")
+          .modal-dialog(role="document")
+            .modal-content
+              .modal-header
+                h4.modal-title#purgeAlertTitle Warning!
+                  span.iconic.iconic-warning.iconic-sm.iconic-size-md.h4-icon(style="color: orange")
+              .modal-body
+                | Are you sure you wish to continue? This will delete ALL users and it cannot be undone!
+              .modal-footer
+                button.btn.btn-default(data-dismiss="modal") Close
+                button.btn.btn-primary(data-ng-click="purgeUsers()") I understand and wish to continue

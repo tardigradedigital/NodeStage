@@ -9,19 +9,36 @@
         .row
           .col-md-9
             h4
-              b Loaded Stage users
-            .table-responsive
-              table.table.table-bordered.table-condensed.table-striped
+              b Stage users
+              div#userSearch
+                input.formcontrol(type="text", ng-model="userSearch", placeholder="Search users")
+                span.label.label-primary {{(users | filter:userSearch).length}}
+            .table-responsive(data-ng-animate-children="true")
+              table.table.table-bordered.table-condensed.table-striped#userDisplay
                 tr
-                  th Username
-                  th First name
-                  th Last name
-                  th Roles
-                tr(data-ng-repeat="user in users")
+                  th#userNameField(data-ng-click="sortUsers('userName')")
+                    span Username
+                    span.iconic.iconic-caret-top.iconic-sm(ng-show="field == 'userName' && reverse")
+                    span.iconic.iconic-caret-bottom.iconic-sm(ng-show="field == 'userName' && !reverse")
+                  th.desktop-only#firstNameField(data-ng-click="sortUsers('firstName')")
+                    span First name
+                    span.iconic.iconic-caret-top.iconic-sm(ng-show="field == 'firstName' && reverse")
+                    span.iconic.iconic-caret-bottom.iconic-sm(ng-show="field == 'firstName' && !reverse")
+                  th.desktop-only#lastNameField(data-ng-click="sortUsers('lastName')")
+                    span Last name
+                    span.iconic.iconic-caret-top.iconic-sm(ng-show="field == 'lastName' && reverse")
+                    span.iconic.iconic-caret-bottom.iconic-sm(ng-show="field == 'lastName' && !reverse")
+                  th(data-ng-click="sortUsers('roles', true)")
+                    span Roles
+                    span.iconic.iconic-caret-top.iconic-sm(ng-show="field == 'roles' && !reverse")
+                    span.iconic.iconic-caret-bottom.iconic-sm(ng-show="field == 'roles' && reverse")
+                tr(data-ng-repeat="user in users | filter:userSearch | orderBy:field:reverse as res")
                   td {{user.userName}}
-                  td {{user.firstName}}
-                  td {{user.lastName}}
+                  td.desktop-only {{user.firstName}}
+                  td.desktop-only {{user.lastName}}
                   td {{user.roles}}
+                tr(ng-show="res.length == 0")
+                  td(colspan="4") No users were found
           .col-md-3
             h4
               b User actions

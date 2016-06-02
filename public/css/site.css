@@ -1,15 +1,3 @@
-.tdf,
-h1,
-h2,
-h3,
-h4 {
-  font-family: 'Titillium Web', sans-serif;
-  font-weight: 300;
-}
-.tdfl {
-  font-family: 'Titillium Web', sans-serif;
-  font-weight: 200;
-}
 html {
   background-image: url("/img/background-3.jpg");
   background-position: center center;
@@ -34,13 +22,70 @@ body {
   bottom: 0;
   overflow: auto;
 }
+.tdf,
+h1,
+h2,
+h3,
+h4 {
+  font-family: 'Titillium Web', sans-serif;
+  font-weight: 300;
+}
+.tdfl {
+  font-family: 'Titillium Web', sans-serif;
+  font-weight: 200;
+}
+.h3-icon,
+.h4-icon,
+.lgr-icon {
+  float: left;
+  padding-right: 5px;
+}
+.h3-icon {
+  margin-top: -5px;
+}
+.h4-icon {
+  margin-top: -9px;
+}
+.mobile-only {
+  display: none;
+}
+.login-mobile-spacer {
+  margin-bottom: 8px !important;
+}
+.margin-left-med {
+  margin-left: 10px;
+}
+.dropdown-menu {
+  -webkit-transition: all 200ms ease-out;
+  transition: all 200ms ease-out;
+  opacity: 0;
+}
+.open .dropdown-menu {
+  opacity: 1;
+}
+.modal {
+  background: rgba(32,32,32,0.7);
+  margin-top: 51px;
+}
+.navbar-center {
+  text-align: center;
+}
+[data-ng-view].ng-enter {
+  opacity: 0.2;
+  -webkit-transition: opacity 300ms linear;
+  transition: opacity 300ms linear;
+}
+[data-ng-view].ng-enter-active {
+  opacity: 1;
+}
 .navbar {
   height: 51px;
 }
 .navbar .navbar-header .brand-container {
   position: relative;
   float: left;
-  height: 40px;
+  height: 51px;
+  margin-left: 5px;
   width: 54px;
 }
 .navbar .navbar-header .brand-container img.brand {
@@ -69,6 +114,8 @@ body {
 }
 .navbar .navbar-header .navbar-brand {
   margin-left: 0;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 .navbar .navbar-collapse li a span {
   float: left;
@@ -77,11 +124,6 @@ body {
 .navbar a {
   -webkit-transition: all 200ms ease-out;
   transition: all 200ms ease-out;
-}
-section.content {
-  height: calc(100% - 102px);
-  overflow-y: auto;
-  padding-top: 21px;
 }
 .usermenu li.userbox > a {
   margin-top: -6px;
@@ -118,20 +160,6 @@ section.content {
 .usermenu .caret {
   float: right;
   margin-top: 8px;
-}
-#stage {
-  background: rgba(35,35,35,0.5);
-  overflow: hidden;
-  position: fixed;
-  height: 100%;
-  width: 100%;
-}
-footer {
-  padding-left: 15px;
-  padding-right: 15px;
-}
-footer p {
-  border-top: 1px solid #d7e0e2;
 }
 #navsignin {
   padding-bottom: 0;
@@ -180,48 +208,85 @@ footer p {
   right: 5px;
   top: 3px;
 }
-.margin-left-med {
-  margin-left: 10px;
+#stage {
+  background: rgba(35,35,35,0.5);
+  overflow: hidden;
+  position: fixed;
+  height: 100%;
+  width: 100%;
 }
-.dropdown-menu {
-  -webkit-transition: all 200ms ease-out;
-  transition: all 200ms ease-out;
-  opacity: 0;
+section.content {
+  height: calc(100% - 102px);
+  overflow-y: auto;
+  padding-top: 21px;
 }
-.open .dropdown-menu {
-  opacity: 1;
+#userSearch {
+  float: right;
 }
-.ng-enter {
-  -webkit-transition: 400ms linear all;
-  transition: 400ms linear all;
-  opacity: 0.2;
+#userSearch input {
+  font-size: 14px;
+  padding: 2px 3px;
 }
-.ng-enter.ng-enter-active {
-  opacity: 1;
-}
-.h3-icon,
-.h4-icon,
-.lgr-icon {
+#userSearch span.label {
   float: left;
-  padding-right: 5px;
+  margin-right: 5px;
+  margin-top: 1px;
 }
-.h3-icon {
-  margin-top: -5px;
+#userDisplay th {
+  cursor: pointer;
 }
-.h4-icon {
-  margin-top: -9px;
+#userDisplay th span.iconic {
+  float: right;
 }
-.mobile-only {
-  display: none;
+#userDisplay th span.iconic:before {
+  font-size: 13px;
+  margin-right: 3px;
+  margin-top: 2px;
 }
-.desktop-only {
-  display: block;
+#userDisplay th#userNameField {
+  max-width: 235px;
+  min-width: 235px;
+  overflow: hidden;
+  width: 235px;
 }
-.login-mobile-spacer {
-  margin-bottom: 8px !important;
+#userDisplay th#firstNameField,
+#userDisplay th#lastNameField {
+  max-width: 125px;
+  min-width: 125px;
+  overflow: hidden;
+  width: 125px;
 }
-.navbar-center {
-  text-align: center;
+#userDisplay .ng-enter,
+#userDisplay .ng-leave {
+  transition: transform 100ms, opacity 100ms;
+}
+#userDisplay .ng-enter,
+#userDisplay .ng-leave-active {
+  opacity: 0;
+  transform: translate3d(-100%, 0, 0);
+}
+#userDisplay .ng-enter-active {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+#userDisplay .ng-enter-stagger,
+#userDisplay .ng-leave-stagger {
+  transition-delay: 50ms;
+  transition-duration: 0;
+}
+#userDisplay .ng-move {
+  opacity: 0;
+  transition: opacity 100ms;
+}
+#userDisplay .ng-move-active {
+  opacity: 1;
+}
+footer {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+footer p {
+  border-top: 1px solid #d7e0e2;
 }
 .ticker-container {
   cursor: pointer;

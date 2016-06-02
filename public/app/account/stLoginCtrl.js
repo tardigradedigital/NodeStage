@@ -9,9 +9,11 @@ angular.module('stage').controller('stLoginCtrl', ['$scope', 'stIdentity', 'stTi
     }
     else {
       stAuth.authenticateUser(username, password).then(function(success) {
-        if(success) { 
+        if(success) {
+          var path = stIdentity.isAuthorized('admin') ? '/admin' : '/';
           stTickerSvc.notify('You have been successfully authenticated.');
-          if($location.path('login')) { $location.path('/'); }
+          if($location.path('login')) { $location.path(path); }
+          if(stIdentity.isAuthorized('admin')) { $location.path(path); }
         }
         else { stTickerSvc.error('Invalid email address or password was given.') }
       });      

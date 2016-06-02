@@ -1,4 +1,5 @@
 var User = require('mongoose').model('User'),
+    userCore = require('../models/User.js');
     encrypt = require('../utilities/encryption');
 
 exports.getUsers = function(req, res) {
@@ -20,11 +21,23 @@ exports.createUser = function(req, res, next) {
       res.status(400);
       return res.send({reason: err.toString()});
     }
-    req.logIn(user, function(err) {
-      if(err) {return next(err);}
-      res.send(user);
-    })
+    res.send(user);
   })
+}
+
+exports.purgeUsers = function(req, res) {
+  var user = req.body;
+  if(!req.user.hasRole('admin')) {
+    res.status(403);
+    return res.end();
+  }
+  User.remove({}, function(err) {
+    console.log('User ' + req.user.userName + ' has purged the user database');
+    if(err) { res.status(400); return res.send({reason: err.toString()})}
+    userCore.createDefaultUsers();
+    res.send({success: true});
+  })
+
 }
 
 exports.updateUser = function(req, res) {
