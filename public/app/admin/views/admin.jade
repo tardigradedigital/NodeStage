@@ -6,6 +6,11 @@
           h3 Stage Administration
             span.iconic.iconic-cogs.iconic-lg.iconic-size-md.h3-icon
       .panel-body
+        .row(ng-hide="userSyncEnabled")
+          .col-md-12
+            .alert.alert-info(role="alert")
+              span.iconic.iconic-info.iconic-sm.iconic-size.sm
+              | User database sync is not available from the cloud
         .row
           .col-md-9
             h4
@@ -49,5 +54,5 @@
                 span.iconic.iconic-trash.iconic-sm.iconic-size-sm.lgr-icon
               a.list-group-item(href="/admin/users/purge") Purge user database
                 span.iconic.iconic-radiation.iconic-sm.iconic-size-sm.lgr-icon
-              a.list-group-item(href="/admin/users/sync") Sync user database
+              a.list-group-item(ng-href="{{userSyncEnabled ? '/admin/users/sync' : '#'}}", ng-disabled="userSyncEnabled", ng-class="{disabled: !userSyncEnabled}") Sync user database
                 span.iconic.iconic-loop-circular.iconic-sm.iconic-size-sm.lgr-icon

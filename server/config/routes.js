@@ -5,8 +5,8 @@ var auth = require('./auth'),
     mongoose = require('mongoose'),
     User = mongoose.model('User');
 
-module.exports = function(app) {
-  
+module.exports = function(app, env) {
+  app.locals.env = env;
   app.get('/api/users', auth.requiresRole('admin'), users.getUsers);
   app.post('/api/users', auth.requiresRole('admin'), users.createUser);
   app.put('/api/users', auth.requiresRole('admin'), users.updateUser);
@@ -49,7 +49,8 @@ module.exports = function(app) {
 
   app.get('*', function(req, res) {
     res.render('index', {
-      bootstrappedUser: req.user
+      bootstrappedUser: req.user,
+      stageEnv: req.app.locals.env
     });
   });
 }

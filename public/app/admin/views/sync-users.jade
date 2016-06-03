@@ -6,9 +6,9 @@
           span.iconic.iconic-loop-circular.iconic-lg.iconic-size-md.h3-icon
       .panel-body
         p This feature will sync the user database between the local development MongoDB instance and the remote Mlab MongoDB instance. This action is permanent and cannot be undone.
-        button.btn(type="button", data-toggle="modal", data-target="#syncAlert", data-backdrop="false") Sync user database
+        button.btn(type="button", data-toggle="modal", data-target="#syncAlert", data-backdrop="false", ng-if="userSyncEnabled") Sync user database
         
-        .modal.fade#syncAlert(tabindex="-1", role="dialog", aria-labelledby="syncAlertTitle")
+        .modal.fade#syncAlert(tabindex="-1", role="dialog", aria-labelledby="syncAlertTitle", ng-if="userSyncEnabled")
           .modal-dialog(role="document")
             .modal-content
               .modal-header
@@ -23,7 +23,7 @@
                 .radio
                   label
                     input#radltr(type="radio", ng-model="userSyncDir", value="torem")
-                    | Local to remtoe
+                    | Local to remote
               .modal-footer
                 button.btn.btn-default(data-dismiss="modal") Close
                 button.btn.btn-primary(data-ng-click="syncDb('users', userSyncDir)") I understand and wish to continue

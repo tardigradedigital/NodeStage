@@ -1,7 +1,9 @@
 angular.module('stage').controller('stAdminCtrl', ['$scope', '$location', 'stAuth', 'stTickerSvc', 'stUser', function($scope, $location, stAuth, stTickerSvc, stUser) {
   $scope.users = stUser.query();
   $scope.field = 'userName';
+  $scope.userSyncEnabled = window.env == 'development' ? true : false
   $scope.userSyncDir = 'toloc';
+  
   $scope.reverse = false;
   
   $scope.sortUsers = function(field, invert = false) {
