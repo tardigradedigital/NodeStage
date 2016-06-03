@@ -33,6 +33,11 @@ angular.module('stage').config(function($routeProvider, $locationProvider) {
       controller: 'stAdminCtrl', 
       resolve: routeRoleChecks.admin
     })
+    .when('/admin/users/sync', {
+      templateUrl: '/partials/admin/views/sync-users', 
+      controller: 'stAdminCtrl', 
+      resolve: routeRoleChecks.admin
+    })
     .when('/login', {
       templateUrl: '/partials/account/views/login', 
       controller: 'stLoginCtrl',

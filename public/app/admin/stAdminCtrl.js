@@ -1,6 +1,7 @@
 angular.module('stage').controller('stAdminCtrl', ['$scope', '$location', 'stAuth', 'stTickerSvc', 'stUser', function($scope, $location, stAuth, stTickerSvc, stUser) {
   $scope.users = stUser.query();
   $scope.field = 'userName';
+  $scope.userSyncDir = 'toloc';
   $scope.reverse = false;
   
   $scope.sortUsers = function(field, invert = false) {
@@ -36,17 +37,19 @@ angular.module('stage').controller('stAdminCtrl', ['$scope', '$location', 'stAut
     );
   }
   
-  $scope.syncDb = function() {
-    stAuth.syncUsers().then(
-      function() {
-        stTickerSvc.notify('User database has been synced.');
-        $location.path('/');
-        // stAuth.logoutUser().then(
-        //   function() { $location.path('/'); },
-        //   function(reason) { stTickerSvc.error(reason); }
-        // )
-      },
-      function(reason) { stTickerSvc.error(reason); }
-    );
+  $scope.syncDb = function(collection, syncDir) {
+    if(collection == 'users') {
+      stAuth.syncUsers(syncDir).then(
+        function() {
+          stTickerSvc.notify('User database has been synced.');
+          $location.path('/');
+          stAuth.logoutUser().then(
+            function() { $location.path('/'); },
+            function(reason) { stTickerSvc.error(reason); }
+          )
+        },
+        function(reason) { stTickerSvc.error(reason); }
+      );
+    }
   }
 }]);

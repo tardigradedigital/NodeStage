@@ -1,0 +1,29 @@
+.container
+  .col-md-12
+    .panel.panel-default
+      .panel-heading
+        h3.tdf Sync Stage user database
+          span.iconic.iconic-loop-circular.iconic-lg.iconic-size-md.h3-icon
+      .panel-body
+        p This feature will sync the user database between the local development MongoDB instance and the remote Mlab MongoDB instance. This action is permanent and cannot be undone.
+        button.btn(type="button", data-toggle="modal", data-target="#syncAlert", data-backdrop="false") Sync user database
+        
+        .modal.fade#syncAlert(tabindex="-1", role="dialog", aria-labelledby="syncAlertTitle")
+          .modal-dialog(role="document")
+            .modal-content
+              .modal-header
+                h4.modal-title#syncAlertTitle Warning!
+                  span.iconic.iconic-warning.iconic-sm.iconic-size-md.h4-icon(style="color: orange")
+              .modal-body
+                | Are you sure you wish to continue? This will overwrite the target user database and it cannot be undone!
+                .radio
+                  label
+                    input#radrtl(type="radio", ng-model="userSyncDir", value="toloc")
+                    | Remote to local
+                .radio
+                  label
+                    input#radltr(type="radio", ng-model="userSyncDir", value="torem")
+                    | Local to remtoe
+              .modal-footer
+                button.btn.btn-default(data-dismiss="modal") Close
+                button.btn.btn-primary(data-ng-click="syncDb('users', userSyncDir)") I understand and wish to continue

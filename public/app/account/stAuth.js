@@ -61,7 +61,12 @@ angular.module('stage').factory('stAuth', function($http, $q, stIdentity, stUser
       var dfd = $q.defer();
       $http({
         method: 'COPY',
-        url: '/api/db'
+        url: '/api/db',
+        headers: { 'Content-Type': 'application/json' },
+        data: {
+          collection: 'users',
+          direction: direction
+        }
       }).then(function() {
         console.log('User database has been synced');
         dfd.resolve();
