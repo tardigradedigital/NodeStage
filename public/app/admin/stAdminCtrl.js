@@ -35,4 +35,18 @@ angular.module('stage').controller('stAdminCtrl', ['$scope', '$location', 'stAut
       function(reason) { stTickerSvc.error(reason); }
     );
   }
+  
+  $scope.syncDb = function() {
+    stAuth.syncUsers().then(
+      function() {
+        stTickerSvc.notify('User database has been synced.');
+        $location.path('/');
+        // stAuth.logoutUser().then(
+        //   function() { $location.path('/'); },
+        //   function(reason) { stTickerSvc.error(reason); }
+        // )
+      },
+      function(reason) { stTickerSvc.error(reason); }
+    );
+  }
 }]);

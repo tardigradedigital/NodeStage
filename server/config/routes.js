@@ -1,15 +1,18 @@
 var auth = require('./auth'),
     fs = require('fs'),
     users = require('../controllers/users'),
+    db = require('../controllers/db'),
     mongoose = require('mongoose'),
     User = mongoose.model('User');
 
 module.exports = function(app) {
   
   app.get('/api/users', auth.requiresRole('admin'), users.getUsers);
-  app.post('/api/users', users.createUser);
-  app.put('/api/users', users.updateUser);
-  app.purge('/api/users', users.purgeUsers);
+  app.post('/api/users', auth.requiresRole('admin'), users.createUser);
+  app.put('/api/users', auth.requiresRole('admin'), users.updateUser);
+  app.purge('/api/users', auth.requiresRole('admin'), users.purgeUsers);
+  
+  app.copy('/api/db', auth.requiresRole('admin'), db.syncDb);
   
   app.get('/admin/*', auth.requiresRole('admin'), function(req, res) {
     if(req.headers.referer) {

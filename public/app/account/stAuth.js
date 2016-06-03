@@ -56,6 +56,19 @@ angular.module('stage').factory('stAuth', function($http, $q, stIdentity, stUser
       return dfd.promise;
     },
     
+    // syncUsers: Syncs user database collection
+    syncUsers: function(direction) {
+      var dfd = $q.defer();
+      $http({
+        method: 'COPY',
+        url: '/api/db'
+      }).then(function() {
+        console.log('User database has been synced');
+        dfd.resolve();
+      });
+      return dfd.promise;
+    },
+    
     // updateCurrentUser: Updates profile of current user
     updateCurrentUser: function(newUserData) {
       var dfd = $q.defer();
