@@ -1,5 +1,5 @@
 html
-  background-image url(/img/background-3.jpg)
+  background-image url(/img/background-6.jpg)
   background-position center center
   background-repeat no-repeat
   background-attachment fixed  
@@ -73,7 +73,7 @@ body
 
 [data-ng-view].ng-enter-active
   opacity 1
-
+  
 .navbar
   height 51px
   .navbar-header
@@ -202,12 +202,24 @@ section.content
 #userSearch
   float right
   input
+    display inline
     font-size 14px
+    height 25px
     padding 2px 3px
-  span.label
-    float left
-    margin-right 5px
-    margin-top 1px
+    width initial
+  .label.user-count
+    float right
+    margin-left 5px
+    margin-top 2px
+  .btn.user-filter
+    float right
+    width 23.75px
+    height 19.73px
+    padding 1px 0
+    margin-top 2px
+    margin-left 5px
+    .iconic:before
+      font-size 13px !important
 
 #userDisplay
   th
@@ -229,25 +241,18 @@ section.content
     min-width 125px
     overflow hidden
     width 125px
-  .ng-enter,
-  .ng-leave
+  tr
+    select
+      display inline
+      width 210px
+  .ng-enter
     transition transform 100ms, opacity 100ms
-  .ng-enter,
-  .ng-leave-active
+  .ng-enter
     opacity 0
     transform translate3d(-100%, 0, 0)
   .ng-enter-active
     opacity 1
     transform translate3d(0, 0, 0)
-  .ng-enter-stagger,
-  .ng-leave-stagger
-    transition-delay 50ms
-    transition-duration 0
-  .ng-move
-    opacity 0
-    transition opacity 100ms
-  .ng-move-active
-    opacity 1
 
 footer
   padding-left 15px
@@ -369,7 +374,11 @@ footer
     margin-top -40px
     -webkit-transition all 0ms
     transition all 0ms
-  
+
+.in-progress
+  -webkit-animation flashIcon 800ms infinite linear
+  animation flashIcon 800ms infinite linear
+
 @media (max-width: 767px)
   .center
     margin-left auto
@@ -402,4 +411,21 @@ footer
     margin-right 0
   .panel-infoview
     min-height 455px
-
+  #nav
+    height 50px !important
+    
+@-webkit-keyframes flashIcon
+  0%
+    opacity 0.3
+  50%
+    opacity 1
+  100%
+    opacity 0.3
+    
+@keyframes flashIcon
+  0%
+    opacity 0.3
+  50%
+    opacity 1
+  100%
+    opacity 0.3

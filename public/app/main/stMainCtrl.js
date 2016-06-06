@@ -1,3 +1,3 @@
-angular.module('stage').controller('stMainCtrl', ['$scope', function($scope) {
+angular.module('stage').controller('stMainCtrl', function($scope) {
 
-}]);
+});

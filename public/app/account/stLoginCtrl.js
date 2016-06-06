@@ -1,4 +1,4 @@
-angular.module('stage').controller('stLoginCtrl', ['$scope', 'stIdentity', 'stTickerSvc', 'stAuth', '$location', function($scope, stIdentity, stTickerSvc, stAuth, $location) {
+angular.module('stage').controller('stLoginCtrl', function($scope, stIdentity, stTickerSvc, stAuth, $location) {
   $scope.identity = stIdentity;
   $scope.signin = function(username, password) {
     if(!username || !password || username.$invalid || password.$invalid) {
@@ -12,6 +12,8 @@ angular.module('stage').controller('stLoginCtrl', ['$scope', 'stIdentity', 'stTi
         if(success) {
           username = '';
           password = '';
+          $scope.username = '';
+          $scope.password = '';
           var path = stIdentity.isAuthorized('admin') ? '/admin' : '/';
           stTickerSvc.notify('You have been successfully authenticated.');
           if($location.path('login')) { $location.path(path); }
@@ -30,4 +32,4 @@ angular.module('stage').controller('stLoginCtrl', ['$scope', 'stIdentity', 'stTi
       $location.path('/');
     })
   }
-}])
+});

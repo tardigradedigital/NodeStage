@@ -5,27 +5,23 @@
         h3.tdf Create a Stage user
           span.iconic.iconic-person-male.iconic-lg.iconic-size-md.h3-icon
       .panel-body
-        form.form-horizontal(name="signupForm")
+        form.form-horizontal(name="signupForm", autocomplete="off")
           fieldset
-            legend New User Information
+            legend
               .form-group
-                label.col-md-2.control-label(for="email") Email
-                .col-md-10
+                .col-md-5
                   input.form-control(name="email", type="email", placeholder="Email", data-ng-model="email", required)
               .form-group
-                label.col-md-2.control-label(for="password") Password
-                .col-md-10
-                  input.form-control(name="password", type="password", placeholder="Password", data-ng-model="password", required)
+                .col-md-5
+                  input.form-control(name="password", type="password", placeholder="Password", data-ng-model="password", required, autocomplete="new-password")
               .form-group
-                label.col-md-2.control-label(for="fname") First Name
-                .col-md-10
-                  input.form-control(name="fname", type="text", placeholder="First Name", data-ng-model="fname", required)
+                .col-md-5
+                  input.form-control(name="firstName", type="text", placeholder="First Name", data-ng-model="firstName", required)
               .form-group
-                label.col-md-2.control-label(for="lname") List Name
-                .col-md-10
-                  input.form-control(name="lname", type="text", placeholder="Last Name", data-ng-model="lname", required)
+                .col-md-5
+                  input.form-control(name="lastNname", type="text", placeholder="Last Name", data-ng-model="lastName", required)
               .form-group
-                .col-md-10.col-md-offset-2
+                .col-md-3.col-md-offset-2
                   .pull-right
                     button.btn.btn-primary(data-ng-click="createUser()", data-ng-disabled="signupForm.$invalid") Submit
                     | &nbsp;

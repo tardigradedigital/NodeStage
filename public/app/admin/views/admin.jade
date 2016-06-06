@@ -16,34 +16,40 @@
             h4
               b Stage users
               div#userSearch
-                input.formcontrol(type="text", ng-model="userSearch", placeholder="Search users")
-                span.label.label-primary {{(users | filter:userSearch).length}}
+                input.form-control(type="text", data-ng-model="userSearch", placeholder="Quick search", data-ng-change="filterUsers()")
+                span.btn.btn-primary.btn-xs.user-filter(type="button", data-toggle="modal", data-target="#userViewConfig", data-backdrop="false")
+                  span.iconic.iconic-cog.iconic-sm.iconic-size-sm
+                span.label.label-primary.user-count {{userRes.length}} user{{userRes.length == 1 ? '' : 's'}}
             .table-responsive(data-ng-animate-children="true")
               table.table.table-bordered.table-condensed.table-striped#userDisplay
                 tr
                   th#userNameField(data-ng-click="sortUsers('userName')")
                     span Username
-                    span.iconic.iconic-caret-top.iconic-sm(ng-show="field == 'userName' && reverse")
-                    span.iconic.iconic-caret-bottom.iconic-sm(ng-show="field == 'userName' && !reverse")
+                    span.iconic.iconic-caret-top.iconic-sm(data-ng-show="userField == 'userName' && userReverse")
+                    span.iconic.iconic-caret-bottom.iconic-sm(data-ng-show="userField == 'userName' && !userReverse")
                   th.desktop-only#firstNameField(data-ng-click="sortUsers('firstName')")
                     span First name
-                    span.iconic.iconic-caret-top.iconic-sm(ng-show="field == 'firstName' && reverse")
-                    span.iconic.iconic-caret-bottom.iconic-sm(ng-show="field == 'firstName' && !reverse")
+                    span.iconic.iconic-caret-top.iconic-sm(data-ng-show="userField == 'firstName' && userReverse")
+                    span.iconic.iconic-caret-bottom.iconic-sm(data-ng-show="userField == 'firstName' && !userReverse")
                   th.desktop-only#lastNameField(data-ng-click="sortUsers('lastName')")
                     span Last name
-                    span.iconic.iconic-caret-top.iconic-sm(ng-show="field == 'lastName' && reverse")
-                    span.iconic.iconic-caret-bottom.iconic-sm(ng-show="field == 'lastName' && !reverse")
+                    span.iconic.iconic-caret-top.iconic-sm(data-ng-show="userField == 'lastName' && userReverse")
+                    span.iconic.iconic-caret-bottom.iconic-sm(data-ng-show="userField == 'lastName' && !userReverse")
                   th(data-ng-click="sortUsers('roles', true)")
                     span Roles
-                    span.iconic.iconic-caret-top.iconic-sm(ng-show="field == 'roles' && !reverse")
-                    span.iconic.iconic-caret-bottom.iconic-sm(ng-show="field == 'roles' && reverse")
-                tr(data-ng-repeat="user in users | filter:userSearch | orderBy:field:reverse")
+                    span.iconic.iconic-caret-top.iconic-sm(data-ng-show="userField == 'roles' && !userReverse")
+                    span.iconic.iconic-caret-bottom.iconic-sm(data-ng-show="userField == 'roles' && userReverse")
+                tr(data-ng-repeat="user in userRes | orderBy:userField:userReverse | userStartPage:userCurrentPage*userShowOnPage | limitTo:userShowOnPage")
                   td {{user.userName}}
                   td.desktop-only {{user.firstName}}
                   td.desktop-only {{user.lastName}}
                   td {{user.roles}}
-                tr(ng-show="(users | filter:userSearch).length == 0")
+                tr(data-ng-show="userRes.length == 0")
                   td(colspan="4") No users were found
+                tr(data-ng-show="userRes.length > 0")
+                  td.text-center(colspan="4")
+                    button.btn.pull-left(data-ng-disabled="userCurrentPage == 0", data-ng-click="userCurrentPage = userCurrentPage - 1") Last {{userShowOnPage}}
+                    button.btn.pull-right(data-ng-disabled="userCurrentPage >= userRes.length/userShowOnPage - 1", data-ng-click="userCurrentPage = userCurrentPage + 1") Next {{userShowOnPage}}
           .col-md-3
             h4
               b User actions
@@ -52,7 +58,24 @@
                 span.iconic.iconic-plus.iconic-sm.iconic-size-sm.lgr-icon
               a.list-group-item(href="/admin/users/delete") Delete user
                 span.iconic.iconic-trash.iconic-sm.iconic-size-sm.lgr-icon
-              a.list-group-item(href="/admin/users/purge") Purge user database
-                span.iconic.iconic-radiation.iconic-sm.iconic-size-sm.lgr-icon
-              a.list-group-item(ng-href="{{userSyncEnabled ? '/admin/users/sync' : '#'}}", ng-disabled="userSyncEnabled", ng-class="{disabled: !userSyncEnabled}") Sync user database
-                span.iconic.iconic-loop-circular.iconic-sm.iconic-size-sm.lgr-icon
+              a.list-group-item(data-ng-href="{{!userPurgeInProgress ? '/admin/users/purge' : '#'}}", data-ng-class="{disabled: userPurgeInProgress}") Purge user database
+                span.iconic.iconic-radiation.iconic-sm.iconic-size-sm.lgr-icon(data-ng-class="{'in-progress': userPurgeInProgress}")
+              a.list-group-item(data-ng-href="{{userSyncEnabled && !userSyncInProgress ? '/admin/users/sync' : '#'}}", data-ng-class="{disabled: !userSyncEnabled || userSyncInProgress}") Sync user database
+                span.iconic.iconic-loop-circular.iconic-sm.iconic-size-sm.lgr-icon(data-ng-class="{'in-progress': userSyncInProgress}")
+                
+        .modal.fade#userViewConfig(tabindex="-1", role="dialog", aria-labelledby="userViewConfigTitle")
+          .modal-dialog(role="document")
+            .modal-content
+              .modal-header
+                h4.modal-title#userViewConfigTitle User view configuration
+                  span.iconic.iconic-funnel.iconic-sm.iconic-size-md.h4-icon
+              .modal-body
+                | Users to show on page
+                br
+                select.form-control(ng-model="userShowOnPage", data-ng-init="userShowOnPage = '10'", data-ng-change="userCurrentPage = '0'")
+                  option(value="5", data-ng-selected="userShowOnPage == 5") Show 5 on each page
+                  option(value="10", data-ng-selected="true") Show 10 on each page
+                  option(value="20", data-ng-selected="userShowOnPage == 20") Show 20 on each page
+                
+              .modal-footer
+                button.btn.btn-primary(data-dismiss="modal") Done

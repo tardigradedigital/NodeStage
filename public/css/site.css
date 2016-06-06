@@ -1,5 +1,5 @@
 html {
-  background-image: url("/img/background-3.jpg");
+  background-image: url("/img/background-6.jpg");
   background-position: center center;
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -224,13 +224,27 @@ section.content {
   float: right;
 }
 #userSearch input {
+  display: inline;
   font-size: 14px;
+  height: 25px;
   padding: 2px 3px;
+  width: initial;
 }
-#userSearch span.label {
-  float: left;
-  margin-right: 5px;
-  margin-top: 1px;
+#userSearch .label.user-count {
+  float: right;
+  margin-left: 5px;
+  margin-top: 2px;
+}
+#userSearch .btn.user-filter {
+  float: right;
+  width: 23.75px;
+  height: 19.73px;
+  padding: 1px 0;
+  margin-top: 2px;
+  margin-left: 5px;
+}
+#userSearch .btn.user-filter .iconic:before {
+  font-size: 13px !important;
 }
 #userDisplay th {
   cursor: pointer;
@@ -256,30 +270,20 @@ section.content {
   overflow: hidden;
   width: 125px;
 }
-#userDisplay .ng-enter,
-#userDisplay .ng-leave {
+#userDisplay tr select {
+  display: inline;
+  width: 210px;
+}
+#userDisplay .ng-enter {
   transition: transform 100ms, opacity 100ms;
 }
-#userDisplay .ng-enter,
-#userDisplay .ng-leave-active {
+#userDisplay .ng-enter {
   opacity: 0;
   transform: translate3d(-100%, 0, 0);
 }
 #userDisplay .ng-enter-active {
   opacity: 1;
   transform: translate3d(0, 0, 0);
-}
-#userDisplay .ng-enter-stagger,
-#userDisplay .ng-leave-stagger {
-  transition-delay: 50ms;
-  transition-duration: 0;
-}
-#userDisplay .ng-move {
-  opacity: 0;
-  transition: opacity 100ms;
-}
-#userDisplay .ng-move-active {
-  opacity: 1;
 }
 footer {
   padding-left: 15px;
@@ -407,6 +411,10 @@ footer p {
   -webkit-transition: all 0ms;
   transition: all 0ms;
 }
+.in-progress {
+  -webkit-animation: flashIcon 800ms infinite linear;
+  animation: flashIcon 800ms infinite linear;
+}
 @media (max-width: 767px) {
   .center {
     margin-left: auto;
@@ -444,5 +452,63 @@ footer p {
   }
   .panel-infoview {
     min-height: 455px;
+  }
+  #nav {
+    height: 50px !important;
+  }
+}
+@-webkit-keyframes flashIcon {
+  0% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.3;
+  }
+}
+@-moz-keyframes flashIcon {
+  0% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.3;
+  }
+}
+@-webkit-keyframes flashIcon {
+  0% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.3;
+  }
+}
+@-o-keyframes flashIcon {
+  0% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.3;
+  }
+}
+@keyframes flashIcon {
+  0% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.3;
   }
 }

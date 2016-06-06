@@ -3,5 +3,5 @@ angular.module('stage').directive('stLoginWidget', function() {
     restrict: 'E',
     replace: true,
     templateUrl: '/partials/account/views/login-widget'
-  }
-})
+  };
+});
