@@ -14,6 +14,7 @@
         "**/favicon-*.png": true,
         "**/manifest.json": true,
         "**/mstile*.png": true,
-        "**/safari-pinned-tab.svg": true
+        "**/safari-pinned-tab.svg": true,
+        "public/app/app.js": true
     }
 }

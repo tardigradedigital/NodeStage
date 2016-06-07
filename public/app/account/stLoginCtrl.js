@@ -1,5 +1,5 @@
-angular.module('stage').controller('stLoginCtrl', function($scope, stIdentity, stTickerSvc, stAuth, $location) {
-  $scope.identity = stIdentity;
+angular.module('stage').controller('stLoginCtrl', function($scope, $location, stAuthSvc, stIdentitySvc, stTickerSvc) {
+  $scope.identity = stIdentitySvc;
   $scope.signin = function(username, password) {
     if(!username || !password || username.$invalid || password.$invalid) {
       if(!username || username.$invalid) { $(loginWidget.username).addClass('invalid'); }
@@ -8,16 +8,16 @@ angular.module('stage').controller('stLoginCtrl', function($scope, stIdentity, s
       return false;  
     }
     else {
-      stAuth.authenticateUser(username, password).then(function(success) {
+      stAuthSvc.authenticateUser(username, password).then(function(success) {
         if(success) {
           username = '';
           password = '';
           $scope.username = '';
           $scope.password = '';
-          var path = stIdentity.isAuthorized('admin') ? '/admin' : '/';
+          var path = stIdentitySvc.isAuthorized('admin') ? '/admin' : '/';
           stTickerSvc.notify('You have been successfully authenticated.');
           if($location.path('login')) { $location.path(path); }
-          if(stIdentity.isAuthorized('admin')) { $location.path(path); }
+          if(stIdentitySvc.isAuthorized('admin')) { $location.path(path); }
         }
         else { stTickerSvc.error('Invalid email address or password was given.') }
       });      
@@ -25,7 +25,7 @@ angular.module('stage').controller('stLoginCtrl', function($scope, stIdentity, s
   }
   
   $scope.signout = function() {
-    stAuth.logoutUser().then(function() {
+    stAuthSvc.logoutUser().then(function() {
       $scope.username = "";
       $scope.password = "";
       stTickerSvc.notify('You have been signed out.');

@@ -2,9 +2,9 @@ angular.module('stage', ['ngResource', 'ngRoute', 'ui.gravatar', 'ngAnimate']);
 
 angular.module('stage').config(function($routeProvider, $locationProvider) {
   var routeRoleChecks = {
-    admin: { auth: /*@ngInject*/ function(stAuth) { return stAuth.authorizeCurrentUserForRoute('admin'); } },
-    user: { auth: /*@ngInject*/ function(stAuth) { return stAuth.authorizeAuthenticatedUserForRoute(); } },
-    guest: { auth: /*@ngInject*/ function(stAuth) { return stAuth.unauthenticatedUser(); } }
+    admin: { auth: /*@ngInject*/ function(stAuthSvc) { return stAuthSvc.authorizeCurrentUserForRoute('admin'); } },
+    user: { auth: /*@ngInject*/ function(stAuthSvc) { return stAuthSvc.authorizeAuthenticatedUserForRoute(); } },
+    guest: { auth: /*@ngInject*/ function(stAuthSvc) { return stAuthSvc.unauthenticatedUser(); } }
   }
 
   $locationProvider.html5Mode(true);
@@ -15,6 +15,11 @@ angular.module('stage').config(function($routeProvider, $locationProvider) {
     })
     .when('/admin', {
       templateUrl: '/partials/admin/views/admin', 
+      controller: 'stAdminCtrl', 
+      resolve: routeRoleChecks.admin
+    })
+    .when('/admin/ddb', {
+      templateUrl: '/partials/admin/views/dev-dashboard', 
       controller: 'stAdminCtrl', 
       resolve: routeRoleChecks.admin
     })

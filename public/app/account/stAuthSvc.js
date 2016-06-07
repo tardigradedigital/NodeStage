@@ -1,15 +1,15 @@
-angular.module('stage').factory('stAuth', function($http, $q, stIdentity, stUser) {
+angular.module('stage').factory('stAuthSvc', function($http, $q, stIdentitySvc, stUserSvc) {
   return {
     // authenticateUser: Verifies login credentials and signs in user
     authenticateUser: function(username, password) {
       var dfd = $q.defer();
       $http.post('/login', {username:username, password:password}).then(function(response) {
         if(response.data.success) {
-          var user = new stUser();
+          var user = new stUserSvc();
           delete response.data.user['hashed_pwd'];
           delete response.data.user['salt'];
           angular.extend(user, response.data.user);
-          stIdentity.currentUser = user;
+          stIdentitySvc.currentUser = user;
           dfd.resolve(true);
         }
         else {
@@ -21,7 +21,7 @@ angular.module('stage').factory('stAuth', function($http, $q, stIdentity, stUser
     
     // createUser: Creates a new user
     createUser: function(newUserData) {
-      var newUser = new stUser(newUserData);
+      var newUser = new stUserSvc(newUserData);
       var dfd = $q.defer();
       
       newUser.$save().then(function() {
@@ -37,7 +37,7 @@ angular.module('stage').factory('stAuth', function($http, $q, stIdentity, stUser
     logoutUser: function() {
       var dfd = $q.defer();
       $http.post('/logout', {logout: true}).then(function() {
-        stIdentity.currentUser = undefined;
+        stIdentitySvc.currentUser = undefined;
         dfd.resolve();
       });
       return dfd.promise;
@@ -78,10 +78,10 @@ angular.module('stage').factory('stAuth', function($http, $q, stIdentity, stUser
     updateCurrentUser: function(newUserData) {
       var dfd = $q.defer();
       
-      var clone = angular.copy(stIdentity.currentUser);
+      var clone = angular.copy(stIdentitySvc.currentUser);
       angular.extend(clone, newUserData);
       clone.$update().then(function() {
-        stIdentity.currentUser = clone;
+        stIdentitySvc.currentUser = clone;
         dfd.resolve();
       }, function(response) {
         dfd.reject(response.data.reason);
@@ -91,19 +91,19 @@ angular.module('stage').factory('stAuth', function($http, $q, stIdentity, stUser
     
     // authorizeAuthenticatedUserForRoute: Checks whether user is signed in
     authorizeAuthenticatedUserForRoute: function() {
-      if(stIdentity.isAuthenticated()) { return true; }
+      if(stIdentitySvc.isAuthenticated()) { return true; }
       else { return $q.reject('not authorized'); }
     },
     
     // authorizeCurrentUserForRoute: Checks whether curent user has role
     authorizeCurrentUserForRoute: function(role) {
-      if(stIdentity.isAuthorized(role)) { return true; }
+      if(stIdentitySvc.isAuthorized(role)) { return true; }
       else { return $q.reject('not authorized'); }
     },
     
     // unauthenticatedUser: Checks whether user is not signed in
     unauthenticatedUser: function() {
-      if(!stIdentity.isAuthenticated()) { return true; }
+      if(!stIdentitySvc.isAuthenticated()) { return true; }
       else { return $q.reject('user signed in'); }
     }
   }

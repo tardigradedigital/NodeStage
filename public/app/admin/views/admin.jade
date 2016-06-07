@@ -62,6 +62,8 @@
                 span.iconic.iconic-radiation.iconic-sm.iconic-size-sm.lgr-icon(data-ng-class="{'in-progress': userPurgeInProgress}")
               a.list-group-item(data-ng-href="{{userSyncEnabled && !userSyncInProgress ? '/admin/users/sync' : '#'}}", data-ng-class="{disabled: !userSyncEnabled || userSyncInProgress}") Sync user database
                 span.iconic.iconic-loop-circular.iconic-sm.iconic-size-sm.lgr-icon(data-ng-class="{'in-progress': userSyncInProgress}")
+              a.list-group-item(href="/admin/ddb", data-ng-if="env == 'development'") Dev Dashboard
+                span.iconic.iconic-beaker.iconic-sm.iconic-size-sm.lgr-icon
                 
         .modal.fade#userViewConfig(tabindex="-1", role="dialog", aria-labelledby="userViewConfigTitle")
           .modal-dialog(role="document")

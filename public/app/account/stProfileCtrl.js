@@ -1,18 +1,18 @@
-angular.module('stage').controller('stProfileCtrl', function($scope, stAuth, stIdentity, stTickerSvc) {
-  $scope.email = stIdentity.currentUser.userName;
-  $scope.fname = stIdentity.currentUser.firstName;
-  $scope.lname = stIdentity.currentUser.lastName;
+angular.module('stage').controller('stProfileCtrl', function($scope, stAuthSvc, stIdentitySvc, stTickerSvc) {
+  $scope.email = stIdentitySvc.currentUser.userName;
+  $scope.firstName = stIdentitySvc.currentUser.firstName;
+  $scope.lastName = stIdentitySvc.currentUser.lastName;
   
   $scope.update = function() {
     var newUserData = {
       userName: $scope.email,
-      firstName: $scope.fname,
-      lastName: $scope.lname
+      firstName: $scope.firstName,
+      lastName: $scope.lastName
     }
 
     if($scope.password && $scope.password.length > 0) { newUserData.password = $scope.password; }
 
-    stAuth.updateCurrentUser(newUserData).then(
+    stAuthSvc.updateCurrentUser(newUserData).then(
       function() { stTickerSvc.notify('Your profile has been updated.') }, 
       function(reason) { stTickerSvc.error(reason); }
     );

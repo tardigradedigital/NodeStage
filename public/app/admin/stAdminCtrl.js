@@ -1,16 +1,17 @@
-angular.module('stage').controller('stAdminCtrl', function($scope, $filter, $location, $timeout, $rootScope, stAuth, stTickerSvc, stUser) {
-  $scope.users = stUser.query();
+angular.module('stage').controller('stAdminCtrl', function($scope, $timeout, stAdminSvc, stAdminUserSvc, stAuthSvc, stTickerSvc) {
+  $scope.env = stAdminSvc.whatEnv();
+  $scope.users = stAdminUserSvc.populateUsers();
   $scope.userRes = $scope.users;
   $scope.userField = 'userName';
   $scope.userReverse = false;
   $scope.userCurrentPage = 0;
   $scope.userShowOnPage = '10';
-  $scope.userSyncEnabled = window.env == 'development' ? true : false;
+  $scope.userSyncEnabled = $scope.env == 'development' ? true : false;
   $scope.userSyncDir = 'toloc';
 
   $scope.filterUsers = function() {
     $scope.userRes = [];
-    var res = $filter('userfind')($scope.users, $scope.userSearch);
+    var res = stAdminUserSvc.searchUsers($scope.users, $scope.userSearch);
     $scope.userRes = res;
     $scope.userCurrentPage = 0;
   }
@@ -29,24 +30,24 @@ angular.module('stage').controller('stAdminCtrl', function($scope, $filter, $loc
       lastName: $scope.lastName
     };
     
-    stAuth.createUser(newUserData).then(
-      function() { stTickerSvc.notify('Created user account ' + newUserData.userName +  '.'); $location.path('/admin'); }, 
+    stAuthSvc.createUser(newUserData).then(
+      function() { stTickerSvc.notify('Created user account ' + newUserData.userName +  '.'); stAdminSvc.adminRedirect('/admin'); }, 
       function(reason) { stTickerSvc.error(reason); }
     );
   }
   
   $scope.purgeUsers = function() {
-    $location.path('/admin');
-    $rootScope.userPurgeInProgress = true;
+    stAdminSvc.adminRedirect('/admin');
+    stAdminSvc.updateRoot('userPurgeInProgress', true);
     $timeout(function() {
-      stAuth.purgeUsers().then(
+      stAuthSvc.purgeUsers().then(
         function() {
-            $location.path('/');
-            stAuth.logoutUser().then(
+            stAdminSvc.adminRedirect('/');
+            stAuthSvc.logoutUser().then(
             function() { $timeout($scope.purgeDone, 5000); },
             function(reason) { 
               stTickerSvc.error(reason);
-              $rootScope.userPurgeInProgress = false;
+              stAdminSvc.updateRoot('userPurgeInProgress', false);
             }
           );
         }, 
@@ -57,17 +58,17 @@ angular.module('stage').controller('stAdminCtrl', function($scope, $filter, $loc
   
   $scope.syncDb = function(collection, syncDir) {
     if(collection == 'users') {
-      $location.path('/admin');
-      $rootScope.userSyncInProgress = true;
-      stAuth.syncUsers(syncDir).then(
+      stAdminSvc.adminRedirect('/admin');
+      stAdminSvc.updateRoot('userSyncInProgress', true);
+      stAuthSvc.syncUsers(syncDir).then(
         function() {
           if(syncDir == 'toloc') {
-            $location.path('/');
-            stAuth.logoutUser().then(
+            stAdminSvc.adminRedirect('/');
+            stAuthSvc.logoutUser().then(
               function() { $timeout($scope.syncDone, 5000); },
               function(reason) {
                 stTickerSvc.error(reason);
-                $rootScope.userSyncInProgress = false;
+                stAdminSvc.updateRoot('userSyncInProgress', true);
               }
             );
           }
@@ -84,11 +85,11 @@ angular.module('stage').controller('stAdminCtrl', function($scope, $filter, $loc
   
   $scope.purgeDone = function() {
     stTickerSvc.notify('User database has been purged.'); 
-    $rootScope.userPurgeInProgress = false;
+    stAdminSvc.updateRoot('userPurgeInProgress', false);
   }
   
   $scope.syncDone = function() {
     stTickerSvc.notify('User database has been synced.'); 
-    $rootScope.userSyncInProgress = false;
+    stAdminSvc.updateRoot('userSyncInProgress', true);
   }
 });

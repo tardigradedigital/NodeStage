@@ -2,17 +2,23 @@ var auth = require('./auth'),
     fs = require('fs'),
     users = require('../controllers/users'),
     db = require('../controllers/db'),
+    devdash = require('../controllers/devdash'),
     mongoose = require('mongoose'),
     User = mongoose.model('User');
 
-module.exports = function(app, env) {
+module.exports = function(app, env, ddb) {
   app.locals.env = env;
+  app.locals.ddb = ddb;
   app.get('/api/users', auth.requiresRole('admin'), users.getUsers);
   app.post('/api/users', auth.requiresRole('admin'), users.createUser);
   app.put('/api/users', auth.requiresRole('admin'), users.updateUser);
   app.purge('/api/users', auth.requiresRole('admin'), users.purgeUsers);
   
   app.copy('/api/db', auth.requiresRole('admin'), db.syncDb);
+  
+  app.all('/api/devdash/localMongo/:act', auth.requiresRole('admin'), devdash.localMongo);
+  app.all('/api/devdash/remoteMongo/:act', auth.requiresRole('admin'), devdash.remoteMongo);
+  app.all('/api/devdash/azureStream/:act', auth.requiresRole('admin'), devdash.azureStream);
   
   app.get('/admin/*', auth.requiresRole('admin'), function(req, res) {
     if(req.headers.referer) {
