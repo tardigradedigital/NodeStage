@@ -33,7 +33,8 @@ module.exports = function(app, env, ddb) {
       }
       catch(e) {
         res.render('index', {
-          bootstrappedUser: req.user
+          bootstrappedUser: req.user,
+          stageEnv: req.app.locals.env
         });
       }
     }

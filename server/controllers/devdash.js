@@ -23,7 +23,7 @@ exports.localMongo = function(req, res) {
       }
       break;
     case 'status':
-      if(lm.instance && lm.instance.connected) res.end('Connected');
+      if(lm.instance) res.end('Connected');
       else res.end('Disconnected');
       break;
   }
@@ -54,7 +54,7 @@ exports.remoteMongo = function(req, res) {
       }
       break;      
     case 'status':
-      if(rm.instance && rm.instance.connected) res.end('Connected');
+      if(rm.instance) res.end('Connected');
       else res.end('Disconnected');
       break;
   }
@@ -72,7 +72,7 @@ exports.azureStream = function(req, res) {
       else azs.stream(res, azs);
       break;
     case 'status':
-      if(azs.instance && azs.instance.connected) res.end('Connected');
+      if(azs.instance) res.end('Connected');
       else res.end('Disconnected');
       break;
   }

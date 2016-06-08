@@ -6,12 +6,10 @@ var config = require('./config'),
 module.exports = function() {
   return {
     localMongo: {
-      // start: 'mongo',
-      // params: [
-      //   config['development'].db
-      // ],
-      start: 'cmd',
-      params: [],
+      start: 'mongo',
+      params: [
+        config['development'].db
+      ],
       instance: null,
       connect: ddblm.connect,
       stream: ddblm.stream,
@@ -30,8 +28,8 @@ module.exports = function() {
       command: ddbrm.command
     },
     azureStream: {
-      start: 'azure',
-      params: ['site log tail td-nodestage'],
+      start: 'azure.cmd',
+      params: ['site', 'log', 'tail', 'td-nodestage'],
       instance: null,
       connect: ddbas.connect,
       stream: ddbas.stream

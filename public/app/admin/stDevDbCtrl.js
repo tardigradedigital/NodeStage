@@ -1,10 +1,10 @@
-angular.module('stage').controller('stDevDbCtrl', function($scope, $http) {
+angular.module('stage').controller('stDevDbCtrl', function($scope, $http, $timeout) {
   $scope.ddbView = null
   $scope.ddbConsoleType = null
   $scope.localMongoStatus = false;
   $scope.remoteMongoStatus = false;
   $scope.azureStreamStatus = false;
-  $scope.ddbStreamWell = 'Waiting for connection...';
+  $scope.ddbStreamWell = '';
 
   $scope.ddbChangeView = function(svc) {
     switch(svc) {
@@ -15,31 +15,67 @@ angular.module('stage').controller('stDevDbCtrl', function($scope, $http) {
       case 'localMongo':
         $scope.ddbView = svc;
         $scope.ddbConsoleType = 'cmd';
-        if(!$scope.ddbIsConnected(svc)) $scope.ddbConnect(svc);
+        $scope.ddbStreamWell = 'Connected to local MongoDB service\n';
+        if(!$scope.localMongoStatus) $scope.ddbConnect(svc);
         $scope.ddbStream(svc);
         break;
       case 'remoteMongo':
         $scope.ddbView = svc;
         $scope.ddbConsoleType = 'cmd';
-        if(!$scope.ddbIsConnected(svc)) $scope.ddbConnect(svc);
+        $scope.ddbStreamWell = 'Connected to cloud MongoDB service\n';
+        if(!$scope.remoteMongoStatus) $scope.ddbConnect(svc);
         $scope.ddbStream(svc);
         break;
       case 'azureStream':
         $scope.ddbView = svc;
         $scope.ddbConsoleType = 'view';
-        if(!$scope.ddbIsConnected(svc)) $scope.ddbConnect(svc);
+        $scope.ddbStreamWell = 'Connected to Azure log streaming service\n';
+        if(!$scope.azureStreamStatus) $scope.ddbConnect(svc);
         $scope.ddbStream(svc);
         break;
     }
-  } 
+  }
+
+  $scope.ddbCommand = function() {
+    var svc = $scope.ddbView;
+    console.log(svc);
+    if($scope.ddbConsoleType !== 'cmd') return false;
+    else {
+      console.log('Type is cmd');
+      console.log($scope.ddbCmdBar);
+      console.log($scope.ddbIsConnected(svc));
+      var svcStat = false
+      switch(svc) {
+        case 'localMongo':
+          svcStat = $scope.localMongoStatus;
+          break;
+        case 'remoteMongo':
+          svcStat = $scope.remoteMongoStatus;
+          break;
+      }
+      if(svcStat && $scope.ddbCmdBar) {
+        $http.post('/api/devdash/' + svc + '/command', {cmd: $scope.ddbCmdBar}).then(function(res) {
+          $scope.ddbCmdBar = '';
+        });
+      }
+      else return false;
+    }
+  }
 
   $scope.ddbConnect = function(svc) {
     $http.get('/api/devdash/' + svc + '/connect', {check: true}).then(function() {
       if(svc == 'localMongo') $scope.localMongoStatus = true;
       else if(svc == 'remoteMongo') $scope.remoteMongoStatus = true;
       else if(svc == 'azureStream') $scope.azureStreamStatus = true;
-      $scope.ddbStreamWell = 'Connected to ' + svc;
     });
+  }
+
+  $scope.ddbDisconnect = function(svc) {
+    // $http.get('/api/devdash/' + svc + '/disconnect', {check: true}).then(function() {
+      if(svc == 'localMongo') $scope.localMongoStatus = false;
+      else if(svc == 'remoteMongo') $scope.remoteMongoStatus = false;
+      else if(svc == 'azureStream') $scope.azureStreamStatus = false;
+    // });
   }
 
   $scope.ddbIsConnected = function(svc) {
@@ -78,17 +114,29 @@ angular.module('stage').controller('stDevDbCtrl', function($scope, $http) {
   }
 
   $scope.ddbStream = function(svc) {
-    // if(!$scope.ddbIsConnected(svc)) return false;
-    // else {
-      console.log(typeof(EventSource));
-      if(typeof(EventSource) !== 'undefined') {
-        var strmSource = new EventSource('/api/devdash/' + svc + '/stream');
-        strmSource.onmessage = function(event) {
-          $scope.ddbStreamWell += JSON.parse(res.data);
-          $scope.$apply();
-        }
-      }
-      else $scope.ddbStreamWell = 'This browser does not support streaming.';
-    // }
+    if(typeof(EventSource) !== 'undefined') {
+      var strmSource = new EventSource('/api/devdash/' + svc + '/stream');
+      strmSource.addEventListener('message', function(event) {
+        $scope.$apply(function() {
+          var msg = JSON.parse(event.data);
+          // Replace special characters
+          msg = msg.replace(/\[0m/g, '');
+          msg = msg.replace(/\[36m/g, '');
+          $scope.ddbStreamWell += msg.trim() + '\n';
+          $timeout(function() {
+            var sw = document.getElementById('streamWell');
+            sw.scrollTop = sw.scrollHeight;
+          }, 50);
+        });
+      }, false);
+      strmSource.addEventListener('error', function(err) {
+        $scope.$apply(function() {
+          $scope.ddbDisconnect(svc);
+          $scope.ddbStreamWell += 'The stream for ' + svc + ' has been unexpectedly closed.\n';
+        });
+        strmSource.close();
+      }, false);
+    }
+    else $scope.ddbStreamWell = 'This browser does not support streaming.\n';
   }
 });
