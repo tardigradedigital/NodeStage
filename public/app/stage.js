@@ -20,7 +20,7 @@ angular.module('stage').config(function($routeProvider, $locationProvider) {
     })
     .when('/admin/ddb', {
       templateUrl: '/partials/admin/views/dev-dashboard', 
-      controller: 'stAdminCtrl', 
+      controller: 'stDevDbCtrl', 
       resolve: routeRoleChecks.admin
     })
     .when('/admin/users/add', {

@@ -6,10 +6,12 @@ var config = require('./config'),
 module.exports = function() {
   return {
     localMongo: {
-      start: 'mongo',
-      params: [
-        config['development'].db
-      ],
+      // start: 'mongo',
+      // params: [
+      //   config['development'].db
+      // ],
+      start: 'cmd',
+      params: [],
       instance: null,
       connect: ddblm.connect,
       stream: ddblm.stream,

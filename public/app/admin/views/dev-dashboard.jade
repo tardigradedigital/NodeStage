@@ -5,3 +5,31 @@
         h3.tdf Dev Dashboard
           span.iconic.iconic-beaker.iconic-lg.iconic-size-md.h3-icon
       .panel-body
+        .row
+          .col-md-12
+            h4.tdf Development services
+        .row
+          .col-md-3
+            ul.nav.nav-pills.nav-stacked#ddbnav
+              li.active(role="presentation", data-ng-click="ddbChangeView('overview')", data-ng-class="{active: ddbView == null}")
+                a(href="#") Overview
+              li(role="presentation", data-ng-click="ddbChangeView('localMongo');", data-ng-class="{active: ddbView == 'localMongo'}", data-ng-init="ddbIsConnected('localMongo');")
+                span.iconic.iconic-globe.iconic-sm.iconic-size-sm.pull-right.ddbnav-icon(data-ng-class="{connected: localMongoStatus}")
+                a(href="#") Local Mongo Console
+              li(role="presentation", data-ng-click="ddbChangeView('remoteMongo')", data-ng-class="{active: ddbView == 'remoteMongo'}", data-ng-init="ddbIsConnected('remoteMongo');")
+                span.iconic.iconic-globe.iconic-sm.iconic-size-sm.pull-right.ddbnav-icon(data-ng-class="{connected: remoteMongoStatus}")
+                a(href="#") Cloud Mongo Console
+              li(role="presentation", data-ng-click="ddbChangeView('azureStream')", data-ng-class="{active: ddbView == 'azureStream'}", data-ng-init="ddbIsConnected('azureStream');")
+                span.iconic.iconic-globe.iconic-sm.iconic-size-sm.pull-right.ddbnav-icon(data-ng-class="{connected: azureStreamStatus}")
+                a(href="#") Azure Log Stream
+          .col-md-9(ng-show="ddbConsoleType == null")
+            .panel.panel-default
+              .panel-body
+                | Select a development service from the menu
+          .col-md-9.ddb-view(data-ng-show="ddbConsoleType !== null")
+            .panel.panel-default
+              .panel-body
+                .well.well-sm(style="height: 400px")
+                  textarea(style="width: 100%; height: 100%", data-ng-model="ddbStreamWell")
+              .panel-footer(data-ng-show="ddbConsoleType == 'view'")
+                input.form-control(type="text")

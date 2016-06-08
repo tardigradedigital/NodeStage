@@ -8,7 +8,8 @@ module.exports = function() {
       
       instance.stdin.setEncoding('utf-8');
       instance.stdout.on('data', function(data) {
-        res.end(data.toString() + "\n\n");
+        res.status(200);
+        res.end();
       });
 
       azs.instance = instance;
@@ -28,7 +29,7 @@ module.exports = function() {
         lines = outStr.split('\n');
         for(var i in lines) {
           if(i == lines.length - 1) outStr = lines[i];
-          else res.write(lines[i] + "\n\n");
+          else res.write(lines[i] + "\n");
         }
       });
       azs.instance.on('close', function(code) { res.end(outStr); });

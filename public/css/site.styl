@@ -379,6 +379,26 @@ footer
   -webkit-animation flashIcon 800ms infinite linear
   animation flashIcon 800ms infinite linear
 
+#ddbnav
+  .ddbnav-icon
+    margin-top 10px
+    margin-right 10px
+    position relative
+    z-index 1
+  .ddbnav-icon:before
+    color #ABABAB
+    font-size 20px
+  .ddbnav-icon.connected:before
+    color green
+
+.ddb-view
+  .well
+    margin-bottom 0
+    textarea
+      background none
+      border none
+      padding 2px
+
 @media (max-width: 767px)
   .center
     margin-left auto

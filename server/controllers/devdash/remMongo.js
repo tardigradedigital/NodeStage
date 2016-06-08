@@ -40,7 +40,7 @@ module.exports = function() {
         lines = outStr.split('\n');
         for(var i in lines) {
           if(i == lines.length - 1) outStr = lines[i];
-          else res.write(lines[i] + "\n\n");
+          else res.write(lines[i] + "\n");
         }
       });
       ins.on('close', function(code) { res.end(outStr); });
