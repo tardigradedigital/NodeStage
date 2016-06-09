@@ -69,7 +69,7 @@ body
 [data-ng-view].ng-enter-active
   opacity 1
   
-.navbar-inverse
+.navbar.navbar-inverse
   height 51px
   background-color #0A0A0A
   .navbar-header
@@ -99,6 +99,7 @@ body
       padding-left 5px
       padding-right 5px
   .navbar-collapse
+    background-color #0A0A0A
     li a span
       float left
       margin-right 4px
@@ -384,6 +385,8 @@ footer
 
 
 @media (max-width: 767px)
+  .navbar-inverse.navbar-fixed-top
+    height initial
   .center
     margin-left auto
     margin-right auto
@@ -394,6 +397,8 @@ footer
     display none
   .expanded-footer
     display none
+  .usermenu.mobile-only
+    margin-bottom 0
   .ticker-container.expanded
     #ticker
       .ticker-msg
@@ -409,6 +414,9 @@ footer
       width 100%
       margin-left 0
       margin-right 0
+  #userSearch
+    margin 5px 0
+    float left
         
 @media all and (min-width: 768px)
   #user

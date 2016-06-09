@@ -16,6 +16,7 @@
     "angular-route": "^1.5.5",
     "bootstrap": "^3.3.6",
     "jquery": "^2.2.3",
-    "titilliumWeb": "https://google-fonts.azurewebsites.net/googleFonts/TitilliumWeb?family=Titillium+Web:200,300"
+    "titilliumWeb": "https://google-fonts.azurewebsites.net/googleFonts/TitilliumWeb?family=Titillium+Web:200,300",
+    "event-source-polyfill": "^0.0.7"
   }
 }

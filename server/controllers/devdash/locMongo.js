@@ -35,7 +35,10 @@ module.exports = function() {
         "Cache-Control": "no-cache",
         "Connection": "keep-alive"
       });
-      res.write('/n');
+      // These two lines are needed by event-source-polyfill
+      res.write(':' + Array(2049).join(' ') + '\n');
+      res.write('retry: 2000\n');
+      
       ins.stdout.on('data', function(data) {
         outStr += data.toString();
         lines = outStr.split('\n');

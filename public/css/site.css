@@ -3,9 +3,6 @@ html {
   background-position: center center;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
   background-size: cover;
   height: 100%;
 }
@@ -56,7 +53,6 @@ h4 {
   margin-left: 10px;
 }
 .dropdown-menu {
-  -webkit-transition: all 200ms ease-out;
   transition: all 200ms ease-out;
   opacity: 0;
 }
@@ -72,57 +68,51 @@ h4 {
 }
 [data-ng-view].ng-enter {
   opacity: 0.2;
-  -webkit-transition: opacity 300ms linear;
   transition: opacity 300ms linear;
 }
 [data-ng-view].ng-enter-active {
   opacity: 1;
 }
-.navbar {
+.navbar.navbar-inverse {
   height: 51px;
+  background-color: #0a0a0a;
 }
-.navbar .navbar-header .brand-container {
+.navbar.navbar-inverse .navbar-header .brand-container {
   position: relative;
   float: left;
   height: 51px;
   margin-left: 5px;
   width: 54px;
 }
-.navbar .navbar-header .brand-container img.brand {
+.navbar.navbar-inverse .navbar-header .brand-container img.brand {
   cursor: pointer;
   position: absolute;
   left: 0;
   height: 45px;
   margin-top: 2.5px;
   opacity: 1;
-  -webkit-transition: all 0.2s ease;
-  -moz-transition: all 0.2s ease;
-  -o-transition: all 0.2s ease;
-  -ms-transition: all 0.2s ease;
   transition: all 0.2s ease;
 }
-.navbar .navbar-header .brand-container img.brand:hover {
+.navbar.navbar-inverse .navbar-header .brand-container img.brand:hover {
   opacity: 0.85;
   filter: #808080;
   filter: grayscale(0.5);
   -webkit-filter: grayscale(50%);
-  -webkit-transition: all 0.2s ease;
-  -moz-transition: all 0.2s ease;
-  -o-transition: all 0.2s eas;
-  -ms-transition: all 0.2s ease;
   transition: all 0.2s ease;
 }
-.navbar .navbar-header .navbar-brand {
+.navbar.navbar-inverse .navbar-header .navbar-brand {
   margin-left: 0;
   padding-left: 5px;
   padding-right: 5px;
 }
-.navbar .navbar-collapse li a span {
+.navbar.navbar-inverse .navbar-collapse {
+  background-color: #0a0a0a;
+}
+.navbar.navbar-inverse .navbar-collapse li a span {
   float: left;
   margin-right: 4px;
 }
-.navbar a {
-  -webkit-transition: all 200ms ease-out;
+.navbar.navbar-inverse a {
   transition: all 200ms ease-out;
 }
 .usermenu li.userbox > a {
@@ -146,8 +136,6 @@ h4 {
   margin-top: -18px;
   border: 1px solid #343434;
   border-radius: 50%;
-  -moz-border-radius: 50%;
-  -webkit-border-radius: 50%;
 }
 .usermenu .username-pull {
   margin-left: 61px;
@@ -190,7 +178,6 @@ h4 {
   border-radius: 0;
   margin-left: -15px;
   margin-top: 2px;
-  -webkit-transition: all 200ms ease-out;
   transition: all 200ms ease-out;
 }
 #navsignin .navbar-form button.btn span.iconic {
@@ -198,7 +185,6 @@ h4 {
   top: 3px;
 }
 #navsignin .navbar-form button.btn:hover {
-  -webkit-transition: all 200ms ease-out;
   transition: all 200ms ease-out;
 }
 #signin .login-mobile-spacer {
@@ -296,7 +282,6 @@ footer p {
   cursor: pointer;
   overflow: hidden;
   height: 300px;
-  -webkit-transition: all 300ms ease-out;
   transition: all 300ms ease-out;
 }
 .ticker-container p.navbar-text {
@@ -308,14 +293,12 @@ footer p {
 }
 .ticker-container:hover {
   background: rgba(24,24,24,0.9);
-  -webkit-transition: all 200ms ease-out;
   transition: all 200ms ease-out;
 }
 .ticker-container.expanded {
   background: rgba(24,24,24,0.9);
   cursor: default;
   margin-top: -250px;
-  -webkit-transition: all 150ms ease-out;
   transition: all 150ms ease-out;
   padding-left: 0;
   padding-right: 0;
@@ -327,7 +310,6 @@ footer p {
   margin-left: 0;
   margin-right: 0;
   padding-top: 10px;
-  -webkit-transition: none;
   transition: none;
 }
 .ticker-container.expanded #ticker #ftrmsg {
@@ -352,7 +334,6 @@ footer p {
 .ticker-container.expanded #ticker.on {
   margin-top: 0;
   opacity: 1;
-  -webkit-transition: none;
   transition: none;
 }
 .ticker-container.expanded .expanded-footer {
@@ -377,7 +358,6 @@ footer p {
   overflow: hidden;
   margin-top: 0;
   padding-top: 15px;
-  -webkit-transition: opacity, margin-top 200ms ease;
   transition: opacity, margin-top 200ms ease;
   text-align: center;
   width: 100%;
@@ -408,11 +388,9 @@ footer p {
 #ticker.on {
   opacity: 0.2;
   margin-top: -40px;
-  -webkit-transition: all 0ms;
   transition: all 0ms;
 }
 .in-progress {
-  -webkit-animation: flashIcon 800ms infinite linear;
   animation: flashIcon 800ms infinite linear;
 }
 #ddbnav .ddbnav-icon {
@@ -446,6 +424,9 @@ footer p {
   border-radius: 2px;
 }
 @media (max-width: 767px) {
+  .navbar-inverse.navbar-fixed-top {
+    height: initial;
+  }
   .center {
     margin-left: auto;
     margin-right: auto;
@@ -459,6 +440,9 @@ footer p {
   }
   .expanded-footer {
     display: none;
+  }
+  .usermenu.mobile-only {
+    margin-bottom: 0;
   }
   .ticker-container.expanded #ticker .ticker-msg {
     width: 100%;
@@ -474,6 +458,10 @@ footer p {
     width: 100%;
     margin-left: 0;
     margin-right: 0;
+  }
+  #userSearch {
+    margin: 5px 0;
+    float: left;
   }
 }
 @media all and (min-width: 768px) {
