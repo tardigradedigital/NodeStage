@@ -3,9 +3,6 @@ html
   background-position center center
   background-repeat no-repeat
   background-attachment fixed  
-  -webkit-background-size cover
-  -moz-background-size cover
-  -o-background-size cover
   background-size cover
   height 100%
 
@@ -51,7 +48,6 @@ body
   margin-left 10px
   
 .dropdown-menu
-  -webkit-transition all 200ms ease-out
   transition all 200ms ease-out
   opacity 0
 
@@ -68,14 +64,14 @@ body
 // Styles for stage animation using ngAnimate styles
 [data-ng-view].ng-enter
   opacity 0.2
-  -webkit-transition opacity 300ms linear
   transition opacity 300ms linear
 
 [data-ng-view].ng-enter-active
   opacity 1
   
-.navbar
+.navbar-inverse
   height 51px
+  background-color #0A0A0A
   .navbar-header
     .brand-container
       position relative
@@ -90,10 +86,6 @@ body
         height 45px
         margin-top 2.5px
         opacity 1
-        -webkit-transition all .2s ease 
-        -moz-transition all .2s ease
-        -o-transition all .2s ease
-        -ms-transition all .2s ease
         transition all .2s ease
       img.brand:hover
         opacity 0.85
@@ -101,10 +93,6 @@ body
         filter grayscale(.5)
         // filter url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnPjxmaWx0ZXIgaWQ9J2dyYXlzY2FsZSc+PGZlQ29sb3JNYXRyaXggdHlwZT0nbWF0cml4JyB2YWx1ZXM9JzAuMzMzMyAwLjMzMzMgMC4zMzMzIDAgMCAwLjMzMzMgMC4zMzMzIDAuMzMzMyAwIDAgMC4zMzMzIDAuMzMzMyAwLjMzMzMgMCAwIDAgMCAwIDEgMCcvPjwvZmlsdGVyPjwvc3ZnPiNncmF5c2NhbGU=")
         -webkit-filter grayscale(50%) 
-        -webkit-transition all .2s ease
-        -moz-transition all .2s ease
-        -o-transition all .2s eas
-        -ms-transition all .2s ease
         transition all .2s ease
     .navbar-brand
       margin-left 0
@@ -115,7 +103,6 @@ body
       float left
       margin-right 4px
   a
-    -webkit-transition all 200ms ease-out
     transition all 200ms ease-out
 
 .usermenu
@@ -136,8 +123,6 @@ body
     margin-top -18px
     border 1px solid #343434
     border-radius 50%
-    -moz-border-radius 50%
-    -webkit-border-radius 50%
   .username-pull
     margin-left 61px 
   .menu-icon
@@ -170,13 +155,11 @@ body
       border-radius 0
       margin-left -15px
       margin-top 2px
-      -webkit-transition all 200ms ease-out
       transition all 200ms ease-out
       span.iconic
         right 5px
         top 3px
     button.btn:hover
-      -webkit-transition all 200ms ease-out
       transition all 200ms ease-out
       
 #signin
@@ -276,21 +259,18 @@ footer
   p.navbar-text
     float none !important
     text-align center
-  -webkit-transition all 300ms ease-out
   transition all 300ms ease-out
   .expanded-footer
     display none
     
 .ticker-container:hover
   background rgba(24,24,24,0.9)
-  -webkit-transition all 200ms ease-out
   transition all 200ms ease-out
   
 .ticker-container.expanded
   background rgba(24,24,24,0.9)
   cursor default
   margin-top -250px
-  -webkit-transition all 150ms ease-out
   transition all 150ms ease-out
   padding-left 0
   padding-right 0
@@ -301,7 +281,6 @@ footer
     margin-left 0
     margin-right 0
     padding-top 10px
-    -webkit-transition none
     transition none
     #ftrmsg
       display block
@@ -323,7 +302,6 @@ footer
   #ticker.on
     margin-top 0
     opacity 1
-    -webkit-transition none
     transition none
   .expanded-footer
     color #EFEFEF
@@ -347,7 +325,6 @@ footer
   overflow hidden
   margin-top 0
   padding-top 15px
-  -webkit-transition opacity, margin-top 200ms ease
   transition opacity, margin-top 200ms ease
   text-align center
   width 100%
@@ -372,11 +349,9 @@ footer
 #ticker.on
     opacity 0.2
     margin-top -40px
-    -webkit-transition all 0ms
     transition all 0ms
 
 .in-progress
-  -webkit-animation flashIcon 800ms infinite linear
   animation flashIcon 800ms infinite linear
 
 #ddbnav

@@ -15,23 +15,20 @@ angular.module('stage').controller('stDevDbCtrl', function($scope, $http, $timeo
       case 'localMongo':
         $scope.ddbView = svc;
         $scope.ddbConsoleType = 'cmd';
-        $scope.ddbStreamWell = 'Connected to local MongoDB service\n';
+        $scope.ddbStreamWell = 'Connecting...';
         if(!$scope.localMongoStatus) $scope.ddbConnect(svc);
-        $scope.ddbStream(svc);
         break;
       case 'remoteMongo':
         $scope.ddbView = svc;
         $scope.ddbConsoleType = 'cmd';
-        $scope.ddbStreamWell = 'Connected to cloud MongoDB service\n';
+        $scope.ddbStreamWell = 'Connecting...';
         if(!$scope.remoteMongoStatus) $scope.ddbConnect(svc);
-        $scope.ddbStream(svc);
         break;
       case 'azureStream':
         $scope.ddbView = svc;
         $scope.ddbConsoleType = 'view';
-        $scope.ddbStreamWell = 'Connected to Azure log streaming service\n';
+        $scope.ddbStreamWell = 'Connecting...';
         if(!$scope.azureStreamStatus) $scope.ddbConnect(svc);
-        $scope.ddbStream(svc);
         break;
     }
   }
@@ -64,9 +61,21 @@ angular.module('stage').controller('stDevDbCtrl', function($scope, $http, $timeo
 
   $scope.ddbConnect = function(svc) {
     $http.get('/api/devdash/' + svc + '/connect', {check: true}).then(function() {
-      if(svc == 'localMongo') $scope.localMongoStatus = true;
-      else if(svc == 'remoteMongo') $scope.remoteMongoStatus = true;
-      else if(svc == 'azureStream') $scope.azureStreamStatus = true;
+      if(svc == 'localMongo') {
+        $scope.ddbStreamWell += 'done!\n';
+        $scope.localMongoStatus = true;
+        $timeout(function() {$scope.ddbStream(svc);}, 500);
+      }
+      else if(svc == 'remoteMongo') {
+        $scope.ddbStreamWell += 'done!\n';
+        $scope.remoteMongoStatus = true;
+        $timeout(function() {$scope.ddbStream(svc);}, 500);
+      }
+      else if(svc == 'azureStream') {
+        $scope.ddbStreamWell += 'done!\n';
+        $scope.azureStreamStatus = true;
+        $timeout(function() {$scope.ddbStream(svc);}, 500);
+      }
     });
   }
 
@@ -122,6 +131,9 @@ angular.module('stage').controller('stDevDbCtrl', function($scope, $http, $timeo
           // Replace special characters
           msg = msg.replace(/\[0m/g, '');
           msg = msg.replace(/\[36m/g, '');
+          // Strip out Unicode characters 
+          msg = unescape(encodeURIComponent(msg));
+          console.log(msg);
           $scope.ddbStreamWell += msg.trim() + '\n';
           $timeout(function() {
             var sw = document.getElementById('streamWell');
