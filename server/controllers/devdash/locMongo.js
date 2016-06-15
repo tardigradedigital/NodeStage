@@ -14,19 +14,15 @@ module.exports = function() {
       } 
     },
     connect: function(res, lm) {
-      outStr = '';
+      res.writeHead(200, {"Content-Type": "application/json"});
       instance = spawn(lm.start, lm.params);
-      
-      instance.stdin.setEncoding('utf-8');
-      instance.stdout.on('data', function(data) {
-        res.status(200);
-        res.end();
-      });
+      instance.stdout.on('data', function(data) { res.end(JSON.stringify({response: 'Connected'})) });
       lm.instance = instance;
     },
     disconnect: function(res, lm) {
       if(lm.instance) lm.kill();
-      res.end('Disconnected');
+      res.json({response: 'Disconnected'});
+      // res.end('Disconnected');
     },
     stream: function(res, ins) {
       outStr = '';

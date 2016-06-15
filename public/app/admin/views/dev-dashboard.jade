@@ -11,26 +11,26 @@
         .row
           .col-md-3
             ul.nav.nav-pills.nav-stacked#ddbnav
-              li.active(role="presentation", data-ng-click="ddbChangeView('overview')", data-ng-class="{active: ddbView == null}")
+              li.active(role="presentation", data-ng-click="changeView('overview')", data-ng-class="{active: currentSvc.view == null}")
                 a(href="#") Overview
-              li(role="presentation", data-ng-click="ddbChangeView('localMongo');", data-ng-class="{active: ddbView == 'localMongo'}", data-ng-init="ddbIsConnected('localMongo');")
-                span.iconic.iconic-globe.iconic-sm.iconic-size-sm.pull-right.ddbnav-icon(data-ng-class="{connected: localMongoStatus}")
-                a(href="#") Local Mongo Console
-              li(role="presentation", data-ng-click="ddbChangeView('remoteMongo')", data-ng-class="{active: ddbView == 'remoteMongo'}", data-ng-init="ddbIsConnected('remoteMongo');")
-                span.iconic.iconic-globe.iconic-sm.iconic-size-sm.pull-right.ddbnav-icon(data-ng-class="{connected: remoteMongoStatus}")
+              li(role="presentation", data-ng-click="changeView('devMongo');", data-ng-class="{active: currentSvc.view == 'devMongo'}")
+                span.iconic.iconic-globe.iconic-sm.iconic-size-sm.pull-right.ddbnav-icon(data-ng-class="{connected: svcStatus.devMongo === true}")
+                a(href="#") Dev Mongo Console
+              li(role="presentation", data-ng-click="changeView('cloudMongo')", data-ng-class="{active: currentSvc.view == 'cloudMongo'}")
+                span.iconic.iconic-globe.iconic-sm.iconic-size-sm.pull-right.ddbnav-icon(data-ng-class="{connected: svcStatus.cloudMongo === true}")
                 a(href="#") Cloud Mongo Console
-              li(role="presentation", data-ng-click="ddbChangeView('azureStream')", data-ng-class="{active: ddbView == 'azureStream'}", data-ng-init="ddbIsConnected('azureStream');")
-                span.iconic.iconic-globe.iconic-sm.iconic-size-sm.pull-right.ddbnav-icon(data-ng-class="{connected: azureStreamStatus}")
+              li(role="presentation", data-ng-click="changeView('azureStream')", data-ng-class="{active: currentSvc.view == 'azureStream'}")
+                span.iconic.iconic-globe.iconic-sm.iconic-size-sm.pull-right.ddbnav-icon(data-ng-class="{connected: svcStatus.azureStream === true}")
                 a(href="#") Azure Log Stream
-          .col-md-9(ng-show="ddbConsoleType == null")
+          .col-md-9(ng-show="currentSvc.type == null")
             .panel.panel-default
               .panel-body
                 | Select a development service from the menu
-          .col-md-9.ddb-view(data-ng-show="ddbConsoleType !== null")
+          .col-md-9.ddb-view(data-ng-show="currentSvc.type !== null")
             .panel.panel-default
               .panel-body
                 .well.well-sm(style="height: 450px")
-                  textarea#streamWell(style="width: 100%; height: 400px", data-ng-model="ddbStreamWell", placeholder="Waiting for connection...", disabled, spellcheck="false")
-                  form(ng-submit="ddbCommand()", data-ng-show="ddbConsoleType == 'cmd'")
+                  textarea#streamWell(style="width: 100%; height: 400px", data-ng-model="currentSvc.streamWell", placeholder="Waiting for connection...", disabled, spellcheck="false")
+                  form(ng-submit="ddbCommand()", data-ng-show="currentSvc.type == 'cmd'")
                     input(type="text", ng-model="ddbCmdBar")
                     input(type="submit", style="position: absolute; left: -9999px")

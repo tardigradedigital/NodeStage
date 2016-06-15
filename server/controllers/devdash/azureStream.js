@@ -4,19 +4,15 @@ var spawn = require('child_process').spawn,
 module.exports = function() {
   return {
     connect: function(res, azs) {
+      res.writeHead(200, {"Content-Type": "application/json"});
       instance = spawn(azs.start, azs.params).on('error', function(err) {console.log(err)});
-      
-      instance.stdin.setEncoding('utf-8');
-      instance.stdout.on('data', function(data) {
-        res.status(200);
-        res.end();
-      });
-
+      instance.stdout.on('data', function(data) { res.end(JSON.stringify({response: 'Connected'})) });
       azs.instance = instance;
     },
     disconnect: function(res, azs) {
       if(azs.instance) azs.kill();
-      res.end('Disconnected');
+      res.json({response: 'Disconnected'});
+      // res.end('Disconnected');
     },
     stream: function(res, azs) {
       outStr = '';

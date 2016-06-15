@@ -15,19 +15,15 @@ module.exports = function() {
       } 
     },
     connect: function(res, rm) {
-      outStr = '';
+      res.writeHead(200, {"Content-Type": "application/json"});
       instance = spawn(rm.start, rm.params);
-      
-      instance.stdin.setEncoding('utf-8');
-      instance.stdout.on('data', function(data) {
-        res.status(200);
-        res.end();
-      });
+      instance.stdout.on('data', function(data) { res.end(JSON.stringify({response: 'Connected'})) });
       rm.instance = instance;
     },
     disconnect: function(res, rm) {
       if(rm.instance) rm.instance.kill();
-      res.end('Disconnected');
+      res.json({response: 'Disconnected'});
+      // res.end('Disconnected');
     },
     stream: function(res, ins) {
       outStr = '';

@@ -3,14 +3,14 @@ exports.localMongo = function(req, res) {
   switch(req.params.act) {
     case 'connect':
       if(!lm.instance) lm.connect(res, lm);
-      else res.end();
+      else res.json({response: 'Connected'});
       break;
     case 'stream':
-      if(!lm.instance) res.end('Disconnected');
+      if(!lm.instance) res.json({response: 'Disconnected'});
       else lm.stream(res, lm.instance);
       break;
     case 'command':
-      if(!lm.instance) res.end('Disconnected');
+      if(!lm.instance) res.json({response: 'Disconnected'});
       else {
         if(lm.command(req, lm.instance)) {
           res.status(200);
@@ -23,8 +23,8 @@ exports.localMongo = function(req, res) {
       }
       break;
     case 'status':
-      if(lm.instance) res.end('Connected');
-      else res.end('Disconnected');
+      if(lm.instance) res.json({response: 'Connected'});
+      else res.json({response: 'Disconnected'});
       break;
   }
 }
@@ -34,14 +34,14 @@ exports.remoteMongo = function(req, res) {
   switch(req.params.act) {
     case 'connect':
       if(!rm.instance) rm.connect(res, rm);
-      else res.end();
+      else res.json({response: 'Connected'});
       break;
     case 'stream':
-      if(!rm.instance) res.end('Disconnected');
+      if(!rm.instance) res.json({response: 'Disconnected'});
       else rm.stream(res, rm.instance);
       break;
     case 'command':
-      if(!rm.instance) res.end('Disconnected');
+      if(!rm.instance) res.json({response: 'Disconnected'});
       else {
         if(rm.command(req, rm.instance)) {
           res.status(200);
@@ -54,8 +54,8 @@ exports.remoteMongo = function(req, res) {
       }
       break;      
     case 'status':
-      if(rm.instance) res.end('Connected');
-      else res.end('Disconnected');
+      if(rm.instance) res.json({response: 'Connected'});
+      else res.json({response: 'Disconnected'});
       break;
   }
 }
@@ -65,15 +65,15 @@ exports.azureStream = function(req, res) {
   switch(req.params.act) {
     case 'connect':
       if(!azs.instance) azs.connect(res, azs);
-      else res.end();
+      else res.json({response: 'Connected'});
       break;
     case 'stream':
-      if(!azs.instance) res.end('Disconnected');
+      if(!azs.instance) res.json({response: 'Disconnected'});
       else azs.stream(res, azs);
       break;
     case 'status':
-      if(azs.instance) res.end('Connected');
-      else res.end('Disconnected');
+      if(azs.instance) res.json({response: 'Connected'});
+      else res.json({response: 'Disconnected'});
       break;
   }
 }
