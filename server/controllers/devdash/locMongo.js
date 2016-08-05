@@ -46,6 +46,7 @@ module.exports = function() {
       });
       ins.on('close', function(code) { res.end(outStr); });
       ins.stderr.on('data', function(data) { res.end('ERR: ' + data); });
+      setInterval(function() { res.write('#heartbeat'); }, 15000);
     }
   }
 }

@@ -90,6 +90,10 @@ angular.module('stage').factory('stDevDbSvc', function($http, $interval, $q, stD
       return this.svcList[svc].viewType;
     },
 
+    getStreamWell: function(svc) {
+      return this.svcList[svc].streamWell;
+    },
+
     updateStreamWell: function(rawmsg) {
       var msg = JSON.parse(rawmsg);
       // Replace special characters

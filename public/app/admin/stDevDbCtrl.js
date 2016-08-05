@@ -5,6 +5,12 @@ angular.module('stage').controller('stDevDbCtrl', function($scope, $http, $inter
     streamWell: ''
   }
 
+  /*
+    Consider removing the below heartbeat code as it floods the developer console network tab and the Node.JS
+    log window. Possible to tie in the service to the event source polyfill to detect when an HTTP code other
+    than 200 has been received.
+  */
+
   $scope.svcStatus = {
     heartBeat: $interval(function() {
       var svcs = ['devMongo', 'cloudMongo', 'azureStream'];
@@ -33,10 +39,16 @@ angular.module('stage').controller('stDevDbCtrl', function($scope, $http, $inter
     else {
       $scope.currentSvc.view = svc;
       $scope.currentSvc.type = stDevDbSvc.getConsoleType(svc);
-      $scope.currentSvc.streamWell = ((stDevDbSvc.currentSvc && stDevDbSvc.currentSvc.getStream()) ? stDevDbSvc.currentSvc.getStream() : 'Connecting...');
+      $scope.currentSvc.streamWell = stDevDbSvc.getStreamWell(svc);
       if(!$scope.svcStatus[svc]) $scope.connectService(svc);
     }
   }
+
+  /*
+    Currently if a streamwell is updated in the background, it will update the view window with the new message
+    regardless if that view is active or not. This is especially seen with the Azure log stream if the cloud
+    stage site is accessed or has been inactive for 60 seconds and the log stream service logs inactivity.
+  */
 
   $scope.connectService = function(svc) {
     console.log('Connecting service ' + svc);
@@ -44,8 +56,8 @@ angular.module('stage').controller('stDevDbCtrl', function($scope, $http, $inter
       function() {
         if(typeof(EventSource) !== 'undefined') {
           $scope.currentSvc.streamWell = stDevDbSvc.currentSvc.getStream();
-          var strmSource = new EventSource('/api/devdash/' + svc + '/stream');
-          strmSource.addEventListener('message', function(event) {
+          stDevDbSvc.currentSvc.eventSource = new EventSource(stDevDbSvc.currentSvc.endPoint + 'stream');
+          stDevDbSvc.currentSvc.eventSource.addEventListener('message', function(event) {
             $scope.$apply(function() {
               $scope.currentSvc.streamWell = stDevDbSvc.updateStreamWell(event.data);
               $timeout(function() {
@@ -55,12 +67,12 @@ angular.module('stage').controller('stDevDbCtrl', function($scope, $http, $inter
               }, 50);
             });
           }, false);
-          strmSource.addEventListener('error', function(err) {
+          stDevDbSvc.currentSvc.eventSource.addEventListener('error', function(err) {
             $scope.$apply(function() {
               $scope.ddbDisconnect(svc);
               $scope.currentSvc.streamWell += 'The stream for ' + svc + ' has been unexpectedly closed.\n';
             });
-            strmSource.close();
+            stDevDbSvc.currentSvc.eventSource.close();
           }, false);
         }
         else $scope.currentSvc.streamWell = 'This browser does not support streaming.\n';

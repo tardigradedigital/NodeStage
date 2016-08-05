@@ -33,6 +33,7 @@ module.exports = function() {
       });
       azs.instance.on('close', function(code) { res.end(outStr); });
       azs.instance.stderr.on('data', function(data) { res.end('ERR: ' + data); });
+      setInterval(function() { res.write('#heartbeat'); }, 15000);
     }
   }
 }
