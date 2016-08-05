@@ -2,7 +2,7 @@ angular.module('stage').controller('stDevDbCtrl', function($scope, $http, $inter
   $scope.currentSvc = {
     view: null,
     type: null,
-    streamWell: '' 
+    streamWell: ''
   }
 
   $scope.svcStatus = {
@@ -33,11 +33,41 @@ angular.module('stage').controller('stDevDbCtrl', function($scope, $http, $inter
     else {
       $scope.currentSvc.view = svc;
       $scope.currentSvc.type = stDevDbSvc.getConsoleType(svc);
-      $scope.currentSvc.streamWell = 'Connecting...';
-      if(!$scope.svcStatus[svc]) stDevDbSvc.connectService(svc);
+      $scope.currentSvc.streamWell = ((stDevDbSvc.currentSvc && stDevDbSvc.currentSvc.getStream()) ? stDevDbSvc.currentSvc.getStream() : 'Connecting...');
+      if(!$scope.svcStatus[svc]) $scope.connectService(svc);
     }
   }
 
+  $scope.connectService = function(svc) {
+    console.log('Connecting service ' + svc);
+    stDevDbSvc.connectService(svc).then(
+      function() {
+        if(typeof(EventSource) !== 'undefined') {
+          $scope.currentSvc.streamWell = stDevDbSvc.currentSvc.getStream();
+          var strmSource = new EventSource('/api/devdash/' + svc + '/stream');
+          strmSource.addEventListener('message', function(event) {
+            $scope.$apply(function() {
+              $scope.currentSvc.streamWell = stDevDbSvc.updateStreamWell(event.data);
+              $timeout(function() {
+                var sw = document.getElementById('streamWell');
+                sw.scrollTop = sw.scrollHeight;
+
+              }, 50);
+            });
+          }, false);
+          strmSource.addEventListener('error', function(err) {
+            $scope.$apply(function() {
+              $scope.ddbDisconnect(svc);
+              $scope.currentSvc.streamWell += 'The stream for ' + svc + ' has been unexpectedly closed.\n';
+            });
+            strmSource.close();
+          }, false);
+        }
+        else $scope.currentSvc.streamWell = 'This browser does not support streaming.\n';
+    });
+  }
+
+  // Restructure needed
   $scope.ddbCommand = function() {
     var svc = $scope.currentSvc.view;
     console.log(svc);
@@ -84,6 +114,7 @@ angular.module('stage').controller('stDevDbCtrl', function($scope, $http, $inter
   //   });
   // }
 
+  // Restructure needed
   $scope.ddbDisconnect = function(svc) {
     // $http.get('/api/devdash/' + svc + '/disconnect', {check: true}).then(function() {
       if(svc == 'localMongo') $scope.localMongoStatus = false;
@@ -94,6 +125,7 @@ angular.module('stage').controller('stDevDbCtrl', function($scope, $http, $inter
 
   $scope.checkStatus = function(svc) { return stDevDbSvc.checkStatus(svc); }
 
+  // Restructure needed
   $scope.ddbStream = function(svc) {
     if(typeof(EventSource) !== 'undefined') {
       var strmSource = new EventSource('/api/devdash/' + svc + '/stream');

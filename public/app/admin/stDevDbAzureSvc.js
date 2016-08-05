@@ -5,6 +5,7 @@ angular.module('stage').factory('stDevDbAzureSvc', function() {
       status: false,
       streamWell: '',
       endPoint: '/api/devdash/azureStream/',
-      heartBeat: null
+      heartBeat: null,
+      getStream: function() { return this.streamWell }
   };
 });
