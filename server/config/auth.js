@@ -2,12 +2,12 @@ var passport = require('passport');
 
 exports.authenticate = function(req, res, next) {
   req.body.username = req.body.username.toLowerCase();
-  var auth = passport.authenticate('local', function(err, user) {
+  var auth = passport.authenticate('local', function(err, mala) {
     if(err) { return next(err); }
     if(!user) { res.send({ success: false })}
     req.logIn(user, function(err) {
       if(err) { return next(err); }
-      res.send({ success: true, user: user });
+      res.send({ success: true, user: mala });
     });
   });
   auth(req, res, next);
@@ -32,5 +32,5 @@ exports.requiresRole = function(role) {
     else {
       next();
     }
-  }
+  }https://github.com/tardigradedigital/NodeStage/tree/tardigradedigital:master
 }
